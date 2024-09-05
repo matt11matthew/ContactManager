@@ -1,5 +1,5 @@
 const urlBase = 'http://cm.matthewe.me';
-const apiPath = '';
+const apiPath = '/Projects/Backend';
 const extension = 'php';
 
 // NOTE: ALL document.getElementById() calls need updated tags from frontend
@@ -11,8 +11,8 @@ let password = '';
 let firstName = '';
 let lastName = '';
 let email = '';
-let phone = '';
-let address = '';
+// let phone = '';
+// let address = '';
 
 // Registers a new user account
 function register() {
@@ -135,7 +135,7 @@ function logout() {
 // Get user's specific contacts using their userId as key
 function getContacts() {
     // Default to userId 0
-    userId = 0;
+    // userId = 0;
 
     //
 
@@ -149,6 +149,37 @@ function getContacts() {
 
 // Adds a new contact to userId's account
 function addContact() {
+    // Default to userId 0
+    // userId = 0;
+
+    let first = document.getElementById("firstName").value;
+    let last = document.getElementById("lastName").value;
+    let email = document.getElementById("email").value;
+    // let phone = document.getElementById("firstName").value;
+    // let address = document.getElementById("firstName").value;
+
+    document.getElementById("contactAddResult").innerHTML = "";
+
+    let tmp = {contact:first,last,email,/*phone,address,*/userId};
+    let jsonPayload = JSON.stringify( tmp );
+
+    let url = urlBase + apiPath + '/addContact.' + extension;
+    
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+    try {
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200){
+                document.getElementById("contactAddResult").innerHTML = "Contact Added Successfully";
+            }
+        };
+        xhr.send(jsonPayload);
+    }
+    catch (err) {
+        document.getElementById("contactAddResult").innerHTML = err.message;
+    }
 
 }
 
@@ -164,5 +195,38 @@ function updateContact() {
 
 // Finds a specific contact in userId's account
 function findContact() {
+    let dropDownSrch = document.getElementById("srchId");
+    // let selectedSrch = dropDownSrch.options[dropDownSrch.selectedIndex].text;
 
+    let searchValue = document.getElementById("searchBox");
+
+    tmp = {search:searchValue,userId:userId}
+
+    let jsonPayLoad = JSON.stringify(tmp);
+
+    let url = urlBase + apiPath + '/searchContacts.' + extension; 
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+    try {
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("contactSearchResult").innerHTML = "Contacts Retrieved Successfully";
+                let jsonObject = JSON.parse(xhr.responseText);
+                for (let i = 0; i < jsonObject.results.length; i++) {
+                    contactList += jsonObject.results[i];
+                    if( i < jsonObject.results.length - 1) {
+                        contactList += "<br />\r\n";
+                    }
+                }
+                document.getElementById("p")[0].innerHTML = colorList;
+            }
+        };
+        xhr.send(jsonPayLoad);
+    }
+    catch (err){
+        document.getElementById("contactSearchResult").innerHTML = err.message;
+    }
 }

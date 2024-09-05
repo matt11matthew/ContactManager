@@ -8,9 +8,29 @@
 
     $userId = 0;
 
+    $searchResults = "";
+    $searchCount = 0;
 
+    $stmt = $conn->prepare("SELECT (FirstName, LastName, Email) FROM Contacts WHERE UserName OR Email LIKE %?%");
+    $contactName = "%" . $inData["search"] . "%";
+    $stmt->bind_param("ss", $contactName, $inData["userId"]);
+    $stmt->execute();
 
+    $result = $stmt->get_result();
 
+    while($row = $result->fetch_assoc()) {
+        if($searchCount > 0){
+            $searchResults .= ",";
+        }
+        $searchCount++;
+        $searchResults .= '"' . $row["Name"] . '"';
+    }
+
+    if($searchCount == 0){
+        returnWithError("No Records Found");
+    } else {
+        returnWithInfo($searchResults);
+    }    
 
     // Close connection
     $stmt->close();

@@ -6,13 +6,14 @@
     # Get json data from frontend
     $inData = getRequestInfo();
 
-    $userId = 0;
+    $userId = $inData["userId"];
+    $firstName = $inData["first"];
+    $lastName = $inData["last"];
+    $email = $inData["email"];
 
-
-
-
-
-
+    $stmt = $conm->prepare("INSERT INTO Contacts (UserID, FirstName, LastName, UserName, Email) VALUES ('$id', '$firstName', '$lastName', /*'$userName',*/ '$email')");
+    $stmt->bind_param("ss",$userId,$color);
+    $stmt->execute();
 
     // Close connection
     $stmt->close();
