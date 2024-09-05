@@ -1,0 +1,94 @@
+body{
+    background-color: #661618;
+    font-family: 'Inter', serif;
+    position: relative;
+}
+
+.container{
+    max-width: 50rem;
+    height: 100%;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 30px;
+    padding: 1rem;
+    background-color: #e9d8b2;
+    box-shadow: .3em .3em .3em rgba(0, 0, 0, .4);
+}
+
+.title{
+    color: #661618;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 5rem;
+    font-weight: bolder;
+    margin-top: 4vw;
+    margin-bottom: 0;
+}
+
+.instructions{
+    color: #661618;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 2rem;
+    font-weight: bolder;
+    margin-top: 0;
+    margin-bottom: 3vw;
+}
+
+.halfBar{
+    display: inline-block;
+    background-color: #e9e0ca;
+    width: 45%;
+    height: 5rem;
+    padding: 5px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    font-size: x-large;
+}
+
+#Fname{
+    margin-left: 1rem;
+    margin-right: 0;
+}
+
+#Lname{
+    margin-right: 1em;
+    float: right;
+}
+
+.fullBar{
+    display: block;
+    background-color: #e9e0ca;
+    margin: 1em auto 1em auto;
+    width: 95%;
+    height: 5rem;
+    padding: 5px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    font-size: x-large;
+}
+
+#create{
+    display: block;
+    margin: 1em auto 1em auto;
+    width: 60%;
+    height: 5rem;
+    padding: 5px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    background-color: #661618;
+    font-size: xx-large;
+    font-weight: bold;
+    color: #e9d8b2;
+}
+
+::placeholder{
+    color: #661618;
+    opacity: 50%;
+    font-weight: bold;
+    padding-left: 1rem;
+}
