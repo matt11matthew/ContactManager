@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Manager</title>
+    <link rel="stylesheet" href="testLogin.css">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+</head>
+<body>
+        <div class="welcoming">Welcome!</div>
+        <div class="instructions">Please login to continue</div>
+
+    <div class="container">
+        <!--Where the form will submit the information to in the php file-->
+        <form action="/LoginCredentials.php">
+
+                <!--username, password inputs, and the login submit input-->
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <input type="submit" value="Login">
+
+
+        </form>
+    </div>
+
+</body>
+</html>
