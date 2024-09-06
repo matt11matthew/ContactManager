@@ -11,7 +11,7 @@
     $username = '';
     $password = '';
 
-    $query = 'SELECT ID, FirstName, LastName FROM Logins WHERE UserName=? AND Password=?';
+    $query = "SELECT ID, FirstName, LastName FROM Logins WHERE UserName=? AND Password=?";
     $stmt = $conn->prepare();
     $stmt->bind_param('ss', $inData['username'], $inData['password']); // might need name changes based on front end HTML
     $stmt->execute();

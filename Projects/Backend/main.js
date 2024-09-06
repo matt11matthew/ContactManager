@@ -79,6 +79,7 @@ function login() {
 
     document.getElementById('username').innerHTML = '';
 
+    // Prepare for JSON request
     let loginInfo = {username: username, password: password};
     let payload = JSON.stringify(loginInfo);
 
@@ -185,7 +186,33 @@ function addContact() {
 
 // Deletes a contact from userId's account
 function deleteContact() {
+    // Get delete information
+    let cFirstName = document.getElementById('cFirstName').value;
+    let cLastName = document.getElementById('cLastName').value;
+    let cEmail = document.getElementById('cEmail').value;
 
+    // Prepare for JSON request
+    let tmp = {userId: userId, firstName: cFirstName, lastName: cLastName, email: cEmail};
+    let url = urlBase + apiPath + '/deleteContact.' + extension;
+    let jsonPayload = JSON.stringify(tmp);
+
+    // Open HTTP request (DELETE)
+    let xhr = new XMLHttpRequest();
+    xhr.open('DELETE', url, true);
+    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+    // Wait for request from user
+    try {
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById('contactDeleteResult').innerHTML = 'Contact deleted successfully';
+            }
+        };
+        // Send JSON response
+        xhr.send(jsonPayload);
+    } catch(err) {
+        document.getElementById('contactDeleteResult').innerHTML = err.message;
+    }
 }
 
 // Updates a contact in userId's account

@@ -29,13 +29,15 @@
         returnWithError('Username already exists.');
     } else {
         // Create account
+        // Store userId
+        $userId = $result['ID']; // Unsure if works
         // Query to insert new user into database
-        $query = 'INSERT INTO Logins (FirstName, LastName, UserName, Password) VALUES (\'$firstName\', \'$lastName\', \'$userName\', \'$password\')';
+        $query = "INSERT INTO Logins (FirstName, LastName, UserName, Password) VALUES ('$firstName', '$lastName', '$userName', '$password')";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result != 0) returnWithError($result);
-        else returnWithError('Success');
+        else returnWithInfo($userId, $row['UserName'], $row['FirstName'], $row['LastName']);
     }
 
     // Close connection
@@ -48,8 +50,11 @@
     }
 
     // Function to send JSON data to frontend
-    function returnWithInfo( $firstName, $lastName, $id ) {
-        $retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '"}';
+    function returnWithInfo( $id, $username, $firstName, $lastName ) {
+        $retValue = '{"id":' . $id . ',
+                      "username":"' . $username . '",
+                      "firstName":"' . $firstName . '",
+                      "lastName":"' . $lastName . '"}';
         sendResultInfoAsJson( $retValue );
     }
 

@@ -3,15 +3,29 @@
     // Include config file for database connection
     include 'config.php';
 
-    # Get json data from frontend
+    // Get JSON data from frontend
     $inData = getRequestInfo();
 
-    $userId = 0;
+    // Create variables to store userId and contact information
+    $userId = $inData["userId"];
+    $firstName = $inData["cFirstName"];
+    $lastName = $inData["cLastName"];
+    $email = $inData["cEmail"];
 
+    // Prepare and execute SQL query to delete contact
+    $query = "DELETE FROM Contacts WHERE UserID=? AND FirstName=? AND LastName=? AND Email=?";
+    $stmt = $conm->prepare($query);
+    $stmt->bind_param("ssss", $userId, $firstName, $lastName, $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-
-
-
+    // If contact is found, return deleted contact information
+    // Since delete, no need for ($result->errno != 0)
+    if ($result != 0) {
+        returnWithInfo($id, $firstName, $lastName, $email);
+    } else {
+        returnWithError("Contact not found");
+    }
 
     // Close connection
     $stmt->close();
@@ -23,8 +37,11 @@
     }
 
     // Function to send JSON data to frontend
-    function returnWithInfo( $firstName, $lastName, $id ) {
-        $retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '"}';
+    function returnWithInfo( $id, $firstName, $lastName, $email ) {
+        $retValue = '{"id":' . $id . ', 
+                      "firstName":"' . $firstName . '",
+                      "lastName":"' . $lastName . '",
+                      "email":"' . $email . '"}';
         sendResultInfoAsJson( $retValue );
     }
 
