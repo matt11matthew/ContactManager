@@ -1,5 +1,5 @@
 const urlBase = 'http://cm.matthewe.me';
-const apiPath = '/Projects/Backend';
+const apiPath = '/Backend';
 const extension = 'php';
 
 // NOTE: ALL document.getElementById() calls need updated tags from frontend
