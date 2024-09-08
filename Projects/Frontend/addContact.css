@@ -45,20 +45,6 @@ body{
     padding-left: 1rem;
 }
 
-.firstName, .lastName, .email{
-    margin-left: 2vw;
-    margin-bottom: -1vw;
-    color: #661618;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-.buttonContainer{
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-}
-
 button{
     padding: 20px 20px;
     border: 1px solid black;
@@ -69,45 +55,8 @@ button{
     font-size: xx-large;
     font-weight: bold;
 }
-.confirmChange {
-    /*margin-left: 1vw;*/
+.addContact {
+    margin-left: 1vw;
     background-color: #661618;
     color: #e9d8b2;
 }
-
-.deleteContact {
-    /*margin-left: 9.5vw;*/
-    float: right;
-    background-color: #e9d8b2;
-    color: #661618;
-}
-
-/*#confirmChange{*/
-/*    display: block;*/
-/*    margin-left: 1vw;*/
-/*    width: 40%;*/
-/*    height: 5rem;*/
-/*    padding: 5px;*/
-/*    border-radius: 30px;*/
-/*    box-sizing: border-box;*/
-/*    border: 1px solid black;*/
-/*    background-color: #661618;*/
-/*    font-size: xx-large;*/
-/*    font-weight: bold;*/
-/*    color: #e9d8b2;*/
-/*}*/
-
-/*#deleteContact{*/
-/*    display: block;*/
-/*    !*float: right;*!*/
-/*    width: 40%;*/
-/*    height: 5rem;*/
-/*    padding: 5px;*/
-/*    border-radius: 30px;*/
-/*    box-sizing: border-box;*/
-/*    border: 1px solid black;*/
-/*    background-color: #e9d8b2;*/
-/*    font-size: xx-large;*/
-/*    font-weight: bold;*/
-/*    color: #661618;*/
-/*}*/
