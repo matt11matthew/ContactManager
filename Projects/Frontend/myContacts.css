@@ -1,0 +1,17 @@
+body{
+    background-color: #661618;
+    font-family: 'Inter', serif;
+    position: relative;
+}
+
+.container{
+    max-width: 50rem;
+    height: 100%;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 30px;
+    padding: 1rem;
+    background-color: #e9d8b2;
+    box-shadow: .3em .3em .3em rgba(0, 0, 0, .4);
+}
