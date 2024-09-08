@@ -247,7 +247,7 @@ function findContact() {
                     if( i < jsonObject.results.length - 1) {
                         contactList += "<br />\r\n";
                     }
-                }
+                }     
                 document.getElementById("p")[0].innerHTML = colorList;
             }
         };
