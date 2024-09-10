@@ -19,14 +19,21 @@ function register() {
     // Default to userId 0
     userId = 0;
 
-    // Get login information
+    // Get registration information
+    firstName = document.getElementById('firstName').value;
+    lastName = document.getElementById('lastName').value;
     username = document.getElementById('username').value;
     password = document.getElementById('password').value;
+    confPassword = document.getElementById('confirmPassword').value;
 
     document.getElementById('username').innerHTML = '';
 
-    let loginInfo = {username: username, password: password};
-    let payload = JSON.stringify(loginInfo);
+    let registerInfo = {firstName: firstName,
+                        lastName: lastName,
+                        username: username,
+                        password: password,
+                        confPassword: confPassword};
+    let payload = JSON.stringify(registerInfo);
 
     let url = urlBase + apiPath + '/register.' + extension;
 
@@ -49,8 +56,11 @@ function register() {
                 }
 
                 // Store user information
-                firstName = document.getElementById('firstName').value;
-                lastName = document.getElementById('lastName').value;
+                firstName = jsonObject.firstName;
+                lastName = jsonObject.lastName;
+                username = jsonObject.username;
+                password = jsonObject.password;
+                confPassword = jsonObject.confPassword;
                 // Unknown if including at the moment
                 // email = document.getElementById('email').value;
                 // phone = document.getElementById('phone').value;
