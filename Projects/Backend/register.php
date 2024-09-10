@@ -18,6 +18,12 @@ if ($password !== $confirmPassword) {
     exit();
 }
 
+// Ensure all fields are filled
+if (empty($firstName) || empty($lastName) || empty($username) || empty($password) || empty($confirmPassword)) {
+    returnWithError('One or more fields was empty.');
+    exit();
+}
+
 // Query to check if username already exists
 $query = 'SELECT ID, UserName FROM Logins WHERE UserName = ?';
 $stmt = $conn->prepare($query);
