@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Test</title>
+</head>
+<body>
+
+<h2>Login Test Page</h2>
+
+<!-- Simple login form -->
+<form id="loginForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <br><br>
+    <button type="submit">Login</button>
+</form>
+
+<!-- Display result -->
+<div id="result"></div>
+
+<script>
+    // URL of the PHP script handling the login (change to your actual URL)
+    const url = 'http://cm.matthewe.me/testing/Backend/login.php';
+
+    // Add event listener to the form
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();  // Prevent form from submitting normally
+
+        // Get form data
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Create data object to send
+        const data = {
+            username: username,
+            password: password
+        };
+
+        // Send POST request with fetch API
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)  // Convert data to JSON string
+        })
+            .then(response => response.json())  // Parse JSON response
+            .then(data => {
+                // Display result in the div
+                const resultDiv = document.getElementById('result');
+                if (data.error) {
+                    resultDiv.innerHTML = `<p style="color: red;">Error: ${data.error}</p>`;
+                } else {
+                    resultDiv.innerHTML = `<p style="color: green;">Welcome, ${data.firstName} ${data.lastName}!</p>`;
+                }
+            })
+            .catch(error => {
+                // Handle any errors
+                document.getElementById('result').innerHTML = `<p style="color: red;">Request failed: ${error}</p>`;
+            });
+    });
+</script>
+
+</body>
+</html>
