@@ -73,15 +73,4 @@ function returnWithInfo($id, $username, $firstName, $lastName) {
     sendResultInfoAsJson($retValue);
 }
 
-// Function to send error JSON to frontend
-function returnWithError($error) {
-    $retValue = json_encode(['error' => $error]);
-    sendResultInfoAsJson($retValue);
-}
-
-// Function to send JSON response
-function sendResultInfoAsJson($obj) {
-    header('Content-Type: application/json');
-    echo $obj;
-}
 ?>
