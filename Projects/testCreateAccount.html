@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Manager</title>
+    <script type="text/javascript" src="scripts/testRegister.js"></script>
     <link rel="stylesheet" href="testCreateAccountStyles.css">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 </head>
@@ -12,24 +13,18 @@
     <div class="title">Create Account</div>
     <div class="instructions">Already Have an Account? <a href="testLogin.html">Sign In</a></div>
 
-    <form action="FrontEndPhP/register_frontend.php" method="POST">
+    <form method="POST">
         <input type="text" name="firstName" class="fullBar" placeholder="First Name" required>
         <input type="text" name="lastName" class="fullBar" placeholder="Last Name" required>
         <input type="text" name="username" class="fullBar" placeholder="Username" required>
         <input type="password" name="password" class="fullBar" placeholder="Password" required>
         <input type="password" name="confirmPassword" class="fullBar" placeholder="Confirm Password" required>
-        <input type="submit" id="create" value="Create Account">
+        <input type="submit" id="create" onclick="onRegister();" value="Create Account">
     </form>
 
     <!-- Error message div -->
-    <div id="loginError">
-        <?php
-        // Display error messages from the PHP script if any
-        if (isset($_GET['error'])) {
-            echo "<p style='color: red;'>" . htmlspecialchars($_GET['error']) . "</p>";
-        }
-        ?>
-    </div>
+    <div id="loginError"></div>
+
 </div>
 </body>
 </html>
