@@ -35,17 +35,17 @@ $stmt->bind_param('s', $username);
 $stmt->execute();
 $result = $stmt->get_result();
 
-if ($result->fetch_assoc()) {
+// Fetch the result as an associative array
+$user = $result->fetch_assoc();
 
-    if ($result['UserName']===$username) {
+if ($user) {
+    // Now $user is an associative array, you can access it safely
+    if ($user['UserName'] === $username) {
         returnWithError('Username already exists.');
         return;
     }
-    // Account already exists / username taken.
-    returnWithError('Username already exists.');
-    return;
 } else {
-    // Insert new user into database without hashing the password
+    // Insert new user into the database without hashing the password
     $query = "INSERT INTO Logins (FirstName, LastName, UserName, Password) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('ssss', $firstName, $lastName, $username, $password);
