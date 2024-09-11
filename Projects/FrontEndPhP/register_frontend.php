@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Check if API call was successful
     if ($result === FALSE) {
-        // Error handling
-        header("Location: index.php?error=" . urlencode("There was an issue with registration."));
+        // Echo error message directly
+        echo "<p style='color: red;'>Error: There was an issue connecting to the registration service. Please try again later.</p>";
         exit();
     }
 
@@ -53,8 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Check for errors in the response
     if (isset($response['error'])) {
-        // Redirect back with error message
-        header("Location: index.php?error=" . urlencode($response['error']));
+        // Echo the error message from the backend
+        echo "<p style='color: red;'>Error: " . htmlspecialchars($response['error']) . "</p>";
         exit();
     }
 
@@ -64,9 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fname = $response['firstName'];
         $lname = $response['lastName'];
 
-        // Redirect to a new page or show a success message
-        echo "Account created for " . htmlspecialchars($fname) . " " . htmlspecialchars($lname);
-        // You could redirect to a login page or another area
+        // Display a success message
+        echo "<p style='color: green;'>Account created successfully for " . htmlspecialchars($fname) . " " . htmlspecialchars($lname) . ".</p>";
+        // Optionally, redirect to another page
         // header("Location: welcome.php");
         exit();
     }

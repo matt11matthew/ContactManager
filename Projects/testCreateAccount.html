@@ -11,7 +11,6 @@
 <div class="container">
     <div class="title">Create Account</div>
     <div class="instructions">Already Have an Account? <a href="testLogin.html">Sign In</a></div>
-<!--    <div class="signInLink"><a href="testLogin.html">Sign In</a></div>-->
 
     <form action="FrontEndPhP/register_frontend.php" method="POST">
         <input type="text" name="firstName" class="fullBar" placeholder="First Name" required>
@@ -22,8 +21,15 @@
         <input type="submit" id="create" value="Create Account">
     </form>
 
-    <div id="loginError"></div>
+    <!-- Error message div -->
+    <div id="loginError">
+        <?php
+        // Display error messages from the PHP script if any
+        if (isset($_GET['error'])) {
+            echo "<p style='color: red;'>" . htmlspecialchars($_GET['error']) . "</p>";
+        }
+        ?>
+    </div>
 </div>
-
 </body>
 </html>
