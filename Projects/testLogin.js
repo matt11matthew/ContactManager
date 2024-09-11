@@ -4,6 +4,10 @@ let userId = 0;
 let fname = "";
 let lname = "";
 
+function hideLoginError() {
+    document.getElementById("loginError").innerHTML = "";
+}
+
 function UserLogin(){
     userId = 0;
     fname = "";
@@ -46,6 +50,7 @@ function UserLogin(){
 
                 if ("error" in response) {
                     document.getElementById("loginError").innerHTML = response.error;
+                    setTimeout(hideLoginError, 3000);
                     return;
                 }
                 console.log(response)
@@ -53,7 +58,9 @@ function UserLogin(){
                 userId = response.id;
                 fname = response.firstName;
                 lname = response.lastName;
-                document.getElementById("loginError").innerHTML = "Logged in.";
+                document.getElementById("loginError").innerHTML = "Found user " + fname +" " + lname;
+
+                setTimeout(hideLoginError, 3000);
                 //direct user to the menu:
                 // window.open("testMenu.html");
             }
