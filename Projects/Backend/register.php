@@ -1,4 +1,8 @@
 <?php
+// CORS Headers
+header("Access-Control-Allow-Origin: *");  // Allow all origins (adjust as necessary for security)
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 // Include config file for database connection
 include 'config.php';
@@ -6,9 +10,9 @@ include 'config.php';
 // Get JSON data from frontend
 $inData = getRequestInfo();
 
-$firstName = $inData['firstName'];
-$lastName = $inData['lastName'];
-$username = $inData['username'];
+$firstName = trim($inData['firstName']);
+$lastName = trim($inData['lastName']);
+$username = trim($inData['username']);
 $password = $inData['password'];
 $confirmPassword = $inData['confPassword'];
 
@@ -35,10 +39,11 @@ if ($result->fetch_assoc()) {
     // Account already exists / username taken.
     returnWithError('Username already exists.');
 } else {
-    // Insert new user into database
+    // Insert new user into database without hashing the password
     $query = "INSERT INTO Logins (FirstName, LastName, UserName, Password) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('ssss', $firstName, $lastName, $username, $password); // Consider hashing the password
+    $stmt->bind_param('ssss', $firstName, $lastName, $username, $password);
+
     if ($stmt->execute()) {
         // Successfully inserted, fetch the newly created user ID
         $userId = $stmt->insert_id;
