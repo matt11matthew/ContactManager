@@ -43,6 +43,7 @@ function UserLogin(){
             }
             //if we got a json file
             if(response != null){
+                console.log(response)
                 //save the information we got about user:
                 userId = response.id;
                 fname = response.firstName;
