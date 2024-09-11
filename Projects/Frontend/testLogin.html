@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Manager</title>
+    <script type="text/javascript" src="testLogin.js"></script>
     <link rel="stylesheet" href="testLogin.css">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+
 </head>
 <body>
         <div class="welcoming">Welcome!</div>
@@ -13,17 +15,19 @@
 
     <div class="container">
         <!--Where the form will submit the information to in the php file-->
-        <form action="/Backend/login.php">
+
+        <form id="LoginInfo" action="LoginCredentials.php">
                 <!--username, password inputs, and the login submit input-->
                 <input type="text" id="username" placeholder="Username" required>
                 <input type="password" id="password" placeholder="Password" required>
-                <input type="submit" value="Login">
+                <button type="button" id="login" onclick="UserLogin();">Login</button>
         </form>
     </div>
 
         <div class="centerLink">
             <p><a href="testCreateAccount.html" class="create">Create new account</a></p>
         </div>
+        <div id="loginError"></div>
 
 </body>
 </html>

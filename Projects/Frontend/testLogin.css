@@ -27,7 +27,7 @@ input[type=text], input[type=password]{
     font-size: x-large;
 }
 
-input[type=submit]{
+#login{
     display: block;
     margin: auto;
     width: 40%;
@@ -40,6 +40,15 @@ input[type=submit]{
     font-weight: bold;
     color: #e9d8b2;
     padding: 5px;
+}
+
+#loginError{
+    display: block;
+    margin: auto;
+    word-wrap: break-word;
+    max-width: 30rem;
+    font-size: x-large;
+    color: #e9d8b2;
 }
 
 ::placeholder{
