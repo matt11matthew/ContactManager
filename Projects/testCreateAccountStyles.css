@@ -15,7 +15,14 @@ body{
     background-color: #e9d8b2;
     box-shadow: .3em .3em .3em rgba(0, 0, 0, .4);
 }
-
+#loginError{
+    display: block;
+    margin: auto;
+    word-wrap: break-word;
+    max-width: 30rem;
+    font-size: x-large;
+    color: #e9d8b2;
+}
 .title{
     color: #661618;
     text-align: center;

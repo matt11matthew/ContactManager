@@ -13,14 +13,16 @@
     <div class="instructions">Already Have an Account? <a href="testLogin.html">Sign In</a></div>
 <!--    <div class="signInLink"><a href="testLogin.html">Sign In</a></div>-->
 
-    <form action="/Backend/register.php">
-        <input type="text" id="Fname" class="fullBar" placeholder="First Name"  required>
-        <input type="text" id="Lname" class="fullBar" placeholder="Last Name" required>
-        <input type="text" id="email" class="fullBar" placeholder="Username" required>
-        <input type="password" id="password" class="fullBar" placeholder="Password" required>
-        <input type="password" id="confirm" class="fullBar" placeholder="Confirm Password" required>
+    <form action="FrontEndPhP/register_frontend.php" method="POST">
+        <input type="text" name="firstName" class="fullBar" placeholder="First Name" required>
+        <input type="text" name="lastName" class="fullBar" placeholder="Last Name" required>
+        <input type="text" name="username" class="fullBar" placeholder="Username" required>
+        <input type="password" name="password" class="fullBar" placeholder="Password" required>
+        <input type="password" name="confirmPassword" class="fullBar" placeholder="Confirm Password" required>
         <input type="submit" id="create" value="Create Account">
     </form>
+
+    <div id="loginError"></div>
 </div>
 
 </body>
