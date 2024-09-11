@@ -43,6 +43,11 @@ function UserLogin(){
             }
             //if we got a json file
             if(response != null){
+
+                if ("error" in response) {
+                    document.getElementById("loginError").innerHTML = response.error;
+                    return;
+                }
                 console.log(response)
                 //save the information we got about user:
                 userId = response.id;
