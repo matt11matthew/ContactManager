@@ -31,7 +31,7 @@ function onRegister(event) {
     let registerJson = JSON.stringify(tmp);
 
     // URL location of PHP file
-    let url = "http://cm.matthewe.me/testing/Backend/login.php";
+    let url = "http://cm.matthewe.me/testing/Backend/register.php";
 
     // Post request to the REST API
     let xml = new XMLHttpRequest();

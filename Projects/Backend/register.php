@@ -71,6 +71,7 @@ function getRequestInfo() {
 // Function to send JSON response to frontend
 function returnWithInfo($id, $username, $firstName, $lastName) {
     $retValue = json_encode([
+        'message'=> 'Created user',
         'id' => $id,
         'username' => $username,
         'firstName' => $firstName,
