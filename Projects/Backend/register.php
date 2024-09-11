@@ -1,7 +1,7 @@
 <?php
 // CORS Headers
 header("Access-Control-Allow-Origin: *");  // Allow all origins (adjust as necessary for security)
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 // Include config file for database connection

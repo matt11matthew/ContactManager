@@ -1,4 +1,12 @@
 // Updated JavaScript for additional logging
+let userId = 0;
+let fname = "";
+let lname = "";
+
+function hideLoginError() {
+    document.getElementById("loginError").innerHTML = "";
+}
+
 function onRegister(event) {
     event.preventDefault();
 
