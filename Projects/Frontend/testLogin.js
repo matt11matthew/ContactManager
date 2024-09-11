@@ -47,9 +47,9 @@ function UserLogin(){
                 userId = response.id;
                 fname = response.firstName;
                 lname = response.lastName;
-
+                document.getElementById("loginError").innerHTML = "Logged in.";
                 //direct user to the menu:
-                window.open("testMenu.html");
+                // window.open("testMenu.html");
             }
         }
     }
