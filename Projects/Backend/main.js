@@ -93,7 +93,7 @@ function login() {
     let loginInfo = {username: username, password: password};
     let payload = JSON.stringify(loginInfo);
 
-    let url = urlBase + apiPath + '/register.' + extension;
+    let url = urlBase + apiPath + '/login.' + extension;
 
     // Open HTTP request (POST)
     let xhr = new XMLHttpRequest();
