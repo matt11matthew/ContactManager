@@ -33,7 +33,6 @@ function UserLogin(){
     xml.send(LoginJson);
     //when a response is ready.
     xml.onreadystatechange = function (){
-        //200: Successfully logged in. - via swaggerhub.
         if(xml.readyState===4 && xml.status === 200){
             let response;
             //get the response.
