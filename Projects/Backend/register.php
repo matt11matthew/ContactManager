@@ -36,8 +36,14 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->fetch_assoc()) {
+
+    if ($result['UserName']===$username) {
+        returnWithError('Username already exists.');
+        return;
+    }
     // Account already exists / username taken.
     returnWithError('Username already exists.');
+    return;
 } else {
     // Insert new user into database without hashing the password
     $query = "INSERT INTO Logins (FirstName, LastName, UserName, Password) VALUES (?, ?, ?, ?)";
