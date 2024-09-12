@@ -8,9 +8,9 @@
 
     // Create variables to store userId and contact information
     $userId = $inData["userId"];
-    $firstName = $inData["cFirstName"];
-    $lastName = $inData["cLastName"];
-    $email = $inData["cEmail"];
+    $firstName = $inData["firstName"];
+    $lastName = $inData["lastName"];
+    $email = $inData["email"];
 
     // Prepare and execute SQL query to delete contact
     $query = "DELETE FROM Contacts WHERE UserID=? AND FirstName=? AND LastName=? AND Email=?";

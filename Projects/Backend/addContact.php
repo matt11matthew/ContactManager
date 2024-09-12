@@ -8,8 +8,8 @@ $inData = getRequestInfo();
 
 // Variables to store userId and contact information
 $userId = $inData["userId"];
-$firstName = $inData["first"];
-$lastName = $inData["last"];
+$firstName = $inData["firstName"];
+$lastName = $inData["lastName"];
 $email = $inData["email"];
 
 // Prepare and execute SQL query to add contact
