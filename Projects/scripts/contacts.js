@@ -45,7 +45,7 @@ function retrieveContact(){
 
 function editData(button){
     //open the edit/delete page
-    window.open("editDeleteContact.html");
+    window.open("http://cm.matthewe.me/testing/editDeleteContact.html");
 
     let contact = button.parentNode.parentNode;
 
