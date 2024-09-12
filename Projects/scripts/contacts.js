@@ -35,7 +35,7 @@ function retrieveContact(){
                     newContact.insertCell(1).innerHTML = response.lastName;
                     newContact.insertCell(2).innerHTML = response.email;
                     newContact.insertCell(3).innerHTML =
-                        <button type="button" onClick={editData(this)}>Edit/Delete</button>;
+                        <button type="button" onClick={editData(this)}>Edit/Delete</button>
                 }
             }
         }
