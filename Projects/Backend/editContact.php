@@ -13,9 +13,9 @@
     $email = $inData["email"];
 
     // Prepare and execute SQL query to edit contact
-    $query = "UPDATE Contacts SET FirstName=?, LastName=?, Email=?";
+    $query = "UPDATE Contacts SET FirstName=?, LastName=?, Email=? WHERE UserID=?;";
     $stmt = $conm->prepare($query);
-    $stmt->bind_param("sss", $firstName, $lastName, $email);
+    $stmt->bind_param("sss", $firstName, $lastName, $email, $userId) ;
     $stmt->execute();
     $result = $stmt->get_result();
 
