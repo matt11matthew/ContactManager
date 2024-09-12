@@ -3,7 +3,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Contact</title>
-    <link rel="stylesheet" href="addContact.css">
+    <script defer type="text/javascript" src="scripts/addContact.js"></script>
+    <link rel="stylesheet" href="scripts/addContact.css">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 </head>
 
@@ -11,14 +12,14 @@
     <div class="title">Add Contact</div>
 
     <div class="container">
-        <form action = "addContact.php">
+        <form>
 
             <input type="text" id="fName" class="fieldBar" placeholder="First Name" required>
             <input type="text" id="lName" class="fieldBar" placeholder="Last Name" required>
             <input type="text" id="email" class="fieldBar" placeholder="Email Address" required>
 
             <a href="myContacts.html">
-                <button class="addContact">Add Contact</button>
+                <button type = "submit" class="addContact">Add Contact</button>
             </a>
 
         </form>
