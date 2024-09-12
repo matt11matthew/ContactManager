@@ -6,12 +6,24 @@
     # Get json data from frontend
     $inData = getRequestInfo();
 
-    $userId = 0;
+    // Variables to store userId and contact information
+    $userId = $inData["userId"];
+    $firstName = $inData["first"];
+    $lastName = $inData["last"];
+    $email = $inData["email"];
 
+    // Prepare and execute SQL query to edit contact
+    $query = "UPDATE Contacts SET FirstName=?, LastName=?, Email=?";
+    $stmt = $conm->prepare($query);
+    $stmt->bind_param("sss", $firstName, $lastName, $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-
-
-
+    if ($result != 0) {
+        returnWithInfo($firstName, $lastName, $userId);
+    } else {
+        returnWithError("Contact not added");
+    }
 
 
     // Close connection
