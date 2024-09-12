@@ -13,8 +13,9 @@ $searchResults = "";
 $searchCount = 0;
 
 // Prepare the SQL statement with proper placeholders and LIKE syntax
-$stmt = $conn->prepare("SELECT FirstName, LastName, Email FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ? OR Email LIKE ?) AND UserID = ?");
-$contactName = "%" . $inData["search"] . "%";
+$stmt = $conn->prepare("SELECT FirstName, LastName, Email FROM Contacts WHERE (LOWER(CONCAT(FirstName, ' ', LastName)) LIKE ?) AND UserID = ?");
+$contactName = "%" . strtolower($inData["search"]) . "%";
+
 $userId = $inData["userId"];
 
 // Bind parameters
