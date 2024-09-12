@@ -20,7 +20,7 @@ function onCreate(event) {
     console.log(lastName);
 
     let tmp = {
-        userID: 1,
+        userId: 1,
         firstName: firstName,
         lastName: lastName,
         emailAddress: email,
