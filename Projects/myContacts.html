@@ -4,39 +4,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Contacts</title>
     <link rel="stylesheet" href="myContacts.css">
+    <script type="text/javascript" src="scripts/contacts.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 </head>
 
 <body>
-    <div class="header">Welcome</div>
+<div class="title">Welcome</div>
 
-    <div class="container">
+<div class="container">
 
-        <form>
-            <input type="text" id="searchBox" name="searchBox" placeholder="Search for Contact">
+    <div class="header">
+        <form id="searchCrit">
+            <input type="text" id="searchBox" class="searchBox" placeholder="Search for Contact">
+            <button type="submit" id="searchButton" onclick="retrieveContact();">Search</button>
+
+        <a href="addContact.html">
+            <button class="addContact">Add Contact</button>
+        </a>
         </form>
+    </div>
 
-        <div class="contactsTable">
-            <table>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email Address</th>
-                    <th>Placeholder for edit icon</th>
-                </tr>
-                <tr>
-                    <td>Get first name</td>
-                    <td>Get last name</td>
-                    <td>Get email address</td>
-                    <td>
-                        <a href="editDeleteContact.html">
-                            <img src="editPencil.png" height="65" alt="Edit contact">
-                        </a>
-                    </td>
-                </tr>
-            </table>
+    <br>
 
-        </div>
+    <table id="contactTable">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email Address</th>
+            <th></th>
+        </tr>
+        </thead>
+<!--        <tbody>-->
+<!--        <tr class="lightField">-->
+<!--            <td>FirstName</td>-->
+<!--            <td>LastName</td>-->
+<!--            <td>Email</td>-->
+<!--            <td>-->
+<!--                <a href="editDeleteContact.html">-->
+<!--                    <img src="editLightPencil.png" height="60" alt="Edit contact">-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr class="darkField">-->
+<!--            <td>FirstName</td>-->
+<!--            <td>LastName</td>-->
+<!--            <td>Email</td>-->
+<!--            <td>-->
+<!--                <a href="editDeleteContact.html">-->
+<!--                    <img src="editDarkPencil.png" height="60" alt="Edit contact">-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr class="lightField">-->
+<!--            <td>FirstName</td>-->
+<!--            <td>LastName</td>-->
+<!--            <td>Email</td>-->
+<!--            <td>-->
+<!--                <a href="editDeleteContact.html">-->
+<!--                    <img src="editLightPencil.png" height="60" alt="Edit contact">-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr class="darkField">-->
+<!--            <td>FirstName</td>-->
+<!--            <td>LastName</td>-->
+<!--            <td>Email</td>-->
+<!--            <td>-->
+<!--                <a href="editDeleteContact.html">-->
+<!--                    <img src="editDarkPencil.png" height="60" alt="Edit contact">-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr class="lightField">-->
+<!--            <td>FirstName</td>-->
+<!--            <td>LastName</td>-->
+<!--            <td>Email</td>-->
+<!--            <td>-->
+<!--                <a href="editDeleteContact.html">-->
+<!--                    <img src="editLightPencil.png" height="60" alt="Edit contact">-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr class="darkField">-->
+<!--            <td>FirstName</td>-->
+<!--            <td>LastName</td>-->
+<!--            <td>Email</td>-->
+<!--            <td>-->
+<!--                <a href="editDeleteContact.html">-->
+<!--                    <img src="editDarkPencil.png" height="60" alt="Edit contact">-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr class="lightField">-->
+<!--            <td>FirstName</td>-->
+<!--            <td>LastName</td>-->
+<!--            <td>Email</td>-->
+<!--            <td>-->
+<!--                <a href="editDeleteContact.html">-->
+<!--                    <img src="editLightPencil.png" height="60" alt="Edit contact">-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr class="darkField">-->
+<!--            <td>FirstName</td>-->
+<!--            <td>LastName</td>-->
+<!--            <td>Email</td>-->
+<!--            <td>-->
+<!--                <a href="editDeleteContact.html">-->
+<!--                    <img src="editDarkPencil.png" height="60" alt="Edit contact">-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr class="lightField">-->
+<!--            <td>FirstName</td>-->
+<!--            <td>LastName</td>-->
+<!--            <td>Email</td>-->
+<!--            <td>-->
+<!--                <a href="editDeleteContact.html">-->
+<!--                    <img src="editLightPencil.png" height="60" alt="Edit contact">-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr class="darkField">-->
+<!--            <td>FirstName</td>-->
+<!--            <td>LastName</td>-->
+<!--            <td>Email</td>-->
+<!--            <td>-->
+<!--                <a href="editDeleteContact.html">-->
+<!--                    <img src="editDarkPencil.png" height="60" alt="Edit contact">-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+    </table>
+
+    <div class="footer">
+        <div class="total">Total Number of Contacts: </div>
+        <div class="pageNumber">Page: </div>
+    </div>
+
+
+
 
 
 

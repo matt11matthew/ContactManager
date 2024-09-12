@@ -5,7 +5,7 @@ body{
 }
 
 .container{
-    max-width: 50rem;
+    max-width: 95%;
     height: 100%;
     margin: auto;
     margin-top: 2rem;
@@ -14,4 +14,119 @@ body{
     padding: 1rem;
     background-color: #e9d8b2;
     box-shadow: .3em .3em .3em rgba(0, 0, 0, .4);
+}
+
+.title{
+    color: #e9d8b2;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 5rem;
+    font-weight: bolder;
+    margin-top: 4vw;
+    margin-bottom: 0;
+}
+
+.searchBox{
+    display: block;
+    background-color: #e9e0ca;
+    float: left;
+    width: 50%;
+    height: 5rem;
+    padding: 5px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    font-size: x-large;
+}
+
+::placeholder{
+    color: #661618;
+    opacity: 50%;
+    font-weight: bold;
+    padding-left: 1rem;
+}
+
+button{
+    padding: 20px 20px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-radius: 30px;
+    cursor: pointer;
+    position: relative;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+#searchButton{
+    display: none;
+}
+
+.addContact{
+    background-color: #661618;
+    color: #e9d8b2;
+    float: right;
+}
+
+table{
+    width: 100%;
+    margin: 20px 0;
+}
+
+th{
+    font-weight: bolder;
+    font-size: x-large;
+    float: left;
+    color: #661618;
+    padding-right: 20%;
+    text-align: left;
+}
+
+td{
+    padding-right: 5vw;
+    text-align: left;
+}
+
+tr{
+    padding-right: 25%;
+    color: #661618;
+    width: auto;
+}
+
+.lightField{
+    display: block;
+    background-color: #e9e0ca;
+    width: 100%;
+    height: 5rem;
+    padding: 5px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    font-size: x-large;
+}
+
+.darkField{
+    display: block;
+    background-color: #D0BF98;
+    width: 100%;
+    height: 5rem;
+    padding: 5px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    font-size: x-large;
+}
+
+.footer{
+    color: #661618;
+    font-weight: bolder;
+    width: 90%;
+    padding-bottom: 3vw;
+}
+.total{
+    float: left;
+    font-size: x-large;
+}
+.pageNumber{
+    float: right;
+    font-size: x-large;
 }
