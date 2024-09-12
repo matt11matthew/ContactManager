@@ -75,7 +75,8 @@ function getRequestInfo() {
 
 // Function to send JSON data to frontend
 function returnWithInfo($searchResults) {
-    $retValue = '{"results": [' . $searchResults . ']}';
+    global $searchCount;
+    $retValue = '{"results": [' . $searchResults . '], "count": '. $searchCount .'}';
     sendResultInfoAsJson($retValue);
 }
 // Function to send error response
