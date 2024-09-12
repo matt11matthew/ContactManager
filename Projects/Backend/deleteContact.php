@@ -15,16 +15,24 @@
     // Prepare and execute SQL query to delete contact
     $query = "DELETE FROM Contacts WHERE UserID=? AND FirstName=? AND LastName=? AND Email=?";
     $stmt = $conm->prepare($query);
-    $stmt->bind_param("ssss", $userId, $firstName, $lastName, $email);
+
+    // Check if the prepare statement was successful
+    if (!$stmt) {
+        returnWithError("Prepare failed: " . $conn->error);
+        exit();
+    }
+
+    // Bind parameters to SQL query and execute
+    $stmt->bind_param("isss", $userId, $firstName, $lastName, $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     // If contact is found, return deleted contact information
     // Since delete, no need for ($result->errno != 0)
     if ($result != 0) {
-        returnWithInfo($id, $firstName, $lastName, $email);
+        returnWithInfo($userId, $firstName, $lastName, $email);
     } else {
-        returnWithError("Contact not found");
+        returnWithError("Contact not found" . $stmt->error);
     }
 
     // Close connection
@@ -38,10 +46,11 @@
 
     // Function to send JSON data to frontend
     function returnWithInfo( $id, $firstName, $lastName, $email ) {
-        $retValue = '{"id":' . $id . ', 
-                      "firstName":"' . $firstName . '",
-                      "lastName":"' . $lastName . '",
-                      "email":"' . $email . '"}';
+        $retValue = json_encode(['id' => $id,
+                                        'firstName' => $firstName,
+                                        'lastName' => $lastName,
+                                        'email' => $email
+                                       ]);
         sendResultInfoAsJson( $retValue );
     }
 
