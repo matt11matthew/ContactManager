@@ -42,7 +42,7 @@ function getRequestInfo() {
 }
 
 // Function to send JSON data to frontend
-function returnWithInfo($firstName, $lastName, $userId, $id) {
+function returnWithInfo($firstName, $lastName,  $id) {
     $retValue = '{"userID":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '"}';
     sendResultInfoAsJson($retValue);
 }
