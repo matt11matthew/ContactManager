@@ -12,14 +12,15 @@ function onCreate(event) {
     lname = "";
     emailAddress = "";
 
-    let firstName = document.getElementsByName("firstName")[0].value;
-    let lastName = document.getElementsByName("lastName")[0].value;
-    let email = document.getElementsByName("emailAddress")[0].value;
+    let firstName = document.getElementsByName("fName")[0].value;
+    let lastName = document.getElementsByName("lName")[0].value;
+    let email = document.getElementsByName("email")[0].value;
 
     let tmp = {
+        userID: 1,
         firstName: firstName,
         lastName: lastName,
-        emailAddress: emailAddress,
+        emailAddress: email,
     };
 
     let createJson = JSON.stringify(tmp);
