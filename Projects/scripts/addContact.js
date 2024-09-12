@@ -1,6 +1,6 @@
-let fname = "";
-let lname = "";
-let emailAddress = "";
+// let fname = "";
+// let lname = "";
+// let emailAddress = "";
 function hideLoginError() {
     document.getElementById("loginError").innerHTML = "";
 }
@@ -8,13 +8,16 @@ function hideLoginError() {
 function onCreate(event) {
     event.preventDefault();
 
-    fname = "";
-    lname = "";
-    emailAddress = "";
+    // fname = "";
+    // lname = "";
+    // emailAddress = "";
 
-    let firstName = document.getElementsByName("fName")[0].value;
-    let lastName = document.getElementsByName("lName")[0].value;
     let email = document.getElementsByName("email")[0].value;
+    console.log(email);
+    let firstName = document.getElementsByName("fName")[0].value;
+    console.log(firstName);
+    let lastName = document.getElementsByName("lName")[0].value;
+    console.log(lastName);
 
     let tmp = {
         userID: 1,
@@ -48,11 +51,12 @@ function onCreate(event) {
                         document.getElementById("creationError").innerHTML = response.error;
                         setTimeout(hideLoginError, 3000);
                     } else { //create the contact
-                        fname = response.firstName;
-                        lname = response.lastName;
-                        emailAddress = response.emailAddress;
-                        //document.getElementById("creationError").innerHTML = "Found user " + fname + " " + lname;
-                        window.open("testMenu.html");
+                        // fname = response.firstName;
+                        // lname = response.lastName;
+                        // emailAddress = response.emailAddress;
+                        document.getElementById("creationError").innerHTML = "Added contact.";
+                        // window.open("testMenu.html"
+                        // );
                         setTimeout(hideLoginError, 3000);
                     }
                 } catch (error) {
