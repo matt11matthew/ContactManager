@@ -42,8 +42,8 @@ function getRequestInfo() {
 }
 
 // Function to send JSON data to frontend
-function returnWithInfo($firstName, $lastName, $id) {
-    $retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '"}';
+function returnWithInfo($firstName, $lastName, $userId, $id) {
+    $retValue = '{"userID":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '"}';
     sendResultInfoAsJson($retValue);
 }
 
