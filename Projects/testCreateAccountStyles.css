@@ -77,6 +77,15 @@ body{
     }
 }
 
+#creationError{
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    word-wrap: break-word;
+    font-size: x-large;
+    color: #661618;
+}
+
 ::placeholder{
     color: #661618;
     opacity: 50%;

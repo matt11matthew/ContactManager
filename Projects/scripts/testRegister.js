@@ -4,7 +4,7 @@ let fname = "";
 let lname = "";
 
 function hideLoginError() {
-    document.getElementById("loginError").innerHTML = "";
+    document.getElementById("creationError").innerHTML = "";
 }
 
 function onRegister(event) {
@@ -42,29 +42,35 @@ function onRegister(event) {
 
     xml.onreadystatechange = function () {
         if (xml.readyState === 4) {
+            let response;
             // Debugging: Log status code and response text
             console.log("Status Code:", xml.status);
             console.log("Response Text:", xml.responseText);
 
             if (xml.status === 200) {
                 try {
-                    let response = JSON.parse(xml.responseText);
+                    response = JSON.parse(xml.responseText);
+
+                } catch (error) {
+                    response = null;
+                    document.getElementById("creationError").innerHTML = "Invalid response format.";
+                    setTimeout(hideLoginError, 3000);
+                }
+                if(response != null) {
                     if ("error" in response) {
-                        document.getElementById("loginError").innerHTML = response.error;
+                        document.getElementById("creationError").innerHTML = response.error;
                         setTimeout(hideLoginError, 3000);
                     } else {
                         userId = response.id;
                         fname = response.firstName;
                         lname = response.lastName;
-                        document.getElementById("loginError").innerHTML = "Found user " + fname + " " + lname;
+                        document.getElementById("creationError").innerHTML = "Found user " + fname + " " + lname;
                         setTimeout(hideLoginError, 3000);
                     }
-                } catch (error) {
-                    document.getElementById("loginError").innerHTML = "Invalid response format.";
-                    setTimeout(hideLoginError, 3000);
                 }
+
             } else {
-                document.getElementById("loginError").innerHTML = "Server error. Please try again later.";
+                document.getElementById("creationError").innerHTML = "Server error. Please try again later.";
                 setTimeout(hideLoginError, 3000);
             }
         }
