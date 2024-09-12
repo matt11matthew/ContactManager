@@ -2,7 +2,7 @@
 // let lname = "";
 // let emailAddress = "";
 function hideLoginError() {
-    document.getElementById("loginError").innerHTML = "";
+    document.getElementById("creationError").innerHTML = "";
 }
 
 function onCreate(event) {
