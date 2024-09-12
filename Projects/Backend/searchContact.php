@@ -13,11 +13,7 @@ $searchResults = "";
 $searchCount = 0;
 $searchTerm = isset($inData["search"]) ? strtolower($inData["search"]) : '';
 $userId = isset($inData["userId"]) ? $inData["userId"] : 0;
-$pageNumber = isset($inData["page"]) ? (int)$inData["page"] : 1;  // Default to page 1 if not provided
-
-// Set the default limit and calculate offset based on the page number
-$limit = 10;
-$offset = ($pageNumber - 1) * $limit;
+$pageNumber = isset($inData["page"]) ? (int)$inData["page"] : null;  // Set to null if not provided
 
 // Prepare the base SQL query
 $sql = "SELECT LOWER(FirstName) AS FirstName, LOWER(LastName) AS LastName, LOWER(Email) AS Email 
@@ -29,18 +25,27 @@ if (!empty($searchTerm)) {
     $sql .= " AND LOWER(CONCAT(FirstName, ' ', LastName)) LIKE ?";
 }
 
-// Add pagination
-$sql .= " LIMIT ? OFFSET ?";
+// Check if pagination is needed
+if (!is_null($pageNumber)) {
+    $limit = 10;
+    $offset = ($pageNumber - 1) * $limit;
+    $sql .= " LIMIT ? OFFSET ?";
+}
 
 // Prepare the SQL statement
 $stmt = $conn->prepare($sql);
 
-// Bind parameters based on the presence of the search term
-if (!empty($searchTerm)) {
+// Bind parameters based on the presence of the search term and pagination
+if (!empty($searchTerm) && !is_null($pageNumber)) {
     $contactName = "%" . $searchTerm . "%";
     $stmt->bind_param("ssii", $userId, $contactName, $limit, $offset);
-} else {
+} elseif (!empty($searchTerm)) {
+    $contactName = "%" . $searchTerm . "%";
+    $stmt->bind_param("ss", $userId, $contactName);
+} elseif (!is_null($pageNumber)) {
     $stmt->bind_param("sii", $userId, $limit, $offset);
+} else {
+    $stmt->bind_param("s", $userId);
 }
 
 $stmt->execute();
@@ -79,7 +84,6 @@ function returnWithInfo($searchResults) {
     $retValue = '{"results": [' . $searchResults . '], "count": '. $searchCount .'}';
     sendResultInfoAsJson($retValue);
 }
-// Function to send error response
 
 
 ?>
