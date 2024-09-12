@@ -22,6 +22,7 @@ function retrieveContact(){
                 //output error msg:
             }
             //if we got a json file
+            console.log(response);
             if(response != null){
                 if ("error" in response) {
                     //output error msg:
