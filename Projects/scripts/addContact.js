@@ -21,10 +21,15 @@ function onCreate(event) {
 
     let tmp = {
         userId: 1,
-        firstName: firstName,
-        lastName: lastName,
-        emailAddress: email,
+        first: firstName,
+        last: lastName,
+        email: email,
     };
+
+    /*
+{"userId":1,"first":"test","last":"test","email":"test"}
+
+ */
 
     let createJson = JSON.stringify(tmp);
     let url = "http://cm.matthewe.me/testing/Backend/addContact.php";
