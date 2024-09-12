@@ -2,12 +2,12 @@ function retrieveContact(){
     let search = document.getElementById("searchCrit");
     let table = document.getElementById("contactTable");
 
-    let tmp = {firstName: search,lastName: search, email:search};
+    let tmp = {search: search,userID: 1};
     let searchJSON = JSON.stringify(tmp);
     let xml = new XMLHttpRequest();
     let url = "http://cm.matthewe.me/testing/Backend/searchContact.php";
 
-    xml.open("POST", url, true);
+    xml.open("GET", url, true);
     xml.send(searchJSON);
 
     xml.onreadystatechange = function(){
