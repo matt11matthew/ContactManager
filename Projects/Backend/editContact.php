@@ -12,6 +12,12 @@
     $lastName = $inData["last"];
     $email = $inData["email"];
 
+    // Ensure all fields are filled
+    if (empty($userId) || empty($firstName || empty($lastName) || empty($email))) {
+        returnWithError('One or more fields was empty.');
+        exit();
+    }
+
     // Prepare and execute SQL query to edit contact
     $query = "UPDATE Contacts SET FirstName=?, LastName=?, Email=? WHERE UserID=?;";
     $stmt = $conm->prepare($query);

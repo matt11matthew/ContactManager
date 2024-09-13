@@ -6,6 +6,12 @@ include 'config.php';
 // Get JSON data from frontend
 $inData = getRequestInfo();
 
+// Ensure all fields are filled
+if (empty($inData['username'] || empty($inData['password']))) {
+    returnWithError('One or more fields was empty.');
+    exit();
+}
+
 $query = "SELECT * FROM Logins WHERE UserName=?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param('s', $inData['username']);  // Correct binding: only one parameter is expected
