@@ -12,6 +12,12 @@ $firstName = $inData["firstName"];
 $lastName = $inData["lastName"];
 $email = $inData["email"];
 
+// Ensure all fields are filled
+if (empty($userId) || empty($firstName) || empty($lastName) || empty($email)) {
+    returnWithError('One or more fields was empty.');
+    exit();
+}
+
 // Prepare and execute SQL query to add contact
 $query = "INSERT INTO Contacts (UserID, FirstName, LastName, Email) VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($query);
