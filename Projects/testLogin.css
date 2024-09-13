@@ -14,6 +14,14 @@ body{
     box-shadow: .3em .3em .3em rgba(0, 0, 0, .4);
 }
 
+.usrName,.pwrd{
+    margin-left: 2vw;
+    margin-bottom: -1vw;
+    color: #661618;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
 input[type=text], input[type=password]{
     display: block;
     background-color: #e9e0ca;
