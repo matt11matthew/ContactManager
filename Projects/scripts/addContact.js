@@ -21,8 +21,8 @@ function onCreate(event) {
 
     let tmp = {
         userId: 1,
-        first: firstName,
-        last: lastName,
+        firstName: firstName,
+        lastName: lastName,
         email: email,
     };
 
