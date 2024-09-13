@@ -42,6 +42,23 @@ input[type=text], input[type=password]{
     padding: 5px;
 }
 
+#login:hover{
+    animation: bubble 0.4s ease-out;
+    opacity: .7;
+}
+
+@keyframes bubble {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 #loginError{
     display: block;
     margin: auto;
@@ -87,5 +104,10 @@ input[type=text], input[type=password]{
     color: #e9d8b2;
     font-size: 2.5em;
     font-weight: bolder;
+}
+
+.create:hover{
+    animation: bubble 0.4s ease-out;
+    opacity: .7;
 }
 

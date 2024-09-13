@@ -43,6 +43,14 @@ body{
     margin-bottom: 3vw;
 }
 
+.firstName, .lastName, .username, .password, .confirmPassword{
+    margin-left: 2vw;
+    margin-bottom: -1vw;
+    color: #661618;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
 .fullBar{
     display: block;
     background-color: #e9e0ca;
@@ -74,6 +82,23 @@ body{
 @media (max-width: 600px){
     #create{
         font-size: x-large;
+    }
+}
+
+#create:hover{
+    animation: bubble 0.4s ease-out;
+    opacity: .7;
+}
+
+@keyframes bubble {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 

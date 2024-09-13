@@ -76,12 +76,28 @@ button{
 }
 
 .deleteContact {
-    /*margin-left: 9.5vw;*/
+    margin-left: 9.5vw;
     float: right;
     background-color: #e9d8b2;
     color: #661618;
 }
 
+button:hover{
+    animation: bubble 0.4s ease-out;
+    opacity: .7;
+}
+
+@keyframes bubble {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 /*#confirmChange{*/
 /*    display: block;*/
 /*    margin-left: 1vw;*/

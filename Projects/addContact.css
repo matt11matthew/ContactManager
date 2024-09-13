@@ -44,6 +44,13 @@ body{
     font-weight: bold;
     padding-left: 1rem;
 }
+.firstName, .lastName, .email{
+    margin-left: 2vw;
+    margin-bottom: -1vw;
+    color: #661618;
+    font-size: 2rem;
+    font-weight: bold;
+}
 
 button{
     padding: 20px 20px;
@@ -60,3 +67,21 @@ button{
     background-color: #661618;
     color: #e9d8b2;
 }
+
+button:hover{
+    animation: bubble 0.4s ease-out;
+    opacity: .7;
+}
+
+@keyframes bubble {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
