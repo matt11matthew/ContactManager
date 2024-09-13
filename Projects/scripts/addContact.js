@@ -60,8 +60,7 @@ function onCreate(event) {
                         // lname = response.lastName;
                         // emailAddress = response.emailAddress;
                         document.getElementById("creationError").innerHTML = "Added contact.";
-                        // window.open("testMenu.html"
-                        // );
+                        window.open("http://cm.matthewe.me/testing/myContacts.html");
                         setTimeout(hideLoginError, 3000);
                     }
                 } catch (error) {
