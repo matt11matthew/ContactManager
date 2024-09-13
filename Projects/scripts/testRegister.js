@@ -64,8 +64,9 @@ function onRegister(event) {
                         userId = response.id;
                         fname = response.firstName;
                         lname = response.lastName;
-                        document.getElementById("creationError").innerHTML = "Found user " + fname + " " + lname;
+                        document.getElementById("creationError").innerHTML = "Created user " + fname + " " + lname;
                         setTimeout(hideLoginError, 3000);
+                        window.location = "myContacts.html";
                     }
                 }
 
