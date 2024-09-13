@@ -57,13 +57,24 @@ function UserLogin(){
                 userId = response.id;
                 fname = response.firstName;
                 lname = response.lastName;
-                document.getElementById("loginError").innerHTML = "Found user " + fname +" " + lname;
+
+                getCookies();
+
+                // test to see if we read user login properly:
+                // document.getElementById("loginError").innerHTML = "Found user " + fname +" " + lname;
 
                 setTimeout(hideLoginError, 3000);
+
                 //direct user to the menu:
-                // window.open("testMenu.html");
+                window.location = "myContacts.html";
             }
         }
     }
+}
 
+function getCookies(){
+    let min = 20;
+    let date = new Date();
+    date.setTime(date.getTime()+(min*60*1000));
+    document.cookie = "firstName" + fname +",lastName=" + lname + ",userId=" + userId + ",expires=" + date.toUTCString();
 }
