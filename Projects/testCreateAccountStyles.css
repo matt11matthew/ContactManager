@@ -4,6 +4,43 @@ body{
     position: relative;
 }
 
+#loginError{
+    display: block;
+    margin: auto;
+    word-wrap: break-word;
+    max-width: 30rem;
+    font-size: x-large;
+    color: #e9d8b2;
+}
+
+.title{
+    color: #e9d8b2;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 5rem;
+    font-weight: bolder;
+    margin-top: 4vw;
+    margin-bottom: 0;
+}
+
+.instructions{
+    color: #e9d8b2;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 2rem;
+    font-weight: bolder;
+    margin-top: 0;
+    margin-bottom: 3vw;
+}
+
+.signIn:link{
+    color: #0096FF;
+}
+
+.signIn:visited{
+    color: #0096FF;
+}
+
 .container{
     max-width: 50rem;
     height: 100%;
@@ -14,33 +51,6 @@ body{
     padding: 1rem;
     background-color: #e9d8b2;
     box-shadow: .3em .3em .3em rgba(0, 0, 0, .4);
-}
-#loginError{
-    display: block;
-    margin: auto;
-    word-wrap: break-word;
-    max-width: 30rem;
-    font-size: x-large;
-    color: #e9d8b2;
-}
-.title{
-    color: #661618;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 5rem;
-    font-weight: bolder;
-    margin-top: 4vw;
-    margin-bottom: 0;
-}
-
-.instructions{
-    color: #661618;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 2rem;
-    font-weight: bolder;
-    margin-top: 0;
-    margin-bottom: 3vw;
 }
 
 .firstName, .lastName, .username, .password, .confirmPassword{

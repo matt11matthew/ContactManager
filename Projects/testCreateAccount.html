@@ -3,31 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Manager</title>
+    <title>Create Account</title>
     <script type="text/javascript" src="scripts/testRegister.js"></script>
     <link rel="stylesheet" href="testCreateAccountStyles.css">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 </head>
 <body>
-<div class="container">
+
     <div class="title">Create Account</div>
-    <div class="instructions">Already Have an Account? <a href="testLogin.html">Sign In</a></div>
+    <div class="instructions">Already Have an Account? <a class="signIn" href="testLogin.html">Sign In</a></div>
 
-    <form method="POST" onsubmit="onRegister(event);">
-        <div class="firstName">First Name</div>
-        <input type="text" name="firstName" class="fullBar" placeholder="First Name" required>
-        <div class="lastName">Last Name</div>
-        <input type="text" name="lastName" class="fullBar" placeholder="Last Name" required>
-        <div class="username">Username</div>
-        <input type="text" name="username" class="fullBar" placeholder="Username" required>
-        <div class="password">Password</div>
-        <input type="password" name="password" class="fullBar" placeholder="Password" required>
-        <div class="confirmPassword">Confirm Password</div>
-        <input type="password" name="confirmPassword" class="fullBar" placeholder="Confirm Password" required>
-        <input type="submit" id="create" value="Create Account">
-    </form>
-
-
+    <div class="container">
+        <form method="POST" onsubmit="onRegister(event);">
+            <div class="firstName">First Name</div>
+            <input type="text" name="firstName" class="fullBar" placeholder="First Name" required>
+            <div class="lastName">Last Name</div>
+            <input type="text" name="lastName" class="fullBar" placeholder="Last Name" required>
+            <div class="username">Username</div>
+            <input type="text" name="username" class="fullBar" placeholder="Username" required>
+            <div class="password">Password</div>
+            <input type="password" name="password" class="fullBar" placeholder="Password" required>
+            <div class="confirmPassword">Confirm Password</div>
+            <input type="password" name="confirmPassword" class="fullBar" placeholder="Confirm Password" required>
+            <input type="submit" id="create" value="Create Account">
+        </form>
     <!-- Error message div -->
     <div id="creationError"></div>
 
