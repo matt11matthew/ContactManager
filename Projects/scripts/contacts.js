@@ -184,3 +184,8 @@ function editData(button){
         }
     }
 }
+
+function numPages(){
+
+}
+

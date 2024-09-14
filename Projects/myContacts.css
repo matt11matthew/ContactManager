@@ -162,3 +162,11 @@ td{
     float: right;
     font-size: x-large;
 }
+
+.logoutButton{
+    padding: 10px 10px;
+    margin-left: 1vw;
+    margin-top: 4rem;
+    background-color: #e9d8b2;
+    color: #661618;
+}
