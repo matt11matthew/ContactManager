@@ -1,17 +1,11 @@
 // const url = 'http://name.com/whatever';
 
-let userId = 0;
-let fname = "";
-let lname = "";
 
 function hideLoginError() {
     document.getElementById("loginError").innerHTML = "";
 }
 
 function UserLogin(){
-    userId = 0;
-    fname = "";
-    lname = "";
 
 
     //get information from the html inputs.
@@ -54,12 +48,12 @@ function UserLogin(){
                 }
                 console.log(response)
                 //save the information we got about user:
-                userId = response.id;
-                fname = response.firstName;
-                lname = response.lastName;
+                let userId = response.id;
+                let fname = response.firstName;
+                let lname = response.lastName;
 
-                getCookies();
 
+                setCookies(fname, lname, userId);
                 // test to see if we read user login properly:
                 // document.getElementById("loginError").innerHTML = "Found user " + fname +" " + lname;
 
@@ -72,9 +66,10 @@ function UserLogin(){
     }
 }
 
-function getCookies(){
+function setCookies(fName, lName, userID) {
     let min = 20;
     let date = new Date();
     date.setTime(date.getTime()+(min*60*1000));
-    document.cookie = "firstName" + fname +",lastName=" + lname + ",userId=" + userId + ",expires=" + date.toUTCString();
+    document.cookie = "firstName" + fName +",lastName=" + lName + ",userId=" + userID + ",expires=" + date.toUTCString();
 }
+

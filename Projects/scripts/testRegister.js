@@ -67,6 +67,7 @@ function onRegister(event) {
                         document.getElementById("creationError").innerHTML = "Created user " + fname + " " + lname;
                         setTimeout(hideLoginError, 3000);
                         window.location = "myContacts.html";
+                        setCookies(fname, lname, userId);
                     }
                 }
 
@@ -77,3 +78,10 @@ function onRegister(event) {
         }
     };
 }
+function setCookies(fName, lName, userID) {
+    let min = 20;
+    let date = new Date();
+    date.setTime(date.getTime()+(min*60*1000));
+    document.cookie = "firstName" + fName +",lastName=" + lName + ",userId=" + userID + ",expires=" + date.toUTCString();
+}
+

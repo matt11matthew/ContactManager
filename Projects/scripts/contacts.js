@@ -1,4 +1,12 @@
 userIdNum = 2; //TODO cookies
+loadCookies();
+
+
+function loadCookies() {
+
+
+}
+
 function retrieveContact(){
     let search = document.getElementById("searchBox").value;
 
