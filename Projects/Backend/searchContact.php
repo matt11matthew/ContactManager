@@ -18,7 +18,7 @@ $pageNumber = isset($inData["page"]) ? (int)$inData["page"] : null;  // Set to n
 // Prepare the base SQL query
 $sql = "SELECT LOWER(FirstName) AS FirstName, LOWER(LastName) AS LastName, LOWER(Email) AS Email 
         FROM Contacts 
-        WHERE UserID = ?;";
+        WHERE UserID = ?";
 
 // Add search condition if search term is provided
 if (!empty($searchTerm)) {
