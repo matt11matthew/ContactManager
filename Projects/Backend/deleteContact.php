@@ -7,13 +7,14 @@
     $inData = getRequestInfo();
 
     // Create variables to store userId and contact information
+    $id = $inData["id"];
     $userId = $inData["userId"];
     $firstName = $inData["firstName"];
     $lastName = $inData["lastName"];
     $email = $inData["email"];
 
     // Prepare and execute SQL query to delete contact
-    $query = "DELETE FROM Contacts WHERE UserID=? AND FirstName=? AND LastName=? AND Email=?";
+    $query = "DELETE FROM Contacts WHERE UserID=? AND ID=? AND FirstName=? AND LastName=? AND Email=?";
     $stmt = $conm->prepare($query);
 
     // Check if the prepare statement was successful
@@ -23,7 +24,7 @@
     }
 
     // Bind parameters to SQL query and execute
-    $stmt->bind_param("isss", $userId, $firstName, $lastName, $email);
+    $stmt->bind_param("iisss", $userId, $id, $firstName, $lastName, $email);
     $stmt->execute();
     $result = $stmt->get_result();
 

@@ -7,6 +7,7 @@
     $inData = getRequestInfo();
 
     // Variables to store userId and contact information
+    $id = $inData["id"];
     $userId = $inData["userId"];
     $firstName = $inData["first"];
     $lastName = $inData["last"];
@@ -19,9 +20,9 @@
     }
 
     // Prepare and execute SQL query to edit contact
-    $query = "UPDATE Contacts SET FirstName=?, LastName=?, Email=? WHERE UserID=?;";
+    $query = "UPDATE Contacts SET FirstName=?, LastName=?, Email=? WHERE UserID=? AND ID=?;";
     $stmt = $conm->prepare($query);
-    $stmt->bind_param("sss", $firstName, $lastName, $email, $userId) ;
+    $stmt->bind_param("sssii", $firstName, $lastName, $email, $userId, $id); ;
     $stmt->execute();
     $result = $stmt->get_result();
 
