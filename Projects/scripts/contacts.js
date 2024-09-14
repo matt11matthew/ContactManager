@@ -3,10 +3,17 @@ savedFirstName = "";
 savedLastName = "";
 loadCookiesContactsPage();
 
+//for pagination:
+let cur_Page = 1;
+let contactsPerPage = 10;
+let totalPages;
+
 
 function redirectToMain() {
     window.open("index.html");
 }
+
+
 
 function loadCookiesContactsPage() {
     let data = document.cookie;
@@ -44,7 +51,9 @@ function loadCookiesContactsPage() {
 }
 
 function retrieveContact(){
-    let search = document.getElementById("searchBox").value;
+
+    let search = document.getElementById("searchBox")!=null? document.getElementById("searchBox").value : null;
+
 
     console.log(userIdNum);
 
@@ -104,6 +113,8 @@ function retrieveContact(){
     }
 
 }
+
+retrieveContact();
 
 function editData(button){
     //open the edit/delete page
@@ -185,7 +196,21 @@ function editData(button){
     }
 }
 
+function prevPage(){
+    //at least the first page.
+    if(cur_Page > 1){
+        cur_Page--;
+        //go to previous data:
+    }
+}
+
+function nextPage(){
+    if(cur_Page < totalPages){
+        cur_Page++;
+        //move to the next set of data:
+    }
+}
+
 function numPages(){
 
 }
-

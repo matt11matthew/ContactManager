@@ -154,10 +154,16 @@ td{
     width: 90%;
     padding-bottom: 3vw;
 }
+
 .total{
     float: left;
     font-size: x-large;
 }
+
+#page{
+    color: #661618;
+}
+
 .pageNumber{
     float: right;
     font-size: x-large;
