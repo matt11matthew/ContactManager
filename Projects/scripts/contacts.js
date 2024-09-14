@@ -4,9 +4,11 @@ function retrieveContact(){
 
     console.log(userId);
 
-    let tmp = {search: search,userID: 2};
+    let pageNum = 1;
+
+    let tmp = {search: search,userId: 2, page: pageNum};
     if(search != null && !search){
-        tmp = {userID: 2};
+        tmp = {userId: 2, page: pageNum};
     }
     let searchJSON = JSON.stringify(tmp);
 
