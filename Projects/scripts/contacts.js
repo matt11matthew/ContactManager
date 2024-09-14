@@ -12,7 +12,7 @@ function loadCookiesContactsPage() {
     let data = document.cookie;
     if (!data) {
         console.log("No cookies found.");
-        setTimeout(redirectToMain, 3000);
+        setTimeout(redirectToMain, 1000);
 
         return;
     }
@@ -62,7 +62,7 @@ function retrieveContact(){
     let url = "http://cm.matthewe.me/testing/Backend/searchContact.php";
 
 
-    xml.open("GET", url, true);
+    xml.open("POST", url, true);
     xml.setRequestHeader("Content-type", "application/json");
 
     try {
