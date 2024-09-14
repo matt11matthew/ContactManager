@@ -1,4 +1,4 @@
-userIdNum = 1; //TODO cookies
+userIdNum = 2; //TODO cookies
 function retrieveContact(){
     let search = document.getElementById("searchBox").value;
 
@@ -18,7 +18,7 @@ function retrieveContact(){
     let url = "http://cm.matthewe.me/testing/Backend/searchContact.php";
 
 
-    xml.open("POST", url, true);
+    xml.open("GET", url, true);
     xml.setRequestHeader("Content-type", "application/json");
 
     try {
