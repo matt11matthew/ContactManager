@@ -44,6 +44,7 @@ body{
     font-weight: bold;
     padding-left: 1rem;
 }
+
 .firstName, .lastName, .email{
     margin-left: 2vw;
     margin-bottom: -1vw;
@@ -66,6 +67,14 @@ button{
     margin-left: 1vw;
     background-color: #661618;
     color: #e9d8b2;
+}
+
+.logoutButton{
+    padding: 10px 10px;
+    margin-left: 1vw;
+    margin-top: 4rem;
+    background-color: #e9d8b2;
+    color: #661618;
 }
 
 button:hover{

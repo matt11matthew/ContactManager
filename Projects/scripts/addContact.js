@@ -1,6 +1,15 @@
 // let fname = "";
 // let lname = "";
 // let emailAddress = "";
+
+
+// document.addEventListener('DOMContentLoaded', function(){
+//     document.getElementById('logoutButton').addEventListener('click', function(){
+//         alert('You have logged out');
+//         window.location.href='testLogin.html';
+//     });
+// });
+
 function hideLoginError() {
     document.getElementById("creationError").innerHTML = "";
 }
@@ -60,9 +69,9 @@ function onCreate(event) {
                         // lname = response.lastName;
                         // emailAddress = response.emailAddress;
                         document.getElementById("creationError").innerHTML = "Added contact.";
+                        // window.open("testMenu.html"
+                        // );
                         setTimeout(hideLoginError, 3000);
-                        window.open("http://cm.matthewe.me/testing/myContacts.html");
-
                     }
                 } catch (error) {
                     document.getElementById("creationError").innerHTML = "Invalid response format.";
@@ -74,4 +83,21 @@ function onCreate(event) {
             }
         }
     };
+}
+
+function UserLogout(){
+    removeCookies();
+    alert('You are signed out');
+    window.location.href = 'testLogin.html';
+}
+
+function removeCookies() {
+    let allCookies = document.cookie.split(';');
+
+    // The "expire" attribute of every cookie is
+    // Set to "Thu, 01 Jan 1970 00:00:00 GMT"
+    for (let i = 0; i < allCookies.length; i++) {
+        document.cookie = allCookies[i] + "=;expires=" + new Date(0).toUTCString();
+    }
+    //displayCookies.innerHTML = document.cookie;
 }
