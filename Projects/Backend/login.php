@@ -2,6 +2,7 @@
 
 // Include config file for database connection
 include 'config.php';
+header("Access-Control-Allow-Methods: POST");
 
 // Get JSON data from frontend
 $inData = getRequestInfo();

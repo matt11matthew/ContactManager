@@ -1,11 +1,9 @@
 <?php
 // CORS Headers
-header("Access-Control-Allow-Origin: *");  // Allow all origins (adjust as necessary for security)
-header("Access-Control-Allow-Methods: POST");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 // Include config file for database connection
 include 'config.php';
+header("Access-Control-Allow-Methods: POST");
 
 // Get JSON data from frontend
 $inData = getRequestInfo();

@@ -2,9 +2,7 @@
 
 // Include config file for database connection
 include 'config.php';
-header("Access-Control-Allow-Origin: *");  // Allow all origins (adjust as necessary for security)
 header("Access-Control-Allow-Methods: GET");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 // Get JSON data from frontend
 $inData = getRequestInfo();

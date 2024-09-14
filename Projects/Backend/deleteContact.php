@@ -1,9 +1,9 @@
 <?php
+// Include config file for database connection
+include 'config.php';
+header("Access-Control-Allow-Methods: POST");
 
-    // Include config file for database connection
-    include 'config.php';
-
-    // Get JSON data from frontend
+// Get JSON data from frontend
     $inData = getRequestInfo();
 
     // Create variables to store userId and contact information
