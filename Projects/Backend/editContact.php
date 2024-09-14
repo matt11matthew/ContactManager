@@ -21,7 +21,7 @@
 
     // Prepare and execute SQL query to edit contact
     $query = "UPDATE Contacts SET FirstName=?, LastName=?, Email=? WHERE UserID=? AND ID=?;";
-    $stmt = $conm->prepare($query);
+    $stmt = $conn->prepare($query);
     $stmt->bind_param("sssii", $firstName, $lastName, $email, $userId, $id); ;
     $stmt->execute();
     $result = $stmt->get_result();

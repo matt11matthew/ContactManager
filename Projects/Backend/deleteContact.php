@@ -15,7 +15,7 @@
 
     // Prepare and execute SQL query to delete contact
     $query = "DELETE FROM Contacts WHERE UserID=? AND ID=? AND FirstName=? AND LastName=? AND Email=?";
-    $stmt = $conm->prepare($query);
+    $stmt = $conn->prepare($query);
 
     // Check if the prepare statement was successful
     if (!$stmt) {
