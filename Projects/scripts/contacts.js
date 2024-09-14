@@ -1,8 +1,44 @@
-userIdNum = 2; //TODO cookies
-loadCookies();
+userIdNum = -1; //TODO cookies
+savedFirstName = "";
+savedLastName = "";
+loadCookiesContactsPage();
 
 
-function loadCookies() {
+function redirectToMain() {
+    window.open("index.html");
+}
+
+function loadCookiesContactsPage() {
+    let data = document.cookie;
+    if (!data) {
+        console.log("No cookies found.");
+        setTimeout(redirectToMain, 3000);
+        
+        return;
+    }
+
+    let splits = data.split(",");
+    for(var i = 0; i < splits.length; i++)
+    {
+        let thisOne = splits[i].trim();
+        let tokens = thisOne.split("=");
+        if( tokens[0] == "firstName" )
+        {
+            savedFirstName = tokens[1];
+        }
+        else if( tokens[0] == "lastName" )
+        {
+            savedLastName = tokens[1];
+        }
+        else if( tokens[0] == "userId" )
+        {
+            userIdNum = parseInt( tokens[1].trim() );
+        }
+    }
+
+    console.log(userIdNum);
+    console.log(savedFirstName);
+    console.log(savedLastName);
 
 
 }
