@@ -1,4 +1,4 @@
-
+userId = 2; //TODO cookies
 function retrieveContact(){
     let search = document.getElementById("searchBox").value;
 
