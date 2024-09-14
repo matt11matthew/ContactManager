@@ -1,45 +1,60 @@
-function retrieveContact(){
-    let search = document.getElementById("searchCrit");
-    let table = document.getElementById("contactTable");
 
-    let tmp = {search: search,userID: 1};
+function retrieveContact(){
+    let search = document.getElementById("searchBox").value;
+
+    console.log(userId);
+
+    let tmp = {search: search,userID: 2};
+    if(search != null && !search){
+        tmp = {userID: 2};
+    }
     let searchJSON = JSON.stringify(tmp);
+
+    console.log(searchJSON);
+
     let xml = new XMLHttpRequest();
     let url = "http://cm.matthewe.me/testing/Backend/searchContact.php";
 
+
     xml.open("GET", url, true);
-    xml.send(searchJSON);
+    xml.setRequestHeader("Content-type", "application/json");
 
-    xml.onreadystatechange = function(){
-        if(xml.readyState ===4 && xml.status === 200){
-            let response;
-            //get the response.
-            //try to see if it is a json value, if not then it is a string and there was a login issue.
-            try{
-                response = JSON.parse(xml.responseText);
-            }catch(error){
-                response = null;
-                //output error msg:
-            }
-            //if we got a json file
-            console.log(response);
-            if(response != null){
-                if ("error" in response) {
-                    //output error msg:
+    try {
+        xml.send(searchJSON);
+        xml.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                let response = JSON.parse(xml.responseText);
+                const tableBody = document.getElementById("tableBody");
 
-                    return;
-                }
-                //add the info to the table:
-                for(let i=0; i<response.length; i++) {
-                    let newContact = table.insertRow(table.rows.length);
-                    newContact.insertCell(0).innerHTML = response.firstName;
-                    newContact.insertCell(1).innerHTML = response.lastName;
-                    newContact.insertCell(2).innerHTML = response.email;
-                    newContact.insertCell(3).innerHTML =
-                        '<button type="button" onClick={editData(this)}>Edit/Delete</button>'
-                }
+                console.log(response);
+
+                tableBody.innerHTML = "";
+                response.results.forEach(function(item) {
+                    const row = document.createElement("tr");
+
+                    const fName = document.createElement("td");
+                    fName.textContent = item.firstName;
+                    row.appendChild(fName);
+                    const lName = document.createElement("td");
+                    lName.textContent = item.lastName;
+                    row.appendChild(lName);
+                    const email = document.createElement("td");
+                    email.textContent = item.email;
+                    row.appendChild(email);
+                    const edit = document.createElement("button");
+                    edit.textContent = "edit/delete";
+                    edit.id = "editDeleteButton";
+                    edit.onclick = function(){
+                        //edit button stuff:
+                    }
+                    row.appendChild(edit);
+                    tableBody.appendChild(row);
+                });
             }
-        }
+        };
+
+    }catch (error){
+        //error msg:
     }
 
 }

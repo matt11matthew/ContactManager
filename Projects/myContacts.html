@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Contacts</title>
     <link rel="stylesheet" href="myContacts.css">
-    <script type="text/javascript" src="scripts/contacts.js"></script>
+    <script type="text/javascript" src="scripts/testLogin.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 </head>
 
@@ -16,8 +16,8 @@
     <div class="header">
 
         <form id="searchCrit">
-            <input type="text" id="searchBox" class="searchBox" placeholder="Search for Contact">
-            <button type="submit" id="searchButton" onclick="retrieveContact();">Search</button>
+            <input type="text" id="searchBox" name="searchBox" class="searchBox" placeholder="Search for Contact">
+            <button type="button" id="searchButton" onclick="retrieveContact()">Search</button>
         </form>
 
         <a href="addContact.html">
@@ -27,130 +27,25 @@
     </div>
 
     <br>
+</div>
 
+<div class="table-container">
     <table id="contactTable">
-        <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email Address</th>
-            <th></th>
-        </tr>
-        </thead>
-<!--        <tbody>-->
-<!--        <tr class="lightField">-->
-<!--            <td>FirstName</td>-->
-<!--            <td>LastName</td>-->
-<!--            <td>Email</td>-->
-<!--            <td>-->
-<!--                <a href="editDeleteContact.html">-->
-<!--                    <img src="editLightPencil.png" height="60" alt="Edit contact">-->
-<!--                </a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr class="darkField">-->
-<!--            <td>FirstName</td>-->
-<!--            <td>LastName</td>-->
-<!--            <td>Email</td>-->
-<!--            <td>-->
-<!--                <a href="editDeleteContact.html">-->
-<!--                    <img src="editDarkPencil.png" height="60" alt="Edit contact">-->
-<!--                </a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr class="lightField">-->
-<!--            <td>FirstName</td>-->
-<!--            <td>LastName</td>-->
-<!--            <td>Email</td>-->
-<!--            <td>-->
-<!--                <a href="editDeleteContact.html">-->
-<!--                    <img src="editLightPencil.png" height="60" alt="Edit contact">-->
-<!--                </a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr class="darkField">-->
-<!--            <td>FirstName</td>-->
-<!--            <td>LastName</td>-->
-<!--            <td>Email</td>-->
-<!--            <td>-->
-<!--                <a href="editDeleteContact.html">-->
-<!--                    <img src="editDarkPencil.png" height="60" alt="Edit contact">-->
-<!--                </a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr class="lightField">-->
-<!--            <td>FirstName</td>-->
-<!--            <td>LastName</td>-->
-<!--            <td>Email</td>-->
-<!--            <td>-->
-<!--                <a href="editDeleteContact.html">-->
-<!--                    <img src="editLightPencil.png" height="60" alt="Edit contact">-->
-<!--                </a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr class="darkField">-->
-<!--            <td>FirstName</td>-->
-<!--            <td>LastName</td>-->
-<!--            <td>Email</td>-->
-<!--            <td>-->
-<!--                <a href="editDeleteContact.html">-->
-<!--                    <img src="editDarkPencil.png" height="60" alt="Edit contact">-->
-<!--                </a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr class="lightField">-->
-<!--            <td>FirstName</td>-->
-<!--            <td>LastName</td>-->
-<!--            <td>Email</td>-->
-<!--            <td>-->
-<!--                <a href="editDeleteContact.html">-->
-<!--                    <img src="editLightPencil.png" height="60" alt="Edit contact">-->
-<!--                </a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr class="darkField">-->
-<!--            <td>FirstName</td>-->
-<!--            <td>LastName</td>-->
-<!--            <td>Email</td>-->
-<!--            <td>-->
-<!--                <a href="editDeleteContact.html">-->
-<!--                    <img src="editDarkPencil.png" height="60" alt="Edit contact">-->
-<!--                </a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr class="lightField">-->
-<!--            <td>FirstName</td>-->
-<!--            <td>LastName</td>-->
-<!--            <td>Email</td>-->
-<!--            <td>-->
-<!--                <a href="editDeleteContact.html">-->
-<!--                    <img src="editLightPencil.png" height="60" alt="Edit contact">-->
-<!--                </a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr class="darkField">-->
-<!--            <td>FirstName</td>-->
-<!--            <td>LastName</td>-->
-<!--            <td>Email</td>-->
-<!--            <td>-->
-<!--                <a href="editDeleteContact.html">-->
-<!--                    <img src="editDarkPencil.png" height="60" alt="Edit contact">-->
-<!--                </a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
+        <th class="table-header">First Name</th>
+        <th class="table-header">Last Name</th>
+        <th class="table-header">Email Address</th>
+        <th class="table-header"></th>
+
+        <tbody id="tableBody">
+        </tbody>
+
     </table>
 
     <div class="footer">
         <div class="total">Total Number of Contacts: </div>
         <div class="pageNumber">Page: </div>
     </div>
-
-
-
-
-
-
 </div>
+
 </body>
 </html>

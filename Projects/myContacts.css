@@ -6,7 +6,18 @@ body{
 
 .container{
     max-width: 95%;
-    height: 100%;
+    height: 4vw;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 30px;
+    padding: 1rem;
+    background-color: #e9d8b2;
+    box-shadow: .3em .3em .3em rgba(0, 0, 0, .4);
+}
+.table-container{
+    max-width: 95%;
+    height: fit-content;
     margin: auto;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -31,7 +42,7 @@ body{
     background-color: #e9e0ca;
     float: left;
     width: 50%;
-    height: 5rem;
+    height: 4vw;
     padding: 5px;
     border-radius: 30px;
     box-sizing: border-box;
@@ -39,11 +50,22 @@ body{
     font-size: x-large;
 }
 
+.addContact, #searchButton{
+    background-color: #661618;
+    color: #e9d8b2;
+    float: right;
+    height: 4vw;
+    padding: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 ::placeholder{
     color: #661618;
     opacity: 50%;
     font-weight: bold;
     padding-left: 1rem;
+    height: 4vw;
 }
 
 button{
@@ -73,27 +95,21 @@ button:hover{
         transform: scale(1);
     }
 }
-#searchButton{
-    display: none;
-}
 
-.addContact{
-    background-color: #661618;
-    color: #e9d8b2;
-    float: right;
-}
+/*#searchButton{*/
+/*    display: none;*/
+/*}*/
 
 table{
     width: 100%;
     margin: 20px 0;
 }
 
-th{
+.table-header{
     font-weight: bolder;
     font-size: x-large;
-    float: left;
     color: #661618;
-    padding-right: 20%;
+    padding-right: 10%;
     text-align: left;
 }
 
@@ -102,11 +118,11 @@ td{
     text-align: left;
 }
 
-tr{
-    padding-right: 25%;
-    color: #661618;
-    width: auto;
-}
+/*tr{*/
+/*    padding-right: 25%;*/
+/*    color: #661618;*/
+/*    width: auto;*/
+/*}*/
 
 .lightField{
     display: block;

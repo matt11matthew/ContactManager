@@ -60,8 +60,9 @@ function onCreate(event) {
                         // lname = response.lastName;
                         // emailAddress = response.emailAddress;
                         document.getElementById("creationError").innerHTML = "Added contact.";
-                        window.open("http://cm.matthewe.me/testing/myContacts.html");
                         setTimeout(hideLoginError, 3000);
+                        window.open("http://cm.matthewe.me/testing/myContacts.html");
+
                     }
                 } catch (error) {
                     document.getElementById("creationError").innerHTML = "Invalid response format.";
