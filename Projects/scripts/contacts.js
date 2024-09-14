@@ -1,14 +1,14 @@
-userId = 2; //TODO cookies
+userIdNum = 1; //TODO cookies
 function retrieveContact(){
     let search = document.getElementById("searchBox").value;
 
-    console.log(userId);
+    console.log(userIdNum);
 
     let pageNum = 1;
 
-    let tmp = {search: search,userId: 2, page: pageNum};
+    let tmp = {search: search,userId: userIdNum, page: pageNum};
     if(search != null && !search){
-        tmp = {userId: 2, page: pageNum};
+        tmp = {userId: userIdNum, page: pageNum};
     }
     let searchJSON = JSON.stringify(tmp);
 
@@ -18,11 +18,11 @@ function retrieveContact(){
     let url = "http://cm.matthewe.me/testing/Backend/searchContact.php";
 
 
-    xml.open("GET", url, true);
+    xml.open("POST", url, true);
     xml.setRequestHeader("Content-type", "application/json");
 
     try {
-        xml.send(searchJSON);
+
         xml.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 let response = JSON.parse(xml.responseText);
@@ -54,7 +54,7 @@ function retrieveContact(){
                 });
             }
         };
-
+        xml.send(searchJSON);
     }catch (error){
         //error msg:
     }
