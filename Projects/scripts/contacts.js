@@ -13,7 +13,7 @@ function loadCookiesContactsPage() {
     if (!data) {
         console.log("No cookies found.");
         setTimeout(redirectToMain, 3000);
-        
+
         return;
     }
 
