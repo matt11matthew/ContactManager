@@ -72,6 +72,7 @@ function onCreate(event) {
                         // window.open("testMenu.html"
                         // );
                         setTimeout(hideLoginError, 3000);
+                        window.location.href = 'myContacts.html';
                     }
                 } catch (error) {
                     document.getElementById("creationError").innerHTML = "Invalid response format.";
@@ -87,7 +88,6 @@ function onCreate(event) {
 
 function UserLogout(){
     removeCookies();
-    alert('You are signed out');
     window.location.href = 'testLogin.html';
 }
 
