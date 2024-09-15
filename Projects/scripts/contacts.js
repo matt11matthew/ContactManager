@@ -5,6 +5,7 @@ loadCookiesContactsPage();
 
 //for pagination:
 let currentPage = 1;
+let contactCount = 0;
 
 
 
@@ -137,16 +138,11 @@ retrieveContact(); //Original search.
 
 function editData(item){
     //open the edit/delete page
-    window.open("http://cm.matthewe.me/testing/editDeleteContact.html");
+    window.location.href = "http://cm.matthewe.me/testing/editDeleteContact.html";
 
-    //updating the placeholder:
-    document.getElementById("fNameEdit").placeholder = "Enter new first name";
-    document.getElementById("lNameEdit").placeholder = "Enter new last name";
-    document.getElementById("emailEdit").placeholder = "Enter new email";
-
-    let newFirstName = document.getElementById("fName").value;
-    let newLastName = document.getElementById("lName").value;
-    let newEmail = document.getElementById("email").value;
+    let newFirstName = document.getElementById("fNameEdit").value;
+    let newLastName = document.getElementById("lNameEdit").value;
+    let newEmail = document.getElementById("emailEdit").value;
 
     //convert to JSON:
     let tmp = {fistName: newFirstName, lastName: newLastName, email: newEmail};
@@ -177,7 +173,9 @@ function editData(item){
                 return;
             }
             //output that the message has been deleted:
+
             //return to the contacts page:
+            window.location.href = "http://cm.matthewe.me/testing/myContacts.html";
         }
     }
 
@@ -191,25 +189,19 @@ function editData(item){
         if(xml.readyState===4 && xml.status === 200){
             let response;
             //get the response.
-            //try to see if it is a json value, if not then it is a string and there was a login issue.
+            //try to see if it is a json value, if not then it is a string and there was a issue.
             try{
                 response = JSON.parse(xml.responseText);
             }catch(error){
                 response = null;
                 //output error msg:
-
             }
             //if we got a json file
             if(response != null){
                 if ("error" in response) {
                     //output error msg:
-
                     return;
                 }
-                //let user know it has been completed:
-                //change "loginError" to whatever it will be----------
-                document.getElementById("loginError").innerHTML = "Found user " + fname +" " + lname;
-                setTimeout(hideLoginError, 3000);
 
                 //direct user back to the menu:
                 window.open("myContacts.html");
@@ -219,9 +211,31 @@ function editData(item){
 }
 
 function renderDetails() {
-    document.getElementById("totalContactsNum").innerHTML = contactCount==null?'0': contactCount;
-    document.getElementById("pageContactsNum").innerHTML = currentPage==null?'1': currentPage;
+    try {
+        // Safely retrieve the total contacts and current page, defaulting if invalid
+        const totalContacts = (typeof contactCount === 'number' && !isNaN(contactCount)) ? contactCount : '0';
+        const currentPageNumber = (typeof currentPage === 'number' && !isNaN(currentPage)) ? currentPage : '1';
+
+        // Retrieve the elements and check if they exist before updating
+        const totalContactsElement = document.getElementById("totalContactsNum");
+        const currentPageElement = document.getElementById("pageContactsNum");
+
+        if (totalContactsElement) {
+            totalContactsElement.textContent = totalContacts;
+        } else {
+            console.error('Element with ID "totalContactsNum" not found.');
+        }
+
+        if (currentPageElement) {
+            currentPageElement.textContent = currentPageNumber;
+        } else {
+            console.error('Element with ID "pageContactsNum" not found.');
+        }
+    } catch (error) {
+        console.error('Error in renderDetails function:', error);
+    }
 }
+
 renderDetails();
 
 
@@ -237,7 +251,6 @@ function prevPage(){
     }
 }
 
-let contactCount = 0;
 
 function nextPage(){
     if (contactCount<=10)return;

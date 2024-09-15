@@ -47,13 +47,13 @@
 
     </table>
 
-    <a onclick="prevPage()"  id="prev-button"><</a>
+    <div onclick="prevPage()"  id="prev-button"><a>Previous <</a></div>
     <span id="page"></span>
-    <a onclick="nextPage()"  id="next-button">></a>
+    <div onclick="nextPage()"  id="next-button"><a>Next ></a></div>
 
     <div class="footer">
-        <div class="total">Total contacts found: <div id="totalContactsNum">0</div> </div>
-        <div class="pageNumber">Page: <div id="pageContactsNum">0</div></div>
+        <div class="total">Total contacts found: <span id="totalContactsNum">0</span></div>
+        <div class="pageNumber">Page: <span id="pageContactsNum">1</span></div>
     </div>
     <a href="testLogin.html">
         <button type="button" class="logoutButton" onclick="UserLogout();">Logout</button>

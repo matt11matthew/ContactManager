@@ -124,6 +124,13 @@ table{
     text-align: left;
 }
 
+#editDeleteButton{
+    color: #e9d8b2;
+    background-color: #661618;
+    font-size: large;
+    padding: 10px 10px;
+}
+
 td{
     padding-right: 5vw;
     text-align: left;
@@ -134,11 +141,6 @@ td{
 /*    color: #661618;*/
 /*    width: auto;*/
 /*}*/
-
-.editDeleteButton{
-    color: #e9d8b2;
-    background-color: #661618;
-}
 
 .lightField{
     display: block;

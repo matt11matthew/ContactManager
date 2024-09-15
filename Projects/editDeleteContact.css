@@ -69,13 +69,14 @@ button{
     font-size: xx-large;
     font-weight: bold;
 }
+
 .confirmChange {
     /*margin-left: 1vw;*/
     background-color: #661618;
     color: #e9d8b2;
 }
 
-.deleteContact {
+#deleteContact {
     margin-left: 9.5vw;
     float: right;
     background-color: #e9d8b2;
