@@ -135,6 +135,11 @@ td{
 /*    width: auto;*/
 /*}*/
 
+.editDeleteButton{
+    color: #e9d8b2;
+    background-color: #661618;
+}
+
 .lightField{
     display: block;
     background-color: #e9e0ca;

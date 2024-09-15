@@ -4,9 +4,8 @@ savedLastName = "";
 loadCookiesContactsPage();
 
 //for pagination:
-let cur_Page = 1;
+let currentPage = 1;
 
-let totalPages;
 
 
 function redirectToMain() {
@@ -50,12 +49,15 @@ function loadCookiesContactsPage() {
 
 }
 
+
 function onEditDeleteClick(item) {
     let contactId = item.contactId;
     let lastName = item.lastName;
     let firstName = item.firstName;
     let email = item.email;
     console.log("EDIT DELETE " + contactId +" : " + email);
+
+    editData(item);
 
 }
 
@@ -66,7 +68,7 @@ function retrieveContact(){
 
     console.log(userIdNum);
 
-    let pageNum =cur_Page;
+    let pageNum =currentPage;
 
     let tmp = {search: search,userId: userIdNum, page: pageNum};
     if(search != null && !search){
@@ -99,6 +101,8 @@ function retrieveContact(){
                     //TODO
                     return;
                 }
+                contactCount = response.count;
+
                 response.results.forEach(function(item) {
                     const row = document.createElement("tr");
 
@@ -129,13 +133,16 @@ function retrieveContact(){
 
 }
 
-retrieveContact();
+retrieveContact(); //Original search.
 
-function editData(button){
+function editData(item){
     //open the edit/delete page
     window.open("http://cm.matthewe.me/testing/editDeleteContact.html");
 
-    let contact = button.parentNode.parentNode;
+    //updating the placeholder:
+    document.getElementById("fNameEdit").placeholder = "Enter new first name";
+    document.getElementById("lNameEdit").placeholder = "Enter new last name";
+    document.getElementById("emailEdit").placeholder = "Enter new email";
 
     let newFirstName = document.getElementById("fName").value;
     let newLastName = document.getElementById("lName").value;
@@ -148,9 +155,9 @@ function editData(button){
     //if the delete button has been clicked:
     document.getElementById("deleteContact").onclick = function(){
         //button has been clicked, send the information of contact to be deleted:
-        let delFname = contact.cells[0];
-        let delLname = contact.cells[1];
-        let delEmail = contact.cells[2];
+        let delFname = item.firstName;
+        let delLname = item.lastName;
+        let delEmail = item.email;
         let deltmp = {firstName: delFname, lastName: delLname, email: delEmail};
         let deleteString = JSON.stringify(deltmp);
 
@@ -211,21 +218,36 @@ function editData(button){
     }
 }
 
+function renderDetails() {
+    document.getElementById("totalContactsNum").innerHTML = contactCount==null?'0': contactCount;
+    document.getElementById("pageContactsNum").innerHTML = currentPage==null?'1': currentPage;
+}
+renderDetails();
+
+
 function prevPage(){
     //at least the first page.
-    if(cur_Page > 1){
-        cur_Page--;
+    if (contactCount<=10)return;
+
+    if(currentPage > 1){
+        currentPage--;
+        retrieveContact();
+
         //go to previous data:
     }
 }
 
+let contactCount = 0;
+
 function nextPage(){
-    if(cur_Page < totalPages){
-        cur_Page++;
+    if (contactCount<=10)return;
+
+    let totalPages = (contactCount / 10) + (contactCount % 10 > 0 ? 1 : 0);
+
+    if(currentPage < totalPages){
+        currentPage++;
+        retrieveContact();
+
         //move to the next set of data:
     }
-}
-
-function numPages(){
-
 }
