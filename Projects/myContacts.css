@@ -59,6 +59,15 @@ body{
     padding-right: 10px;
 }
 
+#searchError{
+    display: block;
+    margin: auto;
+    word-wrap: break-word;
+    max-width: 30rem;
+    font-size: medium;
+    color: #EF8787;
+}
+
 .table-container{
     max-width: 95%;
     height: fit-content;

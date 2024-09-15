@@ -5,6 +5,7 @@
     <title>My Contacts</title>
     <link rel="stylesheet" href="myContacts.css">
     <script type="text/javascript" src="scripts/contacts.js"></script>
+    <script defer type="text/javascript" src="scripts/global_save.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 </head>
 
@@ -24,6 +25,7 @@
             }
             preventEnter(event)" type="text" id="searchBox" name="searchBox" class="searchBox" placeholder="Search for Contact">
             <button type="button" id="searchButton" onclick="retrieveContact()">Search</button>
+            <div id="searchError"></div>
         </form>
 
         <a href="addContact.html">
@@ -59,6 +61,7 @@
         <button type="button" class="logoutButton" onclick="UserLogout();">Logout</button>
     </a>
 </div>
+<!-- Might need changes-->
 
 </body>
 </html>

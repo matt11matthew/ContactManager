@@ -13,20 +13,32 @@ $searchTerm = isset($inData["search"]) ? strtolower($inData["search"]) : '';
 $userId = isset($inData["userId"]) ? $inData["userId"] : 0;
 $pageNumber = isset($inData["page"]) ? (int)$inData["page"] : null;  // Set to null if not provided
 
-//if (isset($inData["contactId"])) {
-//
-//    //CONTACT BY ID;
-//    //SELECT * FROM Contacts WHERE UserId=
-////    $searchResult = '{"contactId": "' . $row["ID"] . '", "firstName": "' . $row["FirstName"] . '", "lastName": "' . $row["LastName"] . '", "email": "' . $row["Email"] . '"}';
-//
-////    returnWithInfo($searchResult);
-//
-//    return;
-//}
+if (isset($inData["contactId"])) {
+    $contactId = $inData["contactId"];
+    $sql = "SELECT (ID, LOWER(FirstName) AS FirstName, LOWER(LastName) AS LastName, LOWER(Email) AS Email)
+        FROM Contacts 
+        WHERE UserID = ? and ID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $userId, $contactId);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+    $searchResult = '{"contactId": "' . $row["ID"] . '", "firstName": "' . $row["FirstName"] . '", "lastName": "' . $row["LastName"] . '", "email": "' . $row["Email"] . '"}';
+    sendResultInfoAsJson($searchResult);
+
+    $stmt->close();
+    $conn->close();
+
+    return;
+}
 // Prepare the base SQL query
+//On it boss
 $sql = "SELECT LOWER(FirstName) AS FirstName, LOWER(LastName) AS LastName, LOWER(Email) AS Email, ID
         FROM Contacts 
         WHERE UserID = ?";
+
 
 // Add search condition if search term is provided
 if (!empty($searchTerm)) {

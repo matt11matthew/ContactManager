@@ -3,9 +3,7 @@ savedFirstName = "";
 savedLastName = "";
 loadCookiesContactsPage();
 
-console.log(globalTest.globalFirst);
-console.log(globalTest.globalLast);
-
+console.log(global_save);
 
 function loadCookiesContactsPage() {
     let data = document.cookie;
@@ -85,10 +83,15 @@ function setupDeleteOnClick(contactID) {
                 response = JSON.parse(xml.responseText);
                 console.log(response);
             } catch (error) {
+                // could only be issue with json.parse
+                response = null;
                 //output error msg:
+                document.getElementById("deleteError").innerHTML = "There was an issue with deleting the contact.";
             }
+            // could only be a php issue
             if ("error" in response) {
-                //output error msg:
+                document.getElementById("deleteError").innerHTML = response.error;
+                setTimeout(hideLoginError, 3000);
                 return;
             }
             //output that the message has been deleted:
@@ -105,12 +108,7 @@ function triggerOnWindowLoad(contactID) {
     let newLastName = document.getElementById("lNameEdit");
     let newEmail = document.getElementById("emailEdit");
 
-
-
-
-
     setupDeleteOnClick();
-
 
 }
 
@@ -138,8 +136,6 @@ function editContact(){
                     //output error msg:
                     return;
                 }
-
-
             }
         }
     }

@@ -107,6 +107,16 @@ button:hover{
         transform: scale(1);
     }
 }
+
+#deleteError{
+    display: block;
+    margin: auto;
+    word-wrap: break-word;
+    max-width: 30rem;
+    font-size: medium;
+    color: #EF8787;
+}
+
 /*#confirmChange{*/
 /*    display: block;*/
 /*    margin-left: 1vw;*/

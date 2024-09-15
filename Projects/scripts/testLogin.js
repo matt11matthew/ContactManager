@@ -46,6 +46,7 @@ function UserLogin(){
                     setTimeout(hideLoginError, 3000);
                     return;
                 }
+
                 console.log(response)
                 //save the information we got about user:
                 let userId = response.id;

@@ -3,13 +3,7 @@ savedFirstName = "";
 savedLastName = "";
 loadCookiesContactsPage();
 
-let globalTest = {
-    globalFirst: "",
-    globalLast: "",
-    globalEmail: ""
-};
-
-
+console.log(global_save);
 
 function loadCookiesContactsPage() {
     let data = document.cookie;
@@ -108,15 +102,16 @@ function retrieveContact(){
 
                     //DISPLAY ERROR.
                     //TODO
+                    // Not sure which one is accurate to front-end
+                    // or if this even works... - Dennis
+                    // document.getElementById("searchError").innerHTML = "There was an error searching.";
+                    document.getElementById("searchError").innerHTML = "No results found.";
                     return;
                 }
                 contactCount = response.count;
                 renderDetails();
                 response.results.forEach(function(item) {
                     //updating the global variables:
-                    globalTest.globalFirst = item.firstName;
-                    globalTest.globalLast = item.lastName;
-                    globalTest.globalEmail = item.email;
 
 
                     let contactID = item.contactId;
