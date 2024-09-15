@@ -28,4 +28,24 @@
 * Back-end
   * SwaggerHub: API documentation and specifications
 * Database
-  * Maria
+  * MariaDB/SQL: database structure
+
+## What went well
+
+## What went poor
+
+## Talk about Gantt chart
+
+## Talk about ERD
+
+## Talk about UCD
+
+## Talk about and demo SwaggerHub
+* Use johndoe account since has plenty of contacts
+* Show basic login API
+* Show search results API
+
+## Demo website
+* Attempt to log in with incorrect user/pass
+* Show creation of new account and logging into it
+* 

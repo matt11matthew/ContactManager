@@ -4,10 +4,10 @@ savedLastName = "";
 loadCookies();
 
 function redirectToContacts() {
-    window.location = "myContacts.html";
+    window.location.href = "myContacts.html";
 }
 function redirectToLogin() {
-    window.location = "testLogin.html";
+    window.location.hre = "testLogin.html";
 }
 
 function loadCookies() {

@@ -10,7 +10,7 @@ let contactCount = 0;
 
 
 function redirectToMain() {
-    window.open("index.html");
+    window.location.href = "index.html";
 }
 
 
@@ -139,7 +139,8 @@ retrieveContact(); //Original search.
 
 function editData(item, contactID){
     //open the edit/delete page
-    window.location.href = "http://cm.matthewe.me/testing/editDeleteContact.html";
+    window.location.href = "http://cm.matthewe.me/testing/editDeleteContact.html?userId="+userId+"&contactId="+contactID;
+
 
     let newFirstName = document.getElementById("fNameEdit").value;
     let newLastName = document.getElementById("lNameEdit").value;
@@ -214,7 +215,8 @@ function editData(item, contactID){
                 }
 
                 //direct user back to the menu:
-                window.open("myContacts.html");
+                window.location.href = "myContacts.html";
+
             }
         }
     }
