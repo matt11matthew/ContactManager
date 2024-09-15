@@ -51,14 +51,14 @@ function loadCookiesContactsPage() {
 }
 
 
-function onEditDeleteClick(item) {
-    let contactId = item.contactId;
+function onEditDeleteClick(item, contactID) {
+    // let contactId = item.contactId;
     let lastName = item.lastName;
     let firstName = item.firstName;
     let email = item.email;
-    console.log("EDIT DELETE " + contactId +" : " + email);
+    console.log("EDIT DELETE " + contactID +" : " + email);
 
-    editData(item);
+    editData(item, contactID);
 
 }
 
@@ -103,9 +103,9 @@ function retrieveContact(){
                     return;
                 }
                 contactCount = response.count;
-
+                renderDetails();
                 response.results.forEach(function(item) {
-                    let contactID = item.re;
+                    let contactID = item.contactId;
                     const row = document.createElement("tr");
 
                     const fName = document.createElement("td");
@@ -121,7 +121,7 @@ function retrieveContact(){
                     edit.textContent = "edit/delete";
                     edit.id = "editDeleteButton";
                     edit.onclick = function(){
-                        onEditDeleteClick(item);
+                        onEditDeleteClick(item, contactID);
                     }
                     row.appendChild(edit);
                     tableBody.appendChild(row);
@@ -137,7 +137,7 @@ function retrieveContact(){
 
 retrieveContact(); //Original search.
 
-function editData(item){
+function editData(item, contactID){
     //open the edit/delete page
     window.location.href = "http://cm.matthewe.me/testing/editDeleteContact.html";
 
@@ -146,7 +146,7 @@ function editData(item){
     let newEmail = document.getElementById("emailEdit").value;
 
     //convert to JSON:
-    let tmp = {fistName: newFirstName, lastName: newLastName, email: newEmail};
+    let tmp = {id: contactID, userId: userIdNum, firstName: newFirstName, lastName: newLastName, email: newEmail};
     let Changes = JSON.stringify(tmp);
 
     //if the delete button has been clicked:
@@ -155,7 +155,14 @@ function editData(item){
         let delFname = item.firstName;
         let delLname = item.lastName;
         let delEmail = item.email;
-        let deltmp = {firstName: delFname, lastName: delLname, email: delEmail};
+
+        console.log(contactID);
+        console.log(userIdNum);
+        console.log(delFname);
+        console.log(delLname);
+        console.log(delEmail);
+
+        let deltmp = {id: contactID, userId: userIdNum, firstName: delFname, lastName: delLname, email: delEmail};
         let deleteString = JSON.stringify(deltmp);
 
         let url ="http://cm.matthewe.me/testing/Backend/deleteContact.php";
@@ -164,8 +171,10 @@ function editData(item){
         xml.send(deleteString);
         if(xml.readyState===4 && xml.status === 200) {
             let response;
+
             try {
                 response = JSON.parse(xml.responseText);
+                console.log(response);
             } catch (error) {
                 //output error msg:
             }
@@ -244,12 +253,12 @@ function renderDetails() {
 function prevPage(){
     //at least the first page.
     if (contactCount<=10)return;
-
     if(currentPage > 1){
+
         currentPage--;
         retrieveContact();
-
         //go to previous data:
+
     }
 }
 
