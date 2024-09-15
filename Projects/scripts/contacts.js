@@ -105,6 +105,7 @@ function retrieveContact(){
                 contactCount = response.count;
 
                 response.results.forEach(function(item) {
+                    let contactID = item.re;
                     const row = document.createElement("tr");
 
                     const fName = document.createElement("td");
@@ -209,35 +210,36 @@ function editData(item){
         }
     }
 }
+window.addEventListener('DOMContentLoaded', (event) => {
+    renderDetails(); // Call the function when the DOM is ready
+});
 
 function renderDetails() {
     try {
-        // Safely retrieve the total contacts and current page, defaulting if invalid
-        const totalContacts = (typeof contactCount === 'number' && !isNaN(contactCount)) ? contactCount : '0';
-        const currentPageNumber = (typeof currentPage === 'number' && !isNaN(currentPage)) ? currentPage : '1';
+        // Validate contactCount and currentPage
+        const totalContacts = (typeof contactCount === 'number' && !isNaN(contactCount) && contactCount >= 0) ? contactCount : '0';
+        const currentPageNumber = (typeof currentPage === 'number' && !isNaN(currentPage) && currentPage > 0) ? currentPage : '1';
 
-        // Retrieve the elements and check if they exist before updating
+        // Retrieve and validate the HTML elements
         const totalContactsElement = document.getElementById("totalContactsNum");
         const currentPageElement = document.getElementById("pageContactsNum");
 
+        // Check if elements exist and update them
         if (totalContactsElement) {
             totalContactsElement.textContent = totalContacts;
         } else {
-            console.error('Element with ID "totalContactsNum" not found.');
+            console.error('Element with ID "totalContactsNum" not found. Check the HTML for correct ID.');
         }
 
         if (currentPageElement) {
             currentPageElement.textContent = currentPageNumber;
         } else {
-            console.error('Element with ID "pageContactsNum" not found.');
+            console.error('Element with ID "pageContactsNum" not found. Check the HTML for correct ID.');
         }
     } catch (error) {
-        console.error('Error in renderDetails function:', error);
+        console.error('Error in renderDetails function:', error.message, error.stack);
     }
 }
-
-renderDetails();
-
 
 function prevPage(){
     //at least the first page.
