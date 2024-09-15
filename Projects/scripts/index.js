@@ -14,7 +14,7 @@ function loadCookies() {
     let data = document.cookie;
     if (!data) {
         console.log("No cookies found.");
-        setTimeout(redirectToLogin, 1000);
+        setTimeout(redirectToLogin, 3000);
         
         return;
     }
@@ -41,7 +41,7 @@ function loadCookies() {
     console.log(userIdNum);
     console.log(savedFirstName);
     console.log(savedLastName);
-    setTimeout(redirectToContacts, 1000);
+    setTimeout(redirectToContacts, 3000);
 
 
 }

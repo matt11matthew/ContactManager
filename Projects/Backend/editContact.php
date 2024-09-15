@@ -24,13 +24,13 @@ header("Access-Control-Allow-Methods: POST");
     $query = "UPDATE Contacts SET FirstName=?, LastName=?, Email=? WHERE UserID=? AND ID=?;";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("sssii", $firstName, $lastName, $email, $userId, $id); ;
-    $stmt->execute();
-    $result = $stmt->get_result();
+    #Updates System ^
+    $result =$stmt->execute();
 
-    if ($result != 0) {
+    if ($result) {
         returnWithInfo($firstName, $lastName, $userId);
     } else {
-        returnWithError("Contact not added");
+        returnWithError("Contact not edited " . $result);
     }
 
 

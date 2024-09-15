@@ -5,7 +5,7 @@ loadCookiesContactsPage();
 
 //for pagination:
 let cur_Page = 1;
-let contactsPerPage = 10;
+
 let totalPages;
 
 
@@ -84,6 +84,12 @@ function retrieveContact(){
                 console.log(response);
 
                 tableBody.innerHTML = "";
+                if (response.error != null) {
+
+                    //DISPLAY ERROR.
+                    //TODO
+                    return;
+                }
                 response.results.forEach(function(item) {
                     const row = document.createElement("tr");
 
