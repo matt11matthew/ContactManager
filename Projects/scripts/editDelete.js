@@ -3,11 +3,15 @@ savedFirstName = "";
 savedLastName = "";
 loadCookiesContactsPage();
 
+console.log(globalTest.globalFirst);
+console.log(globalTest.globalLast);
+
+
 function loadCookiesContactsPage() {
     let data = document.cookie;
     if (!data) {
         console.log("No cookies found.");
-        setTimeout(redirectToMain, 3000);
+        setTimeout(redirectToMain, 1000);
 
         return;
     }
@@ -34,8 +38,6 @@ function loadCookiesContactsPage() {
     console.log(userIdNum);
     console.log(savedFirstName);
     console.log(savedLastName);
-
-
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -51,17 +53,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-function triggerOnWindowLoad( contactID) {
-    //open the edit/delete page
-    // window.location.href = "http://cm.matthewe.me/testing/editDeleteContact.html?userId="+userId+"&contactId="+contactID;
-
-    let newFirstName = document.getElementById("fNameEdit").value;
-    let newLastName = document.getElementById("lNameEdit").value;
-    let newEmail = document.getElementById("emailEdit").value;
-
+function setupDeleteOnClick(contactID) {
     //convert to JSON:
-    let tmp = {id: contactID, userId: userIdNum, firstName: newFirstName, lastName: newLastName, email: newEmail};
-    let Changes = JSON.stringify(tmp);
+    // let tmp = {id: contactID, userId: userIdNum, firstName: newFirstName, lastName: newLastName, email: newEmail};
+    // let Changes = JSON.stringify(tmp);
 
     //if the delete button has been clicked:
     document.getElementById("deleteContact").onclick = function () {
@@ -102,9 +97,26 @@ function triggerOnWindowLoad( contactID) {
             window.location.href = "http://cm.matthewe.me/testing/myContacts.html";
         }
     }
+}
 
+function triggerOnWindowLoad(contactID) {
+
+    let newFirstName = document.getElementById("fNameEdit");
+    let newLastName = document.getElementById("lNameEdit");
+    let newEmail = document.getElementById("emailEdit");
+
+
+
+
+
+    setupDeleteOnClick();
+
+
+}
+
+//on confirm edit button press.
+function editContact(){
     let url = "http://cm.matthewe.me/testing/Backend/editContact.php";
-
     let xml = new XMLHttpRequest();
     xml.open("POST", url, true);
     xml.send(Changes);
@@ -127,12 +139,9 @@ function triggerOnWindowLoad( contactID) {
                     return;
                 }
 
-                //direct user back to the menu:
-                window.location.href = "myContacts.html";
 
             }
         }
     }
-
 }
 

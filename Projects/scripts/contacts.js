@@ -3,6 +3,14 @@ savedFirstName = "";
 savedLastName = "";
 loadCookiesContactsPage();
 
+let globalTest = {
+    globalFirst: "",
+    globalLast: "",
+    globalEmail: ""
+};
+
+
+
 function loadCookiesContactsPage() {
     let data = document.cookie;
     if (!data) {
@@ -105,6 +113,12 @@ function retrieveContact(){
                 contactCount = response.count;
                 renderDetails();
                 response.results.forEach(function(item) {
+                    //updating the global variables:
+                    globalTest.globalFirst = item.firstName;
+                    globalTest.globalLast = item.lastName;
+                    globalTest.globalEmail = item.email;
+
+
                     let contactID = item.contactId;
                     const row = document.createElement("tr");
 

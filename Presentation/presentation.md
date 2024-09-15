@@ -22,6 +22,7 @@
   * MobaXterm: easy server deployment
   * Discord: general communication and voice calls
   * PHP Storm and Visual Studio Code: collaborative code editing
+    * Collaborative coding allowed us to work on the same files at the same time
 * Front-end
   * Figma: page designs
   * HTML, CSS, JS
@@ -30,12 +31,14 @@
   * Allowed for quick testing of API and responses with sample data
 * Database
   * MariaDB/SQL: database structure
+  * Required for working with database
 
 ## What went well
 
 ## What went poor
 
 ## Talk about Gantt chart
+* Gantt discussion
 
 ## Talk about ERD
 * 
@@ -50,6 +53,7 @@
 * Use johndoe account since has plenty of contacts
 * Show basic login API
 * Show search results API
+* Both should return 200 responses
 
 ## Demo website
 * Attempt to log in with incorrect user/pass

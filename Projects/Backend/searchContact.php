@@ -13,6 +13,16 @@ $searchTerm = isset($inData["search"]) ? strtolower($inData["search"]) : '';
 $userId = isset($inData["userId"]) ? $inData["userId"] : 0;
 $pageNumber = isset($inData["page"]) ? (int)$inData["page"] : null;  // Set to null if not provided
 
+//if (isset($inData["contactId"])) {
+//
+//    //CONTACT BY ID;
+//    //SELECT * FROM Contacts WHERE UserId=
+////    $searchResult = '{"contactId": "' . $row["ID"] . '", "firstName": "' . $row["FirstName"] . '", "lastName": "' . $row["LastName"] . '", "email": "' . $row["Email"] . '"}';
+//
+////    returnWithInfo($searchResult);
+//
+//    return;
+//}
 // Prepare the base SQL query
 $sql = "SELECT LOWER(FirstName) AS FirstName, LOWER(LastName) AS LastName, LOWER(Email) AS Email, ID
         FROM Contacts 
