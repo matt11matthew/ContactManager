@@ -9,7 +9,7 @@ let cur_Page = 1;
 let totalPages;
 
 function redirectToMain() {
-    window.open("index.html");
+    window.open("http://cm.matthewe.me/testing/index.html");
 }
 
 function loadCookiesContactsPage() {
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.editData = function(item) {
         globalContactId = item.contactId;
-        const url = "editDeleteContact.html?" +
+        const url = "http://cm.matthewe.me/testing/editDeleteContact.html?" +
             "contactId=" + encodeURIComponent(item.contactId) +
             "&firstName=" + encodeURIComponent(item.firstName) +
             "&lastName=" + encodeURIComponent(item.lastName) +

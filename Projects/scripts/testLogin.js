@@ -63,7 +63,8 @@ function UserLogin(){
                 setTimeout(hideLoginError, 3000);
 
                 //direct user to the menu:
-                window.location = "myContacts.html";
+                // window.location = "myContacts.html";
+                window.location.href = "http://cm.matthewe.me/testing/myContacts.html"
             }
         }
     }
