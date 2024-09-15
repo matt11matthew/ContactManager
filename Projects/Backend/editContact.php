@@ -10,8 +10,8 @@ header("Access-Control-Allow-Methods: POST");
     // Variables to store userId and contact information
     $id = $inData["id"];
     $userId = $inData["userId"];
-    $firstName = $inData["first"];
-    $lastName = $inData["last"];
+    $firstName = $inData["firstName"];
+    $lastName = $inData["lastName"];
     $email = $inData["email"];
 
     // Ensure all fields are filled
