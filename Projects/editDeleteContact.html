@@ -4,10 +4,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit/Delete Contact</title>
     <link rel="stylesheet" href="editDeleteContact.css">
-    <script type="text/javascript" src="scripts/editDelete.js"></script>
-    <script defer type="text/javascript" src="scripts/global_save.js"></script>
+    <script type="text/javascript" src="scripts/contacts.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 </head>
+
+<script>
+    function getParams(name){
+        const params = new URLSearchParams(window.location.search);
+        return params.get(name);
+    }
+</script>
 
 <body>
     <div class="title">Edit/Delete Contact</div>
@@ -17,28 +23,34 @@
         <form >
 
             <div class="firstName">First Name</div>
-            <input type="text" id="fNameEdit" class="fieldBar" placeholder="Enter new first name">
+            <input type="text" id="fNameEdit" class="fieldBar" placeholder="Get first name from database">
             <div class="lastName">Last Name</div>
-            <input type="text" id="lNameEdit" class="fieldBar" placeholder="Enter new last name">
+            <input type="text" id="lNameEdit" class="fieldBar" placeholder="Get last name from database">
             <div class="email">Email Address</div>
-            <input type="text" id="emailEdit" class="fieldBar" placeholder="Enter new email address">
+            <input type="text" id="emailEdit" class="fieldBar" placeholder="Get email address from database">
 
-            <a href="myContacts.html">
                 <!--<input type="submit" id="confirmChange" value="Confirm Change">-->
                 <!--<input type="submit" id="deleteContact" value="Delete Contact">-->
-                <button class="confirmChange" onclick="editContact();">Confirm Change</button>
-                <button id="deleteContact">Delete Contact</button>
-            </a>
+
+            <button class="confirmChange" onclick="editContact()">Confirm Change</button>
+            <button id="deleteContact" >Delete Contact</button>
 
         </form>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+               document.getElementById("fNameEdit").value = decodeURIComponent(getParams('firstName'));
+               document.getElementById("lNameEdit").value = decodeURIComponent(getParams('lastName'));
+               document.getElementById("emailEdit").value = decodeURIComponent(getParams('email'));
+               globalContactId = getParams('contactId');
+            });
+        </script>
 
         <a href="testLogin.html">
             <button type="button" class="logoutButton" onclick="UserLogout();">Logout</button>
         </a>
 
     </div>
-
-    <div id="deleteError"></div>
 
 </body>
 </html>

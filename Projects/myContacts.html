@@ -5,7 +5,6 @@
     <title>My Contacts</title>
     <link rel="stylesheet" href="myContacts.css">
     <script type="text/javascript" src="scripts/contacts.js"></script>
-    <script defer type="text/javascript" src="scripts/global_save.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 </head>
 
@@ -17,15 +16,8 @@
     <div class="header">
 
         <form id="searchCrit">
-            <input onkeydown="function preventEnter(event) {
-               if (event.key === 'Enter') {
-                 event.preventDefault(); // Prevent default Enter key action
-                  retrieveContact();
-                }
-            }
-            preventEnter(event)" type="text" id="searchBox" name="searchBox" class="searchBox" placeholder="Search for Contact">
+            <input type="text" id="searchBox" name="searchBox" class="searchBox" placeholder="Search for Contact">
             <button type="button" id="searchButton" onclick="retrieveContact()">Search</button>
-            <div id="searchError"></div>
         </form>
 
         <a href="addContact.html">
@@ -49,19 +41,18 @@
 
     </table>
 
-    <div onclick="prevPage()"  id="prev-button"><a>Previous <</a></div>
+    <a onclick="prevPage()" href="#" id="prev-button"><</a>
     <span id="page"></span>
-    <div onclick="nextPage()"  id="next-button"><a>Next ></a></div>
+    <a onclick="nextPage()" href="#" id="next-button">></a>
 
     <div class="footer">
-        <div class="total">Total contacts found: <span id="totalContactsNum">0</span></div>
-        <div class="pageNumber">Page: <span id="pageContactsNum">1</span></div>
+        <div class="total">Total contacts found: </div>
+        <div class="pageNumber">Page: </div>
     </div>
     <a href="testLogin.html">
         <button type="button" class="logoutButton" onclick="UserLogout();">Logout</button>
     </a>
 </div>
-<!-- Might need changes-->
 
 </body>
 </html>

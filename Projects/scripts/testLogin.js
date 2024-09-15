@@ -6,8 +6,6 @@ function hideLoginError() {
 }
 
 function UserLogin(){
-
-
     //get information from the html inputs.
     let userLogin = document.getElementById("username").value;
     let userPass = document.getElementById("password").value;
@@ -53,6 +51,10 @@ function UserLogin(){
                 let fname = response.firstName;
                 let lname = response.lastName;
 
+                // console.log(userId);
+                // console.log(fname);
+                // console.log(lname);
+
 
                 setCookies(fname, lname, userId);
                 // test to see if we read user login properly:
@@ -71,6 +73,6 @@ function setCookies(fName, lName, userID) {
     let min = 20;
     let date = new Date();
     date.setTime(date.getTime()+(min*60*1000));
-    document.cookie = "firstName" + fName +",lastName=" + lName + ",userId=" + userID + ",expires=" + date.toUTCString();
+    document.cookie = "firstName=" + fName +",lastName=" + lName + ",userId=" + userID + ",expires=" + date.toUTCString();
 }
 
