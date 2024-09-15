@@ -3,18 +3,6 @@ savedFirstName = "";
 savedLastName = "";
 loadCookiesContactsPage();
 
-//for pagination:
-let currentPage = 1;
-let contactCount = 0;
-
-
-
-function redirectToMain() {
-    window.location.href = "index.html";
-}
-
-
-
 function loadCookiesContactsPage() {
     let data = document.cookie;
     if (!data) {
@@ -48,6 +36,18 @@ function loadCookiesContactsPage() {
     console.log(savedLastName);
 
 
+}
+//for pagination:
+let currentPage = 1;
+
+
+
+let contactCount = 0;
+
+
+
+function redirectToMain() {
+    window.location.href = "index.html";
 }
 
 
@@ -139,9 +139,9 @@ retrieveContact(); //Original search.
 
 function editData(item, contactID){
     //open the edit/delete page
-    window.location.href = "http://cm.matthewe.me/testing/editDeleteContact.html?userId="+userId+"&contactId="+contactID;
+    window.location.href = "http://cm.matthewe.me/testing/editDeleteContact.html?contactId="+contactID;
 
-
+/*
     let newFirstName = document.getElementById("fNameEdit").value;
     let newLastName = document.getElementById("lNameEdit").value;
     let newEmail = document.getElementById("emailEdit").value;
@@ -220,6 +220,7 @@ function editData(item, contactID){
             }
         }
     }
+    */
 }
 window.addEventListener('DOMContentLoaded', (event) => {
     renderDetails(); // Call the function when the DOM is ready

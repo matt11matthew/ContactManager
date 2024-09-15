@@ -20,7 +20,7 @@ $sql = "SELECT LOWER(FirstName) AS FirstName, LOWER(LastName) AS LastName, LOWER
 
 // Add search condition if search term is provided
 if (!empty($searchTerm)) {
-    $sql .= " AND LOWER(CONCAT(FirstName, ' ', LastName)) LIKE ? OR LOWER(Email) OR LOWER(FirstName) OR LOWER(LastName) LIKE ?";
+    $sql .= " AND LOWER(CONCAT(FirstName, ' ', LastName)) LIKE ? OR LOWER(Email) LIKE ? OR LOWER(FirstName) LIKE ? OR LOWER(LastName) LIKE ?";
 }
 
 // Check if pagination is needed
@@ -36,10 +36,10 @@ $stmt = $conn->prepare($sql);
 // Bind parameters based on the presence of the search term and pagination
 if (!empty($searchTerm) && !is_null($pageNumber)) {
     $contactName = "%" . $searchTerm . "%";
-    $stmt->bind_param("sssii", $userId, $contactName, $contactName, $limit, $offset);
+    $stmt->bind_param("sssssii", $userId, $contactName, $contactName, $contactName, $contactName, $limit, $offset);
 } elseif (!empty($searchTerm)) {
     $contactName = "%" . $searchTerm . "%";
-    $stmt->bind_param("sss", $userId, $contactName, $contactName);
+    $stmt->bind_param("sssss", $userId, $contactName, $contactName, $contactName, $contactName);
 } elseif (!is_null($pageNumber)) {
     $stmt->bind_param("sii", $userId, $limit, $offset);
 } else {

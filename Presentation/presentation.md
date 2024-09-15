@@ -23,10 +23,11 @@
   * Discord: general communication and voice calls
   * PHP Storm and Visual Studio Code: collaborative code editing
 * Front-end
-  * Figma
+  * Figma: page designs
   * HTML, CSS, JS
 * Back-end
   * SwaggerHub: API documentation and specifications
+  * Allowed for quick testing of API and responses with sample data
 * Database
   * MariaDB/SQL: database structure
 
@@ -37,8 +38,13 @@
 ## Talk about Gantt chart
 
 ## Talk about ERD
+* 
 
 ## Talk about UCD
+* User must log in or create account first
+* Validation handled through database
+* User can CRUD contacts or log out
+* CUD requests require extra verification from database
 
 ## Talk about and demo SwaggerHub
 * Use johndoe account since has plenty of contacts
@@ -48,4 +54,9 @@
 ## Demo website
 * Attempt to log in with incorrect user/pass
 * Show creation of new account and logging into it
-* 
+* Add two (or more?) contacts
+* Edit one contact with new information
+* Delete other contact
+* Log out
+* Log in with johndoe
+* Demonstrate search function (could be done above too)
