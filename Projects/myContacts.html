@@ -16,7 +16,14 @@
     <div class="header">
 
         <form id="searchCrit">
-            <input type="text" id="searchBox" name="searchBox" class="searchBox" placeholder="Search for Contact">
+            <input onkeydown="function preventEnter(event) {
+               if (event.key === 'Enter') {
+                 event.preventDefault(); // Prevent default Enter key action
+                  retrieveContact();
+                }
+
+            }
+            preventEnter(event)" type="text" id="searchBox" name="searchBox" class="searchBox" placeholder="Search for Contact">
             <button type="button" id="searchButton" onclick="retrieveContact()">Search</button>
         </form>
 

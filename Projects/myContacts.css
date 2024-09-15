@@ -15,17 +15,6 @@ body{
     background-color: #e9d8b2;
     box-shadow: .3em .3em .3em rgba(0, 0, 0, .4);
 }
-.table-container{
-    max-width: 95%;
-    height: fit-content;
-    margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 30px;
-    padding: 1rem;
-    background-color: #e9d8b2;
-    box-shadow: .3em .3em .3em rgba(0, 0, 0, .4);
-}
 
 .title{
     color: #e9d8b2;
@@ -50,14 +39,36 @@ body{
     font-size: x-large;
 }
 
-.addContact, #searchButton{
+.addContact{
+     background-color: #661618;
+     color: #e9d8b2;
+     float: right;
+     height: 4vw;
+     padding: 0px;
+     padding-left: 10px;
+     padding-right: 10px;
+}
+
+#searchButton{
     background-color: #661618;
     color: #e9d8b2;
-    float: right;
+    float: left;
     height: 4vw;
     padding: 0px;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.table-container{
+    max-width: 95%;
+    height: fit-content;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 30px;
+    padding: 1rem;
+    background-color: #e9d8b2;
+    box-shadow: .3em .3em .3em rgba(0, 0, 0, .4);
 }
 
 ::placeholder{

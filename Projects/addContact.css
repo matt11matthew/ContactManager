@@ -63,9 +63,11 @@ button{
     font-size: xx-large;
     font-weight: bold;
 }
+
 .backToContacts{
     padding: 10px 10px;
-    margin-left: 1vw;
+    font-size: large;
+    margin-left: 3vw;
     background-color: #e9d8b2;
     color: #661618;
 }

@@ -50,6 +50,15 @@ function loadCookiesContactsPage() {
 
 }
 
+function onEditDeleteClick(item) {
+    let contactId = item.contactId;
+    let lastName = item.lastName;
+    let firstName = item.firstName;
+    let email = item.email;
+    console.log("EDIT DELETE " + contactId +" : " + email);
+
+}
+
 function retrieveContact(){
 
     let search = document.getElementById("searchBox")!=null? document.getElementById("searchBox").value : null;
@@ -57,7 +66,7 @@ function retrieveContact(){
 
     console.log(userIdNum);
 
-    let pageNum = 1;
+    let pageNum =cur_Page;
 
     let tmp = {search: search,userId: userIdNum, page: pageNum};
     if(search != null && !search){
@@ -106,7 +115,7 @@ function retrieveContact(){
                     edit.textContent = "edit/delete";
                     edit.id = "editDeleteButton";
                     edit.onclick = function(){
-                        //edit button stuff:
+                        onEditDeleteClick(item);
                     }
                     row.appendChild(edit);
                     tableBody.appendChild(row);

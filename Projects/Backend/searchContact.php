@@ -14,13 +14,13 @@ $userId = isset($inData["userId"]) ? $inData["userId"] : 0;
 $pageNumber = isset($inData["page"]) ? (int)$inData["page"] : null;  // Set to null if not provided
 
 // Prepare the base SQL query
-$sql = "SELECT LOWER(FirstName) AS FirstName, LOWER(LastName) AS LastName, LOWER(Email) AS Email 
+$sql = "SELECT LOWER(FirstName) AS FirstName, LOWER(LastName) AS LastName, LOWER(Email) AS Email, ID
         FROM Contacts 
         WHERE UserID = ?";
 
 // Add search condition if search term is provided
 if (!empty($searchTerm)) {
-    $sql .= " AND LOWER(CONCAT(FirstName, ' ', LastName)) LIKE ?";
+    $sql .= " AND LOWER(CONCAT(FirstName, ' ', LastName)) OR LOWER(Email) LIKE ?";
 }
 
 // Check if pagination is needed
@@ -57,7 +57,7 @@ while ($row = $result->fetch_assoc()) {
         $searchResults .= ",";
     }
     $searchCount++;
-    $searchResults .= '{"firstName": "' . $row["FirstName"] . '", "lastName": "' . $row["LastName"] . '", "email": "' . $row["Email"] . '"}';
+    $searchResults .= '{"contactId": "' . $row["ID"] . '", "firstName": "' . $row["FirstName"] . '", "lastName": "' . $row["LastName"] . '", "email": "' . $row["Email"] . '"}';
 }
 
 // Handle the output based on search results

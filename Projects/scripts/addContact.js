@@ -13,7 +13,9 @@
 function hideLoginError() {
     document.getElementById("creationError").innerHTML = "";
 }
-
+function redirectToContacts() {
+    window.location = "myContacts.html";
+}
 function onCreate(event) {
     event.preventDefault();
 
