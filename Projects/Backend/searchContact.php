@@ -10,7 +10,7 @@ $inData = getRequestInfo();
 $searchResults = "";
 $searchCount = 0;
 $searchTerm = isset($inData["search"]) ? strtolower($inData["search"]) : '';
-$userId = isset($inData["userId"]) ? $inData["userId"] : 0;
+$userId = isset($inData["userId"]) ? $inData["userId"] : -1;
 $pageNumber = isset($inData["page"]) ? (int)$inData["page"] : null;  // Set to null if not provided
 
 if (isset($inData["contactId"])) {
