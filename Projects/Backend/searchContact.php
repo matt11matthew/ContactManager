@@ -35,7 +35,6 @@ if (isset($inData["contactId"])) {
 }
 // Prepare the base SQL query
 //On it boss
-//echo $userId;
 $sql = "SELECT LOWER(FirstName) AS FirstName, LOWER(LastName) AS LastName, LOWER(Email) AS Email, ID
         FROM Contacts 
         WHERE UserID = ?";
