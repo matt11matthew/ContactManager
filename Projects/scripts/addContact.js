@@ -1,6 +1,7 @@
 // let fname = "";
 // let lname = "";
 // let emailAddress = "";
+userIdNum = -1; // For Cookies
 
 
 // document.addEventListener('DOMContentLoaded', function(){
@@ -23,6 +24,24 @@ function onCreate(event) {
     // lname = "";
     // emailAddress = "";
 
+    //let splits = data.split(",");
+    // for(let i = 0; i < splits.length; i++)
+    // {
+    //     let thisOne = splits[i].trim();
+    //     let tokens = thisOne.split("=");
+    //     if( tokens[0] == "firstName" )
+    //     {
+    //         savedFirstName = tokens[1];
+    //     }
+    //     else if( tokens[0] == "lastName" )
+    //     {
+    //         savedLastName = tokens[1];
+    //     }
+    //     else if( tokens[0] == "userId" )
+    //     {
+    //         userIdNum = parseInt( tokens[1].trim() );
+    //     }
+    // }
     let email = document.getElementsByName("email")[0].value;
     console.log(email);
     let firstName = document.getElementsByName("fName")[0].value;
@@ -31,16 +50,20 @@ function onCreate(event) {
     console.log(lastName);
 
     let tmp = {
-        userId: 1,
+        userId: userIdNum,
         firstName: firstName,
         lastName: lastName,
         email: email,
     };
-
-    /*
-{"userId":1,"first":"test","last":"test","email":"test"}
-
- */
+    // let tmp = {
+    //     userId: 1,
+    //     firstName: firstName,
+    //     lastName: lastName,
+    //     email: email,
+    // };
+    /* 
+    {"userId":1,"first":"test","last":"test","email":"test"}
+    */
 
     let createJson = JSON.stringify(tmp);
     let url = "http://cm.matthewe.me/testing/Backend/addContact.php";
