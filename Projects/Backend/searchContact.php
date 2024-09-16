@@ -19,7 +19,7 @@ if (isset($inData["contactId"])) {
         FROM Contacts 
         WHERE UserID = ? AND ID = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $userId, $contactId);
+    $stmt->bind_param("is", $userId, $contactId);
     $stmt->execute();
 
     $result = $stmt->get_result();
@@ -35,6 +35,7 @@ if (isset($inData["contactId"])) {
 }
 // Prepare the base SQL query
 //On it boss
+//echo $userId;
 $sql = "SELECT LOWER(FirstName) AS FirstName, LOWER(LastName) AS LastName, LOWER(Email) AS Email, ID
         FROM Contacts 
         WHERE UserID = ?";

@@ -192,6 +192,57 @@ function editContact(){
     }
 }
 
+// Probably needs the Will touch...
+function deleteContact(){
+    event.preventDefault();
+
+    let Fname = document.getElementById("fNameEdit").value;
+    let Lname = document.getElementById("lNameEdit").value;
+    let Email = document.getElementById("emailEdit").value;
+
+    // Does this func have access to item? Unsure - Dennis
+    console.log(globalContactId);
+    console.log(userIdNum);
+    console.log(item.firstName);
+    console.log(item.lastName);
+    console.log(item.email);
+
+    let url = "http://cm.matthewe.me/testing/Backend/deleteContact.php";
+    let tmp = {
+        id: globalContactId,
+        userId: userIdNum,
+        firstName: item.firstName,
+        lastName: item.lastName,
+        email: item.email
+    }
+    let payload = JSON.stringify(tmp)
+
+    let xml = new XMLHttpRequest();
+    xml.open("POST", url, true);
+    xml.setRequestHeader("Content-type", "application/json");
+    xml.send(payload);
+
+    try {
+        xml.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                let response = JSON.parse(xml.responseText);
+                if (response.error != null) {
+                    //DISPLAY ERROR.
+                    //TODO
+                    console.error('Error:', response.error);
+                    return;
+                }
+                window.location.href = "myContacts.html";
+            }
+            else{
+                console.error('HTTP Error:', this.status);
+            }
+        };
+    }catch (error){
+        //error msg:
+    }
+}
+
 function prevPage(){
     //at least the first page.
     if(cur_Page > 1){
