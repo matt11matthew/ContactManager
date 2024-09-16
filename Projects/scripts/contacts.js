@@ -12,6 +12,11 @@ function redirectToMain() {
     window.open("http://cm.matthewe.me/testing/index.html");
 }
 
+//back to contact?
+function redirectToContacts() {
+    window.location = "myContacts.html";
+}
+
 function loadCookiesContactsPage() {
     let data = document.cookie;
     if (!data) {
@@ -47,6 +52,9 @@ function loadCookiesContactsPage() {
 
 document.addEventListener('DOMContentLoaded', () => {
     window.retrieveContact = function() {
+
+
+
         let search = document.getElementById("searchBox") != null ? document.getElementById("searchBox").value : null;
 
         console.log(userIdNum);
@@ -107,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             tableBody.appendChild(row);
                         });
                     } else {
-                        //table body nto found.
+                        //table body not found.
                     }
                 }
             };
@@ -171,7 +179,7 @@ function editContact(){
                     return;
                 }
                 //edit has been completed: output completion notification and go back to contact page.
-                alert('Contact updated successfully!');
+                //alert('Contact updated successfully!');
                 // window.location.href = "http://cm.matthewe.me/testing/myContacts.html";
                 window.location.href = "myContacts.html";
             }

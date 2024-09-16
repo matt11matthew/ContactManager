@@ -17,7 +17,7 @@ if (isset($inData["contactId"])) {
     $contactId = $inData["contactId"];
     $sql = "SELECT (ID, LOWER(FirstName) AS FirstName, LOWER(LastName) AS LastName, LOWER(Email) AS Email)
         FROM Contacts 
-        WHERE UserID = ? and ID = ?";
+        WHERE UserID = ? AND ID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $userId, $contactId);
     $stmt->execute();
@@ -58,14 +58,14 @@ $stmt = $conn->prepare($sql);
 // Bind parameters based on the presence of the search term and pagination
 if (!empty($searchTerm) && !is_null($pageNumber)) {
     $contactName = "%" . $searchTerm . "%";
-    $stmt->bind_param("sssssii", $userId, $contactName, $contactName, $contactName, $contactName, $limit, $offset);
+    $stmt->bind_param("issssii", $userId, $contactName, $contactName, $contactName, $contactName, $limit, $offset);
 } elseif (!empty($searchTerm)) {
     $contactName = "%" . $searchTerm . "%";
-    $stmt->bind_param("sssss", $userId, $contactName, $contactName, $contactName, $contactName);
+    $stmt->bind_param("issss", $userId, $contactName, $contactName, $contactName, $contactName);
 } elseif (!is_null($pageNumber)) {
-    $stmt->bind_param("sii", $userId, $limit, $offset);
+    $stmt->bind_param("iii", $userId, $limit, $offset);
 } else {
-    $stmt->bind_param("s", $userId);
+    $stmt->bind_param("i", $userId);
 }
 
 $stmt->execute();

@@ -26,6 +26,14 @@ body{
     margin-bottom: 0;
 }
 
+.backToContacts{
+    padding: 10px 10px;
+    font-size: large;
+    margin-left: 3vw;
+    background-color: #e9d8b2;
+    color: #661618;
+}
+
 .fieldBar{
     display: block;
     background-color: #e9e0ca;
