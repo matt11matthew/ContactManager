@@ -43,7 +43,7 @@ $sql = "SELECT LOWER(FirstName) AS FirstName, LOWER(LastName) AS LastName, LOWER
 
 // Add search condition if search term is provided
 if (!empty($searchTerm)) {
-    $sql .= " AND LOWER(CONCAT(FirstName, ' ', LastName)) LIKE ? OR LOWER(Email) LIKE ? OR LOWER(FirstName) LIKE ? OR LOWER(LastName) LIKE ?";
+    $sql .= " AND CONCAT(FirstName, ' ', LastName) LIKE ? OR Email LIKE ? OR FirstName LIKE ? OR LastName LIKE ?";
 }
 
 // Check if pagination is needed
