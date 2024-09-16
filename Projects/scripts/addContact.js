@@ -2,6 +2,7 @@
 // let lname = "";
 // let emailAddress = "";
 userIdNum = -1; // For Cookies
+loadCookiesSearchConacts();
 
 
 // document.addEventListener('DOMContentLoaded', function(){
@@ -17,6 +18,41 @@ function hideLoginError() {
 function redirectToContacts() {
     window.location = "myContacts.html";
 }
+
+function loadCookiesSearchConacts() {
+    let data = document.cookie;
+    if (!data) {
+        console.log("No cookies found.");
+        setTimeout(redirectToMain, 1000);
+
+        return;
+    }
+
+    let splits = data.split(",");
+    for(let i = 0; i < splits.length; i++)
+    {
+        let thisOne = splits[i].trim();
+        let tokens = thisOne.split("=");
+        if( tokens[0] == "firstName" )
+        {
+            savedFirstName = tokens[1];
+        }
+        else if( tokens[0] == "lastName" )
+        {
+            savedLastName = tokens[1];
+        }
+        else if( tokens[0] == "userId" )
+        {
+            userIdNum = parseInt( tokens[1].trim() );
+        }
+    }
+
+    console.log(userIdNum);
+    console.log(savedFirstName);
+    console.log(savedLastName);
+}
+
+
 function onCreate(event) {
     event.preventDefault();
 
@@ -24,24 +60,6 @@ function onCreate(event) {
     // lname = "";
     // emailAddress = "";
 
-    //let splits = data.split(",");
-    // for(let i = 0; i < splits.length; i++)
-    // {
-    //     let thisOne = splits[i].trim();
-    //     let tokens = thisOne.split("=");
-    //     if( tokens[0] == "firstName" )
-    //     {
-    //         savedFirstName = tokens[1];
-    //     }
-    //     else if( tokens[0] == "lastName" )
-    //     {
-    //         savedLastName = tokens[1];
-    //     }
-    //     else if( tokens[0] == "userId" )
-    //     {
-    //         userIdNum = parseInt( tokens[1].trim() );
-    //     }
-    // }
     let email = document.getElementsByName("email")[0].value;
     console.log(email);
     let firstName = document.getElementsByName("fName")[0].value;
