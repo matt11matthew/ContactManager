@@ -81,7 +81,7 @@ body{
     box-shadow: .3em .3em .3em rgba(0, 0, 0, .4);
 }
 
-::placeholder{
+::placeholder{ 
     color: #661618;
     opacity: 50%;
     font-weight: bold;
@@ -146,13 +146,15 @@ td{
     text-align: left;
 }
 
-tr{
+/*tr{*/
 /*    padding-right: 25%;*/
-    color: #661618;
+/*    color: #661618;*/
 /*    width: auto;*/
-}
+/*}*/
 
 .footer{
+    display: flex;
+    justify-content: normal;
     color: #661618;
     font-weight: bolder;
     width: 90%;
@@ -164,25 +166,28 @@ tr{
     padding: 5px 5px;
     color: #e9d8b2;
     background-color: #661618;
-    margin-right: 2vw;
+    margin-right: 1vw;
 }
 
 .pageNumber{
     padding: 2px 2px;
     color: #661618;
     font-size: x-large;
+    margin-top: .30vw;
+    margin-right: 1vw;
 }
 
 #pageContactsNum{
     color: #661618;
     font-size: x-large;
+    margin-right: 1vw;
 }
 
 #next-button{
     padding: 5px 5px;
     color: #e9d8b2;
     background-color: #661618;
-    margin-left: 4vw;
+    margin-left: 1vw;
 }
 
 .total{
