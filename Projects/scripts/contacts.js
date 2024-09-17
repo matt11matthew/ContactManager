@@ -90,6 +90,8 @@ function updateMaxPage() {
     }
 }
 
+let lastSearch = null;
+
 document.addEventListener('DOMContentLoaded', () => {
     window.retrieveContact = function() {
 
@@ -97,6 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let search = document.getElementById("searchBox") != null ? document.getElementById("searchBox").value : null;
 
+        if (search){
+            if (search!==lastSearch){
+                lastSearch = search;
+                cur_Page =  1;
+            }
+        }
         console.log(userIdNum);
 
 
@@ -113,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         xml.open("POST", url, true);
         xml.setRequestHeader("Content-type", "application/json");
 
+
         try {
             xml.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
@@ -120,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const tableBody = document.getElementById("tableBody");
 
                     console.log(response);
+
 
                     if (tableBody) {
                         tableBody.innerHTML = ""; // Clear existing rows

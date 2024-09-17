@@ -39,6 +39,17 @@ body{
     font-size: x-large;
 }
 
+#searchButton{
+    background-color: #661618;
+    color: #e9d8b2;
+    float: left;
+    height: 4vw;
+    padding: 0px;
+    margin-left: 1vw;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .addContact{
      background-color: #661618;
      color: #e9d8b2;
@@ -47,16 +58,6 @@ body{
      padding: 0px;
      padding-left: 10px;
      padding-right: 10px;
-}
-
-#searchButton{
-    background-color: #661618;
-    color: #e9d8b2;
-    float: left;
-    height: 4vw;
-    padding: 0px;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
 #searchError{
@@ -70,7 +71,7 @@ body{
 
 .table-container{
     max-width: 95%;
-    height: fit-content;
+    height: 4vw; /*keep constant height*/
     margin: auto;
     margin-top: 2rem;
     margin-bottom: 2rem;
