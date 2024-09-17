@@ -71,7 +71,7 @@ body{
 
 .table-container{
     max-width: 95%;
-    height: 50vw; /*keep constant height*/
+    height: 75%; /*keep constant height*/
     margin: auto;
     margin-top: 2rem;
     margin-bottom: 2rem;

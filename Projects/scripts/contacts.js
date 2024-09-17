@@ -92,6 +92,20 @@ function updateMaxPage() {
 
 let lastSearch = null;
 
+function updateLastSearch(search) {
+    if (search){
+        if (search!==lastSearch){
+            lastSearch = search;
+            cur_Page =  1;
+        }
+    } else {
+        if (lastSearch){
+            lastSearch = null;
+            cur_Page =  1;
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     window.retrieveContact = function() {
 
@@ -99,17 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let search = document.getElementById("searchBox") != null ? document.getElementById("searchBox").value : null;
 
-        if (search){
-            if (search!==lastSearch){
-                lastSearch = search;
-                cur_Page =  1;
-            }
-        }
+        updateLastSearch(search);
+
         console.log(userIdNum);
 
 
         let tmp = {search: search, userId: userIdNum, page: cur_Page};
-        if (search != null && !search) {
+        if (search != null || !search) {
             tmp = {userId: userIdNum, page: cur_Page};
         }
         let searchJSON = JSON.stringify(tmp);
