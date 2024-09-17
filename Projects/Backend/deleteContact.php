@@ -25,8 +25,7 @@ header("Access-Control-Allow-Methods: POST");
 
     // Bind parameters to SQL query and execute
     $stmt->bind_param("iisss", $userId, $id, $firstName, $lastName, $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $result = $stmt->execute();
 
     // If contact is found, return deleted contact information
     // Since delete, no need for ($result->errno != 0)
