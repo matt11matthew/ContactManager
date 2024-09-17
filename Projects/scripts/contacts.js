@@ -273,33 +273,34 @@ function renderDetails() {
         console.error('Error in renderDetails function:', error.message, error.stack);
     }
 }
+function nextPage() {
+    if (contactCount <= 10) return;
 
-function prevPage(){
+    let totalPages = (contactCount / 10) + (contactCount % 10 > 0 ? 1 : 0);
+
+    if (currentPage < totalPages) {
+        currentPage++;
+        retrieveContact();
+
+        if (cur_Page < totalPages) {
+            cur_Page++;
+            //move to the next set of data:
+        }
+    }
+
+}
+function prevPage() {
     //at least the first page.
-    if (contactCount<=10)return;
-    if(currentPage > 1){
+    if (contactCount <= 10) return;
+    if (currentPage > 1) {
 
         currentPage--;
         retrieveContact();
-        if(cur_Page > 1){
+        if (cur_Page > 1) {
             cur_Page--;
             //go to previous data:
 
         }
     }
 
-
-    function nextPage(){
-        if (contactCount<=10)return;
-
-        let totalPages = (contactCount / 10) + (contactCount % 10 > 0 ? 1 : 0);
-
-        if(currentPage < totalPages){
-            currentPage++;
-            retrieveContact();
-
-            if(cur_Page < totalPages){
-                cur_Page++;
-                //move to the next set of data:
-            }
-        }
+}
