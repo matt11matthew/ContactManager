@@ -89,12 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             console.error(response.error);
                             return;
                         }
-                        if (response.error != null) {
 
-                            //DISPLAY ERROR.
-                            //TODO
-                            return;
-                        }
+                        contactCount = response.count;
                         response.results.forEach(function (item) {
                             const row = document.createElement("tr");
 
