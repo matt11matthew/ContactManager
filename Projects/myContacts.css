@@ -182,6 +182,11 @@ td{
     padding-bottom: 3vw;
 }
 
+#next-button, #prev-button{
+    color:
+    backg;
+}
+
 .total{
     float: left;
     font-size: x-large;

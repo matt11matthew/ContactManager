@@ -57,7 +57,7 @@ function updateMaxPage() {
     xml.setRequestHeader("Content-type", "application/json");
 
     totalPages = 1;
-    
+
     try {
         let search = document.getElementById("searchBox") != null ? document.getElementById("searchBox").value : null;
 
@@ -75,7 +75,8 @@ function updateMaxPage() {
 
                 let count = response.count;
 
-                totalPages = (count / 10) + (count % 10 > 0 ? 1 : 0);
+                console.log("TOTAL CT:" +count);
+                totalPages = Math.ceil(count / 10); // Ensures totalPages is a whole number
 
                 // console.log(response);
 
