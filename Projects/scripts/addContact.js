@@ -80,8 +80,7 @@ function onCreate(event) {
     //     email: email,
     // };
     /*
-    {"userId":1,"first":"test","last":"test","email":"test"}
-    */
+    {"userId":1,"first":"test","last":"test","email":"test"}*/
 
     let createJson = JSON.stringify(tmp);
     let url = "http://cm.matthewe.me/testing/Backend/addContact.php";

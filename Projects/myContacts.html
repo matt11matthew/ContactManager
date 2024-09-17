@@ -16,7 +16,13 @@
     <div class="header">
 
         <form id="searchCrit">
-            <input type="text" id="searchBox" name="searchBox" class="searchBox" placeholder="Search for Contact">
+            <input onkeydown="function preventEnter(event) {
+               if (event.key === 'Enter') {
+                 event.preventDefault(); // Prevent default Enter key action
+                  retrieveContact();
+                }
+            }
+            preventEnter(event)" type="text" id="searchBox" name="searchBox" class="searchBox" placeholder="Search for Contact">
             <button type="button" id="searchButton" onclick="retrieveContact()">Search</button>
         </form>
 
@@ -41,13 +47,13 @@
 
     </table>
 
-    <a onclick="prevPage()" href="#" id="prev-button"><</a>
+    <a onclick="prevPage()" id="prev-button"><</a>
     <span id="page"></span>
-    <a onclick="nextPage()" href="#" id="next-button">></a>
+    <a onclick="nextPage()"  id="next-button">></a>
 
     <div class="footer">
-        <div class="total">Total contacts found: </div>
-        <div class="pageNumber">Page: </div>
+        <div class="total">Total contacts found: <span id="totalContactsNum">0</span></div>
+        <div class="pageNumber">Page: <span id="pageContactsNum">1</span></div>
     </div>
     <a href="testLogin.html">
         <button type="button" class="logoutButton" onclick="UserLogout();">Logout</button>
