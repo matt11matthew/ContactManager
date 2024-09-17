@@ -56,12 +56,14 @@ function updateMaxPage() {
     xml.open("POST", url, true);
     xml.setRequestHeader("Content-type", "application/json");
 
+    totalPages = 1;
+    
     try {
         let search = document.getElementById("searchBox") != null ? document.getElementById("searchBox").value : null;
 
-        let tmp = {search: search, userId: userIdNum, page: pageNum};
+        let tmp = {search: search, userId: userIdNum, maxPage: true};
         if (search != null && !search) {
-            tmp = {userId: userIdNum, page: pageNum};
+            tmp = {userId: userIdNum, maxPage: true};
         }
         let searchJSON = JSON.stringify(tmp);
 
