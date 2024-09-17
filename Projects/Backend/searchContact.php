@@ -83,14 +83,14 @@ while ($row = $result->fetch_assoc()) {
         $searchResults .= ",";
     }
     $searchCount++;
-    $searchResults .= '{"contactId": "' . $row["ID"] . '", userId": ' . $row["UserID"] .' ", "firstName": "' . $row["FirstName"] . '", "lastName": "' . $row["LastName"] . '", "email": "' . $row["Email"] . '"}';
+    $searchResults .= '{"contactId": "' . $row["ID"] . '", "firstName": "' . $row["FirstName"] . '", "lastName": "' . $row["LastName"] . '", "email": "' . $row["Email"] . '"}';
 }
 
 // Handle the output based on search results
 if ($searchCount == 0) {
     returnWithError("No Records Found");
 } else {
-    returnWithInfo($searchResults, $userId);
+    returnWithInfo($searchResults);
 }
 
 // Close connection
@@ -103,9 +103,9 @@ function getRequestInfo() {
 }
 
 // Function to send JSON data to frontend
-function returnWithInfo($searchResults, $userId) {
+function returnWithInfo($searchResults) {
     global $searchCount;
-    $retValue = '{"results": [' . $searchResults . '], "userId": ['. $userId . '],"count": '. $searchCount .'}';
+    $retValue = '{"results": [' . $searchResults . '], "count": '. $searchCount .'}';
     sendResultInfoAsJson($retValue);
 }
 
