@@ -19,7 +19,7 @@ if (isset($inData["contactId"])) {
         FROM Contacts 
         WHERE UserID = ? AND ID = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("is", $userId, $contactId);
+    $stmt->bind_param("ii", $userId, $contactId);
     $stmt->execute();
 
     $result = $stmt->get_result();
@@ -38,12 +38,16 @@ if (isset($inData["contactId"])) {
 $sql = "SELECT LOWER(FirstName) AS FirstName, LOWER(LastName) AS LastName, LOWER(Email) AS Email, ID
         FROM Contacts 
         WHERE UserID = ?";
+# UserID 1st
 
 
 // Add search condition if search term is provided
 if (!empty($searchTerm)) {
     $sql .= " AND CONCAT(FirstName, ' ', LastName) LIKE ? OR Email LIKE ? OR FirstName LIKE ? OR LastName LIKE ?";
 }
+# if search term, ok
+# if not, UserID 1st, limit 2, offset 2
+# if no page, just UserId
 
 // Check if pagination is needed
 if (!is_null($pageNumber)) {
@@ -79,14 +83,14 @@ while ($row = $result->fetch_assoc()) {
         $searchResults .= ",";
     }
     $searchCount++;
-    $searchResults .= '{"contactId": "' . $row["ID"] . '", "firstName": "' . $row["FirstName"] . '", "lastName": "' . $row["LastName"] . '", "email": "' . $row["Email"] . '"}';
+    $searchResults .= '{"contactId": "' . $row["ID"] . '", userId": ' . $row["UserID"] .' ", "firstName": "' . $row["FirstName"] . '", "lastName": "' . $row["LastName"] . '", "email": "' . $row["Email"] . '"}';
 }
 
 // Handle the output based on search results
 if ($searchCount == 0) {
     returnWithError("No Records Found");
 } else {
-    returnWithInfo($searchResults);
+    returnWithInfo($searchResults, $userId);
 }
 
 // Close connection
@@ -99,9 +103,9 @@ function getRequestInfo() {
 }
 
 // Function to send JSON data to frontend
-function returnWithInfo($searchResults) {
+function returnWithInfo($searchResults, $userId) {
     global $searchCount;
-    $retValue = '{"results": [' . $searchResults . '], "count": '. $searchCount .'}';
+    $retValue = '{"results": [' . $searchResults . '], "userId": ['. $userId . '],"count": '. $searchCount .'}';
     sendResultInfoAsJson($retValue);
 }
 

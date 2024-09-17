@@ -79,7 +79,7 @@ function onCreate(event) {
     //     lastName: lastName,
     //     email: email,
     // };
-    /* 
+    /*
     {"userId":1,"first":"test","last":"test","email":"test"}
     */
 
