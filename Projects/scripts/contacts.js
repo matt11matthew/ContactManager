@@ -106,6 +106,11 @@ function updateLastSearch(search) {
     }
 }
 
+function onNoResults() {
+    //TODO NO RESULT HANDLE
+    
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     window.retrieveContact = function() {
 
@@ -145,6 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         tableBody.innerHTML = ""; // Clear existing rows
 
                         if (response.error) {
+                            totalPages = 1;
+                            contactCount = 0;
+                            cur_Page = 1;
+
+                            onNoResults();
+                            renderDetails();
                             console.error(response.error);
                             return;
                         }
