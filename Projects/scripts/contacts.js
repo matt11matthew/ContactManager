@@ -78,6 +78,7 @@ function updateMaxPage() {
                 console.log("TOTAL CT:" +count);
                 totalPages = Math.ceil(count / 10); // Ensures totalPages is a whole number
 
+                renderDetails();
                 // console.log(response);
 
 
@@ -151,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         //table body not found.
                     }
+                    updateMaxPage();
                 }
             };
             xml.send(searchJSON);
