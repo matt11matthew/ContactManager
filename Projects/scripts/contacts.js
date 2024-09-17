@@ -280,7 +280,9 @@ function nextPage() {
 
     let totalPages = (contactCount / 10) + (contactCount % 10 > 0 ? 1 : 0);
 
+    console.log(currentPage+"/"+totalPages);
     if (currentPage < totalPages) {
+        console.log("NEXT");
         currentPage++;
         retrieveContact();
 

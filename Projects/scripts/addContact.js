@@ -67,6 +67,7 @@ function onCreate(event) {
     let lastName = document.getElementsByName("lName")[0].value;
     console.log(lastName);
 
+    console.log("new" + userIdNum);
     let tmp = {
         userId: userIdNum,
         firstName: firstName,
