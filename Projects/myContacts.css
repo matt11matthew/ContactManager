@@ -81,7 +81,7 @@ body{
     box-shadow: .3em .3em .3em rgba(0, 0, 0, .4);
 }
 
-::placeholder{ 
+::placeholder{
     color: #661618;
     opacity: 50%;
     font-weight: bold;
