@@ -46,7 +46,7 @@ if (!empty($searchTerm)) {
     $sql .= " AND CONCAT(FirstName, ' ', LastName) LIKE ? OR Email LIKE ? OR FirstName LIKE ? OR LastName LIKE ?";
 }
 # if search term, ok
-# if not, UserID 1st, limit 2, offset 2
+# if not, UserID 1st, limit 2, offset 3
 # if no page, just UserId
 
 // Check if pagination is needed
