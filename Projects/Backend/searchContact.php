@@ -45,7 +45,7 @@ $sql = "SELECT *
 
 // Add search condition if search term is provided
 if (!empty($searchTerm)) {
-    $sql .= " AND CONCAT(FirstName, ' ', LastName) LIKE ? OR Email LIKE ? OR FirstName LIKE ? OR LastName LIKE ?";
+    $sql .= " AND ((CONCAT(FirstName, ' ', LastName) LIKE ?) OR (Email LIKE ?) OR (FirstName LIKE ?) OR (LastName LIKE ?))";
     //$sql .= "SELECT *
     //        FROM Contacts
     //        WHERE UserID = ?

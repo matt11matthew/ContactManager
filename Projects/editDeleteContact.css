@@ -27,10 +27,10 @@ body{
 }
 
 .backToContacts{
-
+    float: right;
     padding: 10px 10px;
-    font-size: large;
-    margin-left: 3vw;
+    margin-bottom: 2vw;
+    font-size: x-large;
     background-color: #e9d8b2;
     color: #661618;
 }
