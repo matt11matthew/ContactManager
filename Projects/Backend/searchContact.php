@@ -106,7 +106,7 @@ function getRequestInfo() {
 // Function to send JSON data to frontend
 function returnWithInfo($searchResults) {
     global $searchCount;
-    $retValue = '{"results": [' . $searchResults . '], ""count": '. $searchCount .'}';
+    $retValue = '{"results": [' . $searchResults . '], "count": '. $searchCount .'}';
     sendResultInfoAsJson($retValue);
 }
 
