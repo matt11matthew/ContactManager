@@ -109,7 +109,11 @@ function getRequestInfo() {
 
 // Function to send JSON data to frontend
 function returnWithInfo($searchResults) {
-    global $searchCount;
+    global $searchCount, $showCount;
+    if ($showCount) {
+        sendResultInfoAsJson('{"count": '.$searchCount.'}');
+        return;
+    }
     $retValue = '{"results": [' . $searchResults . '], "count": '. $searchCount .'}';
     sendResultInfoAsJson($retValue);
 }
