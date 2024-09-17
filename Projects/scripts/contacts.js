@@ -51,34 +51,39 @@ function loadCookiesContactsPage() {
 }
 
 function updateMaxPage() {
-    // let xml = new XMLHttpRequest();
-    // let url = "http://cm.matthewe.me/testing/Backend/searchContact.php";
-    // xml.open("POST", url, true);
-    // xml.setRequestHeader("Content-type", "application/json");
-    //
-    // try {
-    //     let search = document.getElementById("searchBox") != null ? document.getElementById("searchBox").value : null;
-    //
-    //     let tmp = {search: search, userId: userIdNum, page: pageNum};
-    //     if (search != null && !search) {
-    //         tmp = {userId: userIdNum, page: pageNum};
-    //     }
-    //     let searchJSON = JSON.stringify(tmp);
-    //
-    //     xml.onreadystatechange = function () {
-    //         if (this.readyState === 4 && this.status === 200) {
-    //             let response = JSON.parse(xml.responseText);
-    //             const tableBody = document.getElementById("tableBody");
-    //
-    //             console.log(response);
-    //
-    //
-    //         }
-    //     };
-    //     xml.send(searchJSON);
-    // } catch (error) {
-    //     //error msg:
-    // }
+    let xml = new XMLHttpRequest();
+    let url = "http://cm.matthewe.me/testing/Backend/searchContact.php";
+    xml.open("POST", url, true);
+    xml.setRequestHeader("Content-type", "application/json");
+
+    try {
+        let search = document.getElementById("searchBox") != null ? document.getElementById("searchBox").value : null;
+
+        let tmp = {search: search, userId: userIdNum, page: pageNum};
+        if (search != null && !search) {
+            tmp = {userId: userIdNum, page: pageNum};
+        }
+        let searchJSON = JSON.stringify(tmp);
+
+        xml.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                let response = JSON.parse(xml.responseText);
+
+                if (response.error)return;
+
+                let count = response.count;
+
+                totalPages = (count / 10) + (count % 10 > 0 ? 1 : 0);
+
+                // console.log(response);
+
+
+            }
+        };
+        xml.send(searchJSON);
+    } catch (error) {
+        //error msg:
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -306,7 +311,7 @@ function renderDetails() {
 function nextPage() {
     // if (contactCount <= 10) return;
 
-    let totalPages = (contactCount / 10) + (contactCount % 10 > 0 ? 1 : 0);
+    // let totalPages = (contactCount / 10) + (contactCount % 10 > 0 ? 1 : 0);
 
     console.log(currentPage+"/"+totalPages);
     if (currentPage < totalPages) {

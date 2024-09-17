@@ -4,10 +4,6 @@
 userIdNum = -1; // For Cookies
 loadCookiesSearchConacts();
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 // document.addEventListener('DOMContentLoaded', function(){
 //     document.getElementById('logoutButton').addEventListener('click', function(){
 //         alert('You have logged out');
@@ -84,8 +80,6 @@ function onCreate(event) {
     // };
     /*
     {"userId":1,"first":"test","last":"test","email":"test"}*/
-
-    sleep(1500);
 
     let createJson = JSON.stringify(tmp);
     let url = "http://cm.matthewe.me/testing/Backend/addContact.php";
