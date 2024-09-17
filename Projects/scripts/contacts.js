@@ -243,21 +243,63 @@ function deleteContact(){
     }
 }
 
+window.addEventListener('DOMContentLoaded', (event) => {
+    renderDetails(); // Call the function when the DOM is ready
+});
+
+function renderDetails() {
+    try {
+        // Validate contactCount and currentPage
+        const totalContacts = (typeof contactCount === 'number' && !isNaN(contactCount) && contactCount >= 0) ? contactCount : '0';
+        const currentPageNumber = (typeof currentPage === 'number' && !isNaN(currentPage) && currentPage > 0) ? currentPage : '1';
+
+        // Retrieve and validate the HTML elements
+        const totalContactsElement = document.getElementById("totalContactsNum");
+        const currentPageElement = document.getElementById("pageContactsNum");
+
+        // Check if elements exist and update them
+        if (totalContactsElement) {
+            totalContactsElement.textContent = totalContacts;
+        } else {
+            console.error('Element with ID "totalContactsNum" not found. Check the HTML for correct ID.');
+        }
+
+        if (currentPageElement) {
+            currentPageElement.textContent = currentPageNumber;
+        } else {
+            console.error('Element with ID "pageContactsNum" not found. Check the HTML for correct ID.');
+        }
+    } catch (error) {
+        console.error('Error in renderDetails function:', error.message, error.stack);
+    }
+}
+
 function prevPage(){
     //at least the first page.
-    if(cur_Page > 1){
-        cur_Page--;
-        //go to previous data:
+    if (contactCount<=10)return;
+    if(currentPage > 1){
+
+        currentPage--;
+        retrieveContact();
+        if(cur_Page > 1){
+            cur_Page--;
+            //go to previous data:
+
+        }
     }
-}
 
-function nextPage(){
-    if(cur_Page < totalPages){
-        cur_Page++;
-        //move to the next set of data:
-    }
-}
 
-function numPages(){
+    function nextPage(){
+        if (contactCount<=10)return;
 
-}
+        let totalPages = (contactCount / 10) + (contactCount % 10 > 0 ? 1 : 0);
+
+        if(currentPage < totalPages){
+            currentPage++;
+            retrieveContact();
+
+            if(cur_Page < totalPages){
+                cur_Page++;
+                //move to the next set of data:
+            }
+        }
