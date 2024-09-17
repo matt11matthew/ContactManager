@@ -242,7 +242,9 @@ function deleteContact(){
         //error msg:
     }
 }
+let contactCount  = 0;
 
+let currentPage = 1;
 window.addEventListener('DOMContentLoaded', (event) => {
     renderDetails(); // Call the function when the DOM is ready
 });
@@ -289,6 +291,8 @@ function nextPage() {
     }
 
 }
+
+
 function prevPage() {
     //at least the first page.
     if (contactCount <= 10) return;
