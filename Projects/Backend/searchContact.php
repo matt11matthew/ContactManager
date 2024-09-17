@@ -37,8 +37,8 @@ if (isset($inData["contactId"])) {
 $showCount =isset($inData["maxPage"]);
 // Prepare the base SQL query
 //On it boss
-$sql = "SELECT ".($showCount?"COUNT(*)":"*").
-        "FROM Contacts 
+$sql = "SELECT *
+        FROM Contacts 
         WHERE UserID = ?";
 # UserID 1st
 
