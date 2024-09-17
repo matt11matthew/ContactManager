@@ -276,7 +276,7 @@ function renderDetails() {
     }
 }
 function nextPage() {
-    if (contactCount <= 10) return;
+    // if (contactCount <= 10) return;
 
     let totalPages = (contactCount / 10) + (contactCount % 10 > 0 ? 1 : 0);
 
@@ -295,7 +295,7 @@ function nextPage() {
 
 function prevPage() {
     //at least the first page.
-    if (contactCount <= 10) return;
+    // if (contactCount <= 10) return;
     if (currentPage > 1) {
 
         currentPage--;
