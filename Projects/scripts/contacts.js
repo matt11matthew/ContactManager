@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         let tmp = {search: search, userId: userIdNum, page: cur_Page};
-        if (search != null || !search) {
+        if ((search != null && !search)||search==null) {
             tmp = {userId: userIdNum, page: cur_Page};
         }
         let searchJSON = JSON.stringify(tmp);
