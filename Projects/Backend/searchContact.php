@@ -83,7 +83,9 @@ while ($row = $result->fetch_assoc()) {
         $searchResults .= ",";
     }
     $searchCount++;
+    //$searchResults .= '{"contactId": "' . $row["ID"] . '", "firstName": "' . $row["FirstName"] . '", "lastName": "' . $row["LastName"] . '", "email": "' . $row["Email"] . '"}';
     $searchResults .= '{"contactId": "' . $row["ID"] . '", "firstName": "' . $row["FirstName"] . '", "lastName": "' . $row["LastName"] . '", "email": "' . $row["Email"] . '"}';
+}
 }
 
 // Handle the output based on search results
