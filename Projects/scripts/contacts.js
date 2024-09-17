@@ -50,6 +50,37 @@ function loadCookiesContactsPage() {
     console.log(savedLastName);
 }
 
+function updateMaxPage() {
+    // let xml = new XMLHttpRequest();
+    // let url = "http://cm.matthewe.me/testing/Backend/searchContact.php";
+    // xml.open("POST", url, true);
+    // xml.setRequestHeader("Content-type", "application/json");
+    //
+    // try {
+    //     let search = document.getElementById("searchBox") != null ? document.getElementById("searchBox").value : null;
+    //
+    //     let tmp = {search: search, userId: userIdNum, page: pageNum};
+    //     if (search != null && !search) {
+    //         tmp = {userId: userIdNum, page: pageNum};
+    //     }
+    //     let searchJSON = JSON.stringify(tmp);
+    //
+    //     xml.onreadystatechange = function () {
+    //         if (this.readyState === 4 && this.status === 200) {
+    //             let response = JSON.parse(xml.responseText);
+    //             const tableBody = document.getElementById("tableBody");
+    //
+    //             console.log(response);
+    //
+    //
+    //         }
+    //     };
+    //     xml.send(searchJSON);
+    // } catch (error) {
+    //     //error msg:
+    // }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     window.retrieveContact = function() {
 
@@ -59,11 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log(userIdNum);
 
-        let pageNum = 1;
 
-        let tmp = {search: search, userId: userIdNum, page: pageNum};
+        let tmp = {search: search, userId: userIdNum, page: cur_Page};
         if (search != null && !search) {
-            tmp = {userId: userIdNum, page: pageNum};
+            tmp = {userId: userIdNum, page: cur_Page};
         }
         let searchJSON = JSON.stringify(tmp);
 
@@ -120,6 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
             //error msg:
         }
     }
+
+    updateMaxPage();
     retrieveContact();
 
     window.editData = function(item) {

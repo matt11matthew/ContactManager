@@ -13,6 +13,7 @@ $searchTerm = isset($inData["search"]) ? strtolower($inData["search"]) : '';
 $userId = isset($inData["userId"]) ? $inData["userId"] : -1;
 $pageNumber = isset($inData["page"]) ? (int)$inData["page"] : null;  // Set to null if not provided
 
+
 if (isset($inData["contactId"])) {
     $contactId = $inData["contactId"];
     $sql = "SELECT (ID, LOWER(FirstName) AS FirstName, LOWER(LastName) AS LastName, LOWER(Email) AS Email)
@@ -33,10 +34,11 @@ if (isset($inData["contactId"])) {
 
     return;
 }
+$showCount =isset($inData["maxPage"]);
 // Prepare the base SQL query
 //On it boss
-$sql = "SELECT LOWER(FirstName) AS FirstName, LOWER(LastName) AS LastName, LOWER(Email) AS Email, ID
-        FROM Contacts 
+$sql = "SELECT ".($showCount?"COUNT(*)":"*").
+        "FROM Contacts 
         WHERE UserID = ?";
 # UserID 1st
 
@@ -50,7 +52,7 @@ if (!empty($searchTerm)) {
 # if no page, just UserId
 
 // Check if pagination is needed
-if (!is_null($pageNumber)) {
+if (!is_null($pageNumber) && !$showCount) {
     $limit = 10;
     $offset = ($pageNumber - 1) * $limit;
     $sql .= " LIMIT ? OFFSET ?";
@@ -83,7 +85,9 @@ while ($row = $result->fetch_assoc()) {
         $searchResults .= ",";
     }
     $searchCount++;
-    $searchResults .= '{"contactId": "' . $row["ID"] . '", "userId": "' . $row["UserID"] . '", "firstName": "' . $row["FirstName"] . '", "lastName": "' . $row["LastName"] . '", "email": "' . $row["Email"] . '"}';
+    if (!$showCount){
+        $searchResults .= '{"contactId": "' . $row["ID"] . '", "userId": "' . $row["UserID"] . '", "firstName": "' . $row["FirstName"] . '", "lastName": "' . $row["LastName"] . '", "email": "' . $row["Email"] . '"}';
+    }
     //$searchResults .= '{"contactId": "' . $row["ID"] . '", "firstName": "' . $row["FirstName"] . '", "lastName": "' . $row["LastName"] . '", "email": "' . $row["Email"] . '"}';
 }
 

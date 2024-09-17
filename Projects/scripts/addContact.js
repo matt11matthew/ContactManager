@@ -4,6 +4,9 @@
 userIdNum = -1; // For Cookies
 loadCookiesSearchConacts();
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 // document.addEventListener('DOMContentLoaded', function(){
 //     document.getElementById('logoutButton').addEventListener('click', function(){
@@ -67,7 +70,6 @@ function onCreate(event) {
     let lastName = document.getElementsByName("lName")[0].value;
     console.log(lastName);
 
-    console.log("new " + userIdNum);
     let tmp = {
         userId: userIdNum,
         firstName: firstName,
@@ -82,6 +84,8 @@ function onCreate(event) {
     // };
     /*
     {"userId":1,"first":"test","last":"test","email":"test"}*/
+
+    sleep(1500);
 
     let createJson = JSON.stringify(tmp);
     let url = "http://cm.matthewe.me/testing/Backend/addContact.php";
