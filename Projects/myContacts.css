@@ -71,7 +71,7 @@ body{
 
 .table-container{
     max-width: 95%;
-    height: 4vw; /*keep constant height*/
+    height: 50vw; /*keep constant height*/
     margin: auto;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -152,30 +152,6 @@ td{
 /*    width: auto;*/
 /*}*/
 
-.lightField{
-    display: block;
-    background-color: #e9e0ca;
-    width: 100%;
-    height: 5rem;
-    padding: 5px;
-    border-radius: 30px;
-    box-sizing: border-box;
-    border: 1px solid black;
-    font-size: x-large;
-}
-
-.darkField{
-    display: block;
-    background-color: #D0BF98;
-    width: 100%;
-    height: 5rem;
-    padding: 5px;
-    border-radius: 30px;
-    box-sizing: border-box;
-    border: 1px solid black;
-    font-size: x-large;
-}
-
 .footer{
     color: #661618;
     font-weight: bolder;
@@ -183,22 +159,34 @@ td{
     padding-bottom: 3vw;
 }
 
-#next-button, #prev-button{
+#prev-button{
+    float: left;
+    padding: 5px 5px;
     color: #e9d8b2;
     background-color: #661618;
+    margin-right: 2vw;
+}
+
+.pageNumber{
+    padding: 2px 2px;
+    color: #661618;
+    font-size: x-large;
+}
+
+#pageContactsNum{
+    color: #661618;
+    font-size: x-large;
+}
+
+#next-button{
+    padding: 5px 5px;
+    color: #e9d8b2;
+    background-color: #661618;
+    margin-left: 4vw;
 }
 
 .total{
     float: left;
-    font-size: x-large;
-}
-
-#page{
-    color: #661618;
-}
-
-.pageNumber{
-    float: right;
     font-size: x-large;
 }
 
