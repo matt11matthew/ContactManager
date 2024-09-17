@@ -290,6 +290,7 @@ function renderDetails() {
         // Validate contactCount and currentPage
         const totalContacts = (typeof contactCount === 'number' && !isNaN(contactCount) && contactCount >= 0) ? contactCount : '0';
         const currentPageNumber = (typeof currentPage === 'number' && !isNaN(currentPage) && currentPage > 0) ? currentPage : '1';
+        const totalPagesNumber = (typeof totalPages === 'number' && !isNaN(totalPages) && totalPages > 0) ? totalPages : '1';
 
         // Retrieve and validate the HTML elements
         const totalContactsElement = document.getElementById("totalContactsNum");
@@ -303,7 +304,7 @@ function renderDetails() {
         }
 
         if (currentPageElement) {
-            currentPageElement.textContent = currentPageNumber;
+            currentPageElement.textContent = currentPageNumber + "/"+totalPagesNumber;
         } else {
             console.error('Element with ID "pageContactsNum" not found. Check the HTML for correct ID.');
         }
