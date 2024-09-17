@@ -324,6 +324,7 @@ function nextPage() {
 
         if (cur_Page < totalPages) {
             cur_Page++;
+            renderDetails();
             //move to the next set of data:
         }
     }
@@ -340,6 +341,7 @@ function prevPage() {
         retrieveContact();
         if (cur_Page > 1) {
             cur_Page--;
+            renderDetails();
             //go to previous data:
 
         }
