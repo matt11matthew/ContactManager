@@ -50,6 +50,7 @@ if (!empty($searchTerm)) {
 # if search term, ok
 # if not, UserID 1st, limit 2, offset 3
 # if no page, just UserId
+# SwaggerHub works if no "search" provided ^ ^ ^
 
 // Check if pagination is needed
 if (!is_null($pageNumber) && !$showCount) {
