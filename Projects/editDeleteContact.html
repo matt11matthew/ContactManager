@@ -7,14 +7,6 @@
     <script type="text/javascript" src="scripts/contacts.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 </head>
-
-<script>
-    function getParams(name){
-        const params = new URLSearchParams(window.location.search);
-        return params.get(name);
-    }
-</script>
-
 <body>
     <div class="title">Edit/Delete Contact</div>
 <!--    <button class="backToContacts" onclick="redirectToContacts()">&#60; Back to Contacts</button>-->
@@ -35,25 +27,35 @@
                 <!--<input type="submit" id="confirmChange" value="Confirm Change">-->
                 <!--<input type="submit" id="deleteContact" value="Delete Contact">-->
 
-            <button class="confirmChange" onclick="editContact()">Confirm Change</button>
-            <button id="deleteContact" >Delete Contact</button>
+            <button class="confirmChange" onclick="editContact('edit')">Confirm Change</button>
+            <button id="deleteContact" onclick="editContact('delete')">Delete Contact</button>
 
         </form>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-               document.getElementById("fNameEdit").value = decodeURIComponent(getParams('firstName'));
-               document.getElementById("lNameEdit").value = decodeURIComponent(getParams('lastName'));
-               document.getElementById("emailEdit").value = decodeURIComponent(getParams('email'));
-               globalContactId = getParams('contactId');
-            });
-        </script>
 
         <a href="testLogin.html">
             <button type="button" class="logoutButton" onclick="UserLogout();">Logout</button>
         </a>
 
     </div>
+
+    <script>
+        function getParams(name){
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("fNameEdit").value = decodeURIComponent(getParams('firstName'));
+            document.getElementById("lNameEdit").value = decodeURIComponent(getParams('lastName'));
+            document.getElementById("emailEdit").value = decodeURIComponent(getParams('email'));
+            globalContactId = getParams('contactId');
+            globalfirst = getParams('firstName');
+            globallast = getParams('lastName');
+            globalemail = getParams('email');
+        });
+    </script>
 
 </body>
 </html>

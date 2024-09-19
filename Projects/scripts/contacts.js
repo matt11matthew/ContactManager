@@ -3,18 +3,24 @@ savedFirstName = "";
 savedLastName = "";
 globalContactId = -1;
 loadCookiesContactsPage();
+globalfirst = "";
+globallast = "";
+globalemail = "";
 
 //for pagination:
 let cur_Page = 1;
 let totalPages;
 
 function redirectToMain() {
-    window.open("http://cm.matthewe.me/testing/index.html");
+    // window.open("http://cm.matthewe.me/testing/index.html");
+    window.location.href = "http://cm.matthewe.me/testing/index.html";
 }
+
 
 //back to contact?
 function redirectToContacts() {
-    window.location = "myContacts.html";
+    // window.location = "myContacts.html";
+    window.location.href = "http://cm.matthewe.me/testing/myContacts.html";
 }
 
 function loadCookiesContactsPage() {
@@ -75,11 +81,11 @@ function updateMaxPage() {
 
                 let count = response.count;
 
-                console.log("TOTAL CT:" +count);
+                // console.log("TOTAL CT:" +count);
                 totalPages = Math.ceil(count / 10); // Ensures totalPages is a whole number
 
                 renderDetails();
-                // console.log(response);
+                console.log(response);
 
 
             }
@@ -197,6 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.editData = function(item) {
         globalContactId = item.contactId;
+        //temp testing url:
+        // const url = "editDeleteContact.html?" +
         const url = "http://cm.matthewe.me/testing/editDeleteContact.html?" +
             "contactId=" + encodeURIComponent(item.contactId) +
             "&firstName=" + encodeURIComponent(item.firstName) +
@@ -209,109 +217,101 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-function editContact(){
+function editContact(action){
     event.preventDefault();
 
-    let newFname = document.getElementById("fNameEdit").value;
-    let newLname = document.getElementById("lNameEdit").value;
-    let newEmail = document.getElementById("emailEdit").value;
+    if(action === "edit") {
+        let newFname = document.getElementById("fNameEdit").value;
+        let newLname = document.getElementById("lNameEdit").value;
+        let newEmail = document.getElementById("emailEdit").value;
 
-    console.log(globalContactId);
-    console.log(userIdNum);
-    console.log(newFname);
-    console.log(newLname);
-    console.log(newEmail);
+        console.log(globalContactId);
+        console.log(userIdNum);
+        console.log(newFname);
+        console.log(newLname);
+        console.log(newEmail);
 
-    let url = "http://cm.matthewe.me/testing/Backend/editContact.php";
-    let tmp = {
-        id: globalContactId,
-        userId: userIdNum,
-        firstName: newFname,
-        lastName: newLname,
-        email: newEmail
-    };
-    let Changes = JSON.stringify(tmp);
-
-    let xml = new XMLHttpRequest();
-    xml.open("POST", url, true);
-    xml.setRequestHeader("Content-type", "application/json");
-    xml.send(Changes);
-
-    try {
-        xml.onreadystatechange = function () {
-            if (this.readyState === 4 && this.status === 200) {
-                let response = JSON.parse(xml.responseText);
-                if (response.error != null) {
-                    //DISPLAY ERROR.
-                    //TODO
-                    console.error('Error:', response.error);
-                    return;
-                }
-                //edit has been completed: output completion notification and go back to contact page.
-                //alert('Contact updated successfully!');
-                // window.location.href = "http://cm.matthewe.me/testing/myContacts.html";
-                window.location.href = "myContacts.html";
-            }
-            else{
-                console.error('HTTP Error:', this.status);
-            }
+        let url = "http://cm.matthewe.me/testing/Backend/editContact.php";
+        let tmp = {
+            id: globalContactId,
+            userId: userIdNum,
+            firstName: newFname,
+            lastName: newLname,
+            email: newEmail
         };
-    }catch (error){
-        //error msg:
+        let Changes = JSON.stringify(tmp);
+
+        let xml = new XMLHttpRequest();
+        xml.open("POST", url, true);
+        xml.setRequestHeader("Content-type", "application/json");
+        xml.send(Changes);
+
+        try {
+            xml.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    let response = JSON.parse(xml.responseText);
+                    if (response.error != null) {
+                        //DISPLAY ERROR.
+                        //TODO
+                        console.error('Error:', response.error);
+                        return;
+                    }
+                    //edit has been completed: output completion notification and go back to contact page.
+                    //alert('Contact updated successfully!');
+                    window.location.href = "http://cm.matthewe.me/testing/myContacts.html";
+                    // window.location.href = "myContacts.html";
+                } else {
+                    // console.error('HTTP Error:', this.status);
+                }
+            };
+        } catch (error) {
+            //error msg:
+        }
+    }else if(action === 'delete'){
+        console.log(globalContactId);
+        console.log(userIdNum);
+        console.log(globalfirst);
+        console.log(globallast);
+        console.log(globalemail);
+
+        let url = "http://cm.matthewe.me/testing/Backend/deleteContact.php";
+        let tmp = {
+            id: globalContactId,
+            userId: userIdNum,
+            firstName: globalfirst,
+            lastName: globallast,
+            email: globalemail
+        }
+        let payload = JSON.stringify(tmp)
+        let xml = new XMLHttpRequest();
+        xml.open("POST", url, true);
+        xml.setRequestHeader("Content-type", "application/json");
+        xml.send(payload);
+        try {
+            xml.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    let response = JSON.parse(xml.responseText);
+                    if (response.error != null) {
+                        //DISPLAY ERROR.
+                        //TODO
+                        console.error('Error:', response.error);
+                        return;
+                    }
+                    //might need to change to the url. i changed it
+                    window.location.href = "http://cm.matthewe.me/testing/myContacts.html";
+                    // window.location = "myContacts.html";
+                }
+                else{
+                    // console.error('HTTP Error:', this.status);
+                }
+            };
+        }catch (error){
+            //error msg:
+        }
     }
 }
 
-// Probably needs the Will touch...
-function deleteContact(){
-    event.preventDefault();
-
-    let Fname = document.getElementById("fNameEdit").value;
-    let Lname = document.getElementById("lNameEdit").value;
-    let Email = document.getElementById("emailEdit").value;
-
-    // Does this func have access to item? Unsure - Dennis
-    console.log(globalContactId);
-    console.log(userIdNum);
-    console.log(item.firstName);
-    console.log(item.lastName);
-    console.log(item.email);
-
-    let url = "http://cm.matthewe.me/testing/Backend/deleteContact.php";
-    let tmp = {
-        id: globalContactId,
-        userId: userIdNum,
-        firstName: item.firstName,
-        lastName: item.lastName,
-        email: item.email
-    }
-    let payload = JSON.stringify(tmp)
-
-    let xml = new XMLHttpRequest();
-    xml.open("POST", url, true);
-    xml.setRequestHeader("Content-type", "application/json");
-    xml.send(payload);
-
-    try {
-        xml.onreadystatechange = function () {
-            if (this.readyState === 4 && this.status === 200) {
-                let response = JSON.parse(xml.responseText);
-                if (response.error != null) {
-                    //DISPLAY ERROR.
-                    //TODO
-                    console.error('Error:', response.error);
-                    return;
-                }
-                window.location.href = "myContacts.html";
-            }
-            else{
-                console.error('HTTP Error:', this.status);
-            }
-        };
-    }catch (error){
-        //error msg:
-    }
-}
-let contactCount  = 0;
+let contactCount = 0;
 
 window.addEventListener('DOMContentLoaded', (event) => {
     renderDetails(); // Call the function when the DOM is ready

@@ -51,9 +51,9 @@ function UserLogin(){
                 let fname = response.firstName;
                 let lname = response.lastName;
 
-                // console.log(userId);
-                // console.log(fname);
-                // console.log(lname);
+                console.log(userId);
+                console.log(fname);
+                console.log(lname);
 
 
                 setCookies(fname, lname, userId);
