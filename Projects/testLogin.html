@@ -23,13 +23,7 @@
         <dev class="username">Username</dev>
         <input type="text" id="username" placeholder="Username" required>
         <dev class="password">Password</dev>
-        <input onkeydown="function preventEnter(event) { <!--may need to get rid of this-->
-            if (event.key === 'Enter') {
-                event.preventDefault(); // Prevent default Enter key action
-                retrieveContact();
-            }
-        }
-        preventEnter(event)" type="password" id="password" placeholder="Password" required>
+        <input type="password" id="password" placeholder="Password" required>
         <button type="button" id="login" onclick="UserLogin();">Login</button>
     </form>
 </div>
