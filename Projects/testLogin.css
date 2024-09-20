@@ -97,7 +97,7 @@ input[type=text], input[type=password]{
 #loginError{
     display: block;
     margin: auto;
-    align-content: center; /* I think this should center the error message*/
+    text-align: center; /* I think this should center the error message*/
     word-wrap: break-word;
     max-width: 30rem;
     font-size: x-large;

@@ -19,6 +19,12 @@
 <!--    <form id="LoginInfo" action="Backend/login.php">-->
     <form id="LoginInfo" >
         <!--username, password inputs, and the login submit input-->
+        <input onkeydown="function preventEnter(event) {
+               if (event.key === 'Enter') {
+                 event.preventDefault(); // Prevent default Enter key action
+                  UserLogin();
+               }
+        }
         <dev class="username">Username</dev>
         <input type="text" id="username" placeholder="Username" required>
         <dev class="password">Password</dev>

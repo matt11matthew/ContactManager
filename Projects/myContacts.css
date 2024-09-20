@@ -48,6 +48,7 @@ body{
     margin-left: 1vw;
     padding-left: 10px;
     padding-right: 10px;
+    line-height: 4vw;
 }
 
 .addContact{
@@ -58,6 +59,7 @@ body{
      padding: 0px;
      padding-left: 10px;
      padding-right: 10px;
+     line-height: 4vw;
 }
 
 #searchError{
@@ -180,7 +182,6 @@ td{
 #pageContactsNum{
     color: #661618;
     font-size: x-large;
-    margin-right: 1vw;
 }
 
 #next-button{
