@@ -20,18 +20,34 @@
     <form id="LoginInfo" >
         <!--username, password inputs, and the login submit input-->
 
-        <dev class="username">Username</dev>
+        <div class="username">Username</div>
         <input type="text" id="username" placeholder="Username" required>
-        <dev class="password">Password</dev>
+        <div class="password">Password</div>
         <input type="password" id="password" placeholder="Password" required>
+        <div id="loginError"></div>
+        <br>
         <button type="button" id="login" onclick="UserLogin();">Login</button>
     </form>
 </div>
-
+<br>
 <div class="centerLink">
     <p><a href="testCreateAccount.html" class="create">Create new account</a></p>
 </div>
-<div id="loginError"></div>
+
 
 </body>
 </html>
+
+<!--possible code for login on "enter"-->
+<!--<form id="loginCrit">-->
+<!--    <input onkeydown="function preventEnter(event) {-->
+<!--               if (event.key === 'Enter') {-->
+<!--                 event.preventDefault(); // Prevent default Enter key action-->
+<!--                  UserLogin();-->
+<!--                }-->
+<!--            }-->
+<!--            preventEnter(event)" type="password" id="password" placeholder="Password" required>-->
+<!--    <div id="loginError"></div>-->
+<!--    <br>-->
+<!--    <button type="button" id="login" onclick="UserLogin();">Login</button>-->
+<!--</form>-->

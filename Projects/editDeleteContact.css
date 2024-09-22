@@ -33,6 +33,10 @@ body{
     font-size: x-large;
     background-color: #e9d8b2;
     color: #661618;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-radius: 30px;
+    font-weight: bold;
 }
 
 .fieldBar{
@@ -69,36 +73,56 @@ body{
     padding: 10px;
 }
 
-button{
-    padding: 20px 20px;
-    border: 1px solid black;
-    box-sizing: border-box;
-    border-radius: 30px;
-    cursor: pointer;
-    position: relative;
-    font-size: xx-large;
-    font-weight: bold;
-}
+/*button{*/
+/*    padding: 20px 20px;*/
+/*    border: 1px solid black;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 30px;*/
+/*    cursor: pointer;*/
+/*    position: relative;*/
+/*    font-size: x-large;*/
+/*    font-weight: bold;*/
+/*}*/
 
-.confirmChange {
+#confirmChange {
     /*margin-left: 1vw;*/
     background-color: #661618;
     color: #e9d8b2;
+    padding: 10px 10px;
+    margin-left: .5vw;
+    margin-bottom: 2vw;
+    font-size: x-large;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-radius: 30px;
+    font-weight: bold;
 }
 
 #deleteContact {
-    margin-left: 9.5vw;
     float: right;
     background-color: #e9d8b2;
     color: #661618;
+    padding: 10px 10px;
+    margin-right: .5vw;
+    margin-bottom: 2vw;
+    font-size: x-large;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-radius: 30px;
+    font-weight: bold;
 }
 
 .logoutButton{
     padding: 10px 10px;
     margin-left: 1vw;
-    margin-top: 4rem;
+    margin-top: 1rem;
     background-color: #e9d8b2;
     color: #661618;
+    font-size: x-large;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-radius: 30px;
+    font-weight: bold;
 }
 
 button:hover{

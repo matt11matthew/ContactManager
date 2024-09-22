@@ -8,54 +8,56 @@
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 </head>
 <body>
-    <div class="title">Edit/Delete Contact</div>
+<div class="title">Edit/Delete Contact</div>
 <!--    <button class="backToContacts" onclick="redirectToContacts()">&#60; Back to Contacts</button>-->
 
-    <div class="container">
-        <button class="backToContacts" onclick="redirectToContacts()">&#60; Back to Contacts</button>
-        <br><br><br>
+<div class="container">
+    <button class="backToContacts" onclick="redirectToContacts()">&#60; Back to Contacts</button>
+    <br><br><br>
 
-        <form >
+    <form >
 
-            <div class="firstName">First Name</div>
-            <input type="text" id="fNameEdit" class="fieldBar" placeholder="Get first name from database">
-            <div class="lastName">Last Name</div>
-            <input type="text" id="lNameEdit" class="fieldBar" placeholder="Get last name from database">
-            <div class="email">Email Address</div>
-            <input type="text" id="emailEdit" class="fieldBar" placeholder="Get email address from database">
+        <div class="firstName">First Name</div>
+        <input type="text" id="fNameEdit" class="fieldBar" placeholder="Get first name from database">
+        <div class="lastName">Last Name</div>
+        <input type="text" id="lNameEdit" class="fieldBar" placeholder="Get last name from database">
+        <div class="email">Email Address</div>
+        <input type="text" id="emailEdit" class="fieldBar" placeholder="Get email address from database">
 
-                <!--<input type="submit" id="confirmChange" value="Confirm Change">-->
-                <!--<input type="submit" id="deleteContact" value="Delete Contact">-->
-
-            <button class="confirmChange" onclick="editContact('edit')">Confirm Change</button>
+        <!--<input type="submit" id="confirmChange" value="Confirm Change">-->
+        <!--<input type="submit" id="deleteContact" value="Delete Contact">-->
+        <div class="buttonContainer">
+            <button id="confirmChange" onclick="editContact('edit')">Confirm Change</button> <!--made into ID not class-->
             <button id="deleteContact" onclick="editContact('delete')">Delete Contact</button>
+        </div>
 
-        </form>
 
-        <a href="testLogin.html">
-            <button type="button" class="logoutButton" onclick="UserLogout();">Logout</button>
-        </a>
+    </form>
 
-    </div>
+    <a href="testLogin.html">
+        <button type="button" class="logoutButton" onclick="UserLogout();">Logout</button>
+    </a>
 
-    <script>
-        function getParams(name){
-            const params = new URLSearchParams(window.location.search);
-            return params.get(name);
-        }
-    </script>
+</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById("fNameEdit").value = decodeURIComponent(getParams('firstName'));
-            document.getElementById("lNameEdit").value = decodeURIComponent(getParams('lastName'));
-            document.getElementById("emailEdit").value = decodeURIComponent(getParams('email'));
-            globalContactId = getParams('contactId');
-            globalfirst = getParams('firstName');
-            globallast = getParams('lastName');
-            globalemail = getParams('email');
-        });
-    </script>
+<script>
+    function getParams(name){
+        const params = new URLSearchParams(window.location.search);
+        return params.get(name);
+    }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById("fNameEdit").value = decodeURIComponent(getParams('firstName'));
+        document.getElementById("lNameEdit").value = decodeURIComponent(getParams('lastName'));
+        document.getElementById("emailEdit").value = decodeURIComponent(getParams('email'));
+        globalContactId = getParams('contactId');
+        globalfirst = getParams('firstName');
+        globallast = getParams('lastName');
+        globalemail = getParams('email');
+    });
+</script>
 
 </body>
 </html>
