@@ -23,10 +23,23 @@
         <div class="username">Username</div>
         <input type="text" id="username" placeholder="Username" required>
         <div class="password">Password</div>
-        <input type="password" id="password" placeholder="Password" required>
-        <div id="loginError"></div>
-        <br>
-        <button type="button" id="login" onclick="UserLogin();">Login</button>
+<!--        <input type="password" id="password" placeholder="Password" required>-->
+<!--        <div id="loginError"></div>-->
+<!--        <br>-->
+<!--        <button type="button" id="login" onclick="UserLogin();">Login</button>-->
+        <!--possible code for login on "enter"-->
+        <form id="loginCrit">
+            <input onkeydown="function preventEnter(event) {
+                       if (event.key === 'Enter') {
+                         event.preventDefault(); // Prevent default Enter key action
+                          UserLogin();
+                        }
+                    }
+                    preventEnter(event)" type="password" id="password" placeholder="Password" required>
+            <div id="loginError"></div>
+            <br>
+            <button type="button" id="login" onclick="UserLogin();">Login</button>
+        </form>
     </form>
 </div>
 <br>
