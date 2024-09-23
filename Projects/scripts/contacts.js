@@ -12,15 +12,15 @@ let cur_Page = 1;
 let totalPages;
 
 function redirectToMain() {
-    // window.open("http://cm.matthewe.me/testing/index.html");
-    window.location.href = "http://cm.matthewe.me/testing/index.html";
+    window.open("http://cm.matthewe.me/testing/index.html");
+    // window.location.href = "http://cm.matthewe.me/testing/index.html";
 }
 
 
 //back to contact?
 function redirectToContacts() {
-    // window.location = "myContacts.html";
-    window.location.href = "http://cm.matthewe.me/testing/myContacts.html";
+    window.location = "myContacts.html";
+    // window.location.href = "http://cm.matthewe.me/testing/myContacts.html";
 }
 
 function loadCookiesContactsPage() {
@@ -204,8 +204,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.editData = function(item) {
         globalContactId = item.contactId;
         //temp testing url:
-        // const url = "editDeleteContact.html?" +
-        const url = "http://cm.matthewe.me/testing/editDeleteContact.html?" +
+        const url = "editDeleteContact.html?" +
+        // const url = "http://cm.matthewe.me/testing/editDeleteContact.html?" +
             "contactId=" + encodeURIComponent(item.contactId) +
             "&firstName=" + encodeURIComponent(item.firstName) +
             "&lastName=" + encodeURIComponent(item.lastName) +
@@ -258,8 +258,8 @@ function editContact(action){
                     }
                     //edit has been completed: output completion notification and go back to contact page.
                     //alert('Contact updated successfully!');
-                    window.location.href = "http://cm.matthewe.me/testing/myContacts.html";
-                    // window.location.href = "myContacts.html";
+                    // window.location.href = "http://cm.matthewe.me/testing/myContacts.html";
+                    window.location.href = "myContacts.html";
                 } else {
                     // console.error('HTTP Error:', this.status);
                 }
@@ -298,8 +298,8 @@ function editContact(action){
                         return;
                     }
                     //might need to change to the url. i changed it
-                    window.location.href = "http://cm.matthewe.me/testing/myContacts.html";
-                    // window.location = "myContacts.html";
+                    // window.location.href = "http://cm.matthewe.me/testing/myContacts.html";
+                    window.location = "myContacts.html";
                 }
                 else{
                     // console.error('HTTP Error:', this.status);

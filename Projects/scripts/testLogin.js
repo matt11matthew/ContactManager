@@ -55,7 +55,6 @@ function UserLogin(){
                 console.log(fname);
                 console.log(lname);
 
-
                 setCookies(fname, lname, userId);
                 // test to see if we read user login properly:
                 // document.getElementById("loginError").innerHTML = "Found user " + fname +" " + lname;
@@ -63,8 +62,8 @@ function UserLogin(){
                 setTimeout(hideLoginError, 3000);
 
                 //direct user to the menu:
-                // window.location = "myContacts.html";
-                window.location.href = "http://cm.matthewe.me/testing/myContacts.html"
+                window.location = "myContacts.html";
+                // window.location.href = "http://cm.matthewe.me/testing/myContacts.html"
             }
         }
     }

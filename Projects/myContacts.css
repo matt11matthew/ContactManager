@@ -83,6 +83,67 @@ body{
     box-shadow: .3em .3em .3em rgba(0, 0, 0, .4);
 }
 
+@media (max-width: 600px){
+    .title{
+        font-size: xxx-large;
+    }
+    /*making the table collapse and differentiate rows, makes the button
+    in the last cell invisible and covers respective chunk of info so the
+    user only clicks on the info to edit not a button.*/
+    .table-header{
+        display: none;
+    }
+    tr:nth-child(even) td{
+        background-color: #e9e0ca;
+    }
+    td{
+        display: block;
+    }
+    tr{
+        position: relative;
+    }
+    td:last-child{
+        position: relative;
+    }
+    #tableBody.td:nth-child(1), #tableBody.td:nth-child(2){
+        display: inline-block;
+    }
+    #tableBody.tr:nth-child(even) td:last-child{
+        background-color: #e9e0ca;
+    }
+    #tableBody.td:before{
+        display: block;
+        font-weight: bold;
+    }
+    tbody td:nth-child(1):before{
+        content: "First Name: ";
+    }
+    tbody td:nth-child(2):before{
+        content: "Last Name: ";
+    }
+    tbody td:nth-child(3):before{
+        content: "Email: ";
+    }
+    tbody td:before{
+        font-weight: bolder;
+    }
+    tbody #editDeleteButton{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: pointer;
+        z-index: 1;
+        opacity: 0%;
+    }
+
+/*    the top portion of the contact page, search bar, and buttons.*/
+    .searchBox{
+        height: 100%;
+    }
+}
+
 ::placeholder{
     color: #661618;
     opacity: 50%;
