@@ -9,7 +9,7 @@ $inData = getRequestInfo();
 
 // Ensure all fields are filled
 if (empty($inData['username'] || empty($inData['password']))) {
-    returnWithError('One or more fields was empty.');
+    returnWithError('*One or more fields was empty');
     exit();
 }
 
@@ -23,12 +23,12 @@ $result = $stmt->get_result();
 if ($row = $result->fetch_assoc()) {
     // Use password_verify for secure password comparison (if passwords are hashed)
     if ($inData['password'] !== $row['Password']) {  // Replace with password_verify if hashed
-        returnWithError('Invalid password');
+        returnWithError('*Invalid password');
     } else {
         returnWithInfo($row['FirstName'], $row['LastName'], $row['ID']);
     }
 } else {
-    returnWithError('Account not found.');
+    returnWithError('*Account not found');
 }
 
 // Close the statement and connection
