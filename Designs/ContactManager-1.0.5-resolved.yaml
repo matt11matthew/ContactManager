@@ -1,0 +1,267 @@
+swagger: "2.0"
+info:
+  description: CRUD API for contact manager website
+  version: 1.0.5
+  title: Contact Manager CRUD
+  contact:
+    email: de465952@ucf.edu
+    x-email2: ah442702@ucf.edu
+    x-email3: matthew.eisenberg@ucf.edu
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: cm.matthewe.me
+basePath: /testing/Backend
+schemes:
+- http
+paths:
+  /register.php:
+    post:
+      tags:
+      - Users
+      summary: Registers a new user.
+      description: Registers a new user.
+      operationId: register
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: registerObj
+        description: Registration
+        required: false
+        schema:
+          $ref: '#/definitions/Register'
+      responses:
+        "200":
+          description: Successfully registered account.
+        "404":
+          description: Cannot find URL path.
+        "500":
+          description: Internal server error.
+  /login.php:
+    post:
+      tags:
+      - Users
+      summary: Logs into contact manager.
+      description: Logs into contact manager.
+      operationId: login
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: loginObj
+        description: Login information
+        required: false
+        schema:
+          $ref: '#/definitions/Login'
+      responses:
+        "200":
+          description: Successfully logged into account.
+        "404":
+          description: Cannot find URL path.
+        "500":
+          description: Internal server error.
+  /addContact.php:
+    post:
+      tags:
+      - Contacts
+      summary: Adds a contact to user's contact manager.
+      description: Adds a contact to user's contact manager.
+      operationId: addContact
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: contactObj
+        description: Contact information
+        required: false
+        schema:
+          $ref: '#/definitions/Contact'
+      responses:
+        "200":
+          description: Successfully added contact.
+        "404":
+          description: Cannot find URL path.
+        "500":
+          description: Internal server error.
+  /deleteContact.php:
+    post:
+      tags:
+      - Contacts
+      summary: Deletes a contact from a user's contact manager.
+      description: Deletes a contact from a user's contact manager.
+      operationId: deleteContact
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: contactObj
+        description: Contact information
+        required: false
+        schema:
+          $ref: '#/definitions/Contact'
+      responses:
+        "200":
+          description: Successfully deleted contact.
+        "404":
+          description: Cannot find URL path.
+        "500":
+          description: Internal server error.
+  /editContact.php:
+    post:
+      tags:
+      - Contacts
+      summary: Edits a contact from a user's contact manager.
+      description: Edits a contact from a user's contact manager.
+      operationId: editContact
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: contactObj
+        description: Contact information
+        required: false
+        schema:
+          $ref: '#/definitions/Contact'
+      responses:
+        "200":
+          description: Successfully edited contact.
+        "404":
+          description: Cannot find URL path.
+        "500":
+          description: Internal server error.
+  /searchContact.php:
+    post:
+      tags:
+      - Contacts
+      summary: Searches for a contact from a user's contact manager.
+      description: Searches for a contact from a user's contact manager.
+      operationId: searchContact
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: searchObj
+        description: Search information
+        required: false
+        schema:
+          $ref: '#/definitions/Search'
+      responses:
+        "200":
+          description: Successfully returned list of contacts with matching information.
+          schema:
+            $ref: '#/definitions/SearchResults'
+        "404":
+          description: Cannot find URL path.
+        "500":
+          description: Internal server error.
+definitions:
+  Register:
+    type: object
+    required:
+    - confPassword
+    - firstName
+    - lastName
+    - password
+    - username
+    properties:
+      firstName:
+        type: string
+        example: Bob
+      lastName:
+        type: string
+        example: Bobbington
+      username:
+        type: string
+        example: SirBobbingtonTheBob
+      password:
+        type: string
+        example: secretsforbobby
+      confPassword:
+        type: string
+        example: secretsforbobby
+  Login:
+    type: object
+    required:
+    - password
+    - username
+    properties:
+      username:
+        type: string
+        example: example
+        x-example2: deng
+        x-example3: does_not_exist
+      password:
+        type: string
+        example: example
+        x-example2: wrong_pass
+        x-example3: blank
+  Contact:
+    type: object
+    required:
+    - email
+    - firstName
+    - lastName
+    - userId
+    properties:
+      id:
+        type: integer
+      userId:
+        type: integer
+        example: 38
+      firstName:
+        type: string
+        example: Bob
+      lastName:
+        type: string
+        example: Ross
+      email:
+        type: string
+        example: BobRoss@gmail.com
+  Search:
+    type: object
+    required:
+    - userId
+    properties:
+      userId:
+        type: integer
+        example: 38
+      search:
+        type: string
+        example: ""
+      page:
+        type: integer
+        example: 1
+  SearchResults:
+    type: object
+    required:
+    - count
+    - results
+    properties:
+      results:
+        type: array
+        example:
+        - firstName: Michael
+          lastName: Bob
+          email: michael.bob@gmail.com
+        - firstName: Jim
+          lastName: Carrey
+          email: realjcarrey@gmail.com
+        items:
+          type: object
+          properties: {}
+      count:
+        type: integer
+        example: 2
