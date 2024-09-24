@@ -53,12 +53,12 @@
 * Attempt to log in with incorrect user/pass to show error message
 * Show creation of new account and logging into it
 * Use incorrect confirmation password to show error message 
-* Add two (or more?) contacts
+* Add three or more contacts
 * Edit one contact with new information
 * Delete other contact
 * Log out
-* Log in with sample account (example, example)
-* Demonstrate search function with snippets of text
+* Log back in
+* Demonstrate search function with snippets of text based on created contacts
 
 ## Talk about and demo SwaggerHub
 * Use (example, example) account since has plenty of contacts
