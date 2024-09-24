@@ -49,18 +49,22 @@
 * User can CRUD contacts or log out
 * CUD requests require extra verification from database
 
-## Talk about and demo SwaggerHub
-* Use johndoe account since has plenty of contacts
-* Show basic login API
-* Show search results API
-* Both should return 200 responses
-
 ## Demo website
-* Attempt to log in with incorrect user/pass
+* Attempt to log in with incorrect user/pass to show error message
 * Show creation of new account and logging into it
+* Use incorrect confirmation password to show error message 
 * Add two (or more?) contacts
 * Edit one contact with new information
 * Delete other contact
 * Log out
-* Log in with johndoe
-* Demonstrate search function (could be done above too)
+* Log in with sample account (example, example)
+* Demonstrate search function with snippets of text
+
+## Talk about and demo SwaggerHub
+* Use (example, example) account since has plenty of contacts
+* Show basic login API
+* Show search results API
+* Both should return 200 responses
+
+## Mobile demonstration
+* Similar to website demo
