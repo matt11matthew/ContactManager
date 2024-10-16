@@ -50,15 +50,18 @@
 * CUD requests require extra verification from database
 
 ## Demo website
-* Attempt to log in with incorrect user/pass to show error message
+* Attempt to log in with incorrect username to show error message
 * Show creation of new account and logging into it
 * Use incorrect confirmation password to show error message 
 * Add three or more contacts
 * Edit one contact with new information
 * Delete other contact
 * Log out
-* Log back in
+* Log back in with John Doe
+* Use wrong password first to show incorrect password
 * Demonstrate search function with snippets of text based on created contacts
+* Show pagination in search demo, maybe search "Bob" and edit it if not shown before
+* Log back out
 
 ## Talk about and demo SwaggerHub
 * Use (example, example) account since has plenty of contacts
